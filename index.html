@@ -77,9 +77,9 @@
             </h1>
             <p class="text-xs text-peach-100 font-medium mt-0.5">2026/10/15 (三) ~ 10/21 (二) • 七天六夜</p>
         </div>
-        <button onclick="openLinkModal()" class="bg-white/20 hover:bg-white/30 text-white px-3 py-1.5 rounded-full text-xs font-medium backdrop-blur-sm transition flex items-center gap-1 shadow-sm">
-            <i class="fa-solid fa-link text-[10px]"></i> 編輯地圖
-        </button>
+        <a href="https://maps.app.goo.gl/N9F8tJiQ9wgMCCvC8" target="_blank" class="bg-white/20 hover:bg-white/30 text-white px-3 py-1.5 rounded-full text-xs font-medium backdrop-blur-sm transition flex items-center gap-1 shadow-sm">
+            <i class="fa-solid fa-map-location-dot text-[10px]"></i> 📍 福岡散策
+        </a>
     </header>
 
     <!-- Main Content Container -->
@@ -418,7 +418,7 @@
                                 <h3 class="text-sm font-bold text-gray-800">由旅館出發步行</h3>
                                 <p class="text-xs text-gray-500">步行約 10-12 分鐘至博多車站築紫口。</p>
                                 <div class="flex gap-2 mt-2">
-                                    <a href="https://share.google/37R9QGXKA67WAtZQiHakata" target="_blank" class="bg-peach-50 text-peach-700 px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-peach-100 transition flex items-center gap-1">
+                                    <a href="https://maps.app.goo.gl/zk2MyS1c5zrxEVNy6" target="_blank" class="bg-peach-50 text-peach-700 px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-peach-100 transition flex items-center gap-1">
                                         <i class="fa-solid fa-location-arrow"></i> 博多站築紫口集合點導航
                                     </a>
                                 </div>
@@ -505,6 +505,11 @@
                             <div>
                                 <h3 class="text-sm font-bold text-gray-800">由旅館出發步行</h3>
                                 <p class="text-xs text-gray-500">步行至博多車站築紫口集合點。</p>
+                                <div class="flex gap-2 mt-2">
+                                    <a href="https://maps.app.goo.gl/zk2MyS1c5zrxEVNy6" target="_blank" class="bg-peach-50 text-peach-700 px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-peach-100 transition flex items-center gap-1">
+                                        <i class="fa-solid fa-location-arrow"></i> 博多站築紫口集合點導航
+                                    </a>
+                                </div>
                             </div>
                         </div>
 
@@ -685,7 +690,7 @@
                 </div>
                 <p class="text-xs text-gray-600">一日遊集合與乘車主要地標，距離旅館步行約 10-12 分鐘。</p>
                 <div class="flex gap-2 pt-1">
-                    <a href="https://share.google/37R9QGXKA67WAtZQiHakata" target="_blank" class="bg-peach-50 text-peach-700 px-3 py-1.5 rounded-xl text-xs font-medium hover:bg-peach-100 transition flex items-center gap-1.5">
+                    <a href="https://maps.app.goo.gl/zk2MyS1c5zrxEVNy6" target="_blank" class="bg-peach-50 text-peach-700 px-3 py-1.5 rounded-xl text-xs font-medium hover:bg-peach-100 transition flex items-center gap-1.5">
                         <i class="fa-solid fa-map-location-dot"></i> 博多站築紫口地圖導航
                     </a>
                 </div>
@@ -820,95 +825,7 @@
 
         </div>
 
-        <!-- ================= TAB 6: 許願池 (Wishlist) ================= -->
-        <div id="tab-wishlist" class="tab-content hidden space-y-4">
-            <div class="bg-white p-4 rounded-2xl shadow-sm border border-peach-100 space-y-3">
-                <div class="flex justify-between items-center">
-                    <div>
-                        <span class="bg-peach-100 text-peach-700 text-[10px] font-bold px-2 py-0.5 rounded-full">自訂地圖標記</span>
-                        <h3 class="text-sm font-bold text-gray-800 mt-1">✨ 福岡許願池與景點清單</h3>
-                    </div>
-                    <a href="https://maps.app.goo.gl/ZFNKmKVrjR6SjeeX7" target="_blank" class="bg-peach-50 text-peach-700 px-3 py-1.5 rounded-xl text-xs font-medium hover:bg-peach-100 transition flex items-center gap-1">
-                        <i class="fa-solid fa-map"></i> 原始地圖
-                    </a>
-                </div>
-                <p class="text-xs text-gray-500">將您在地圖上標記想去的店鋪與景點匯整於此，點擊按鈕即可一鍵導航！</p>
-
-                <div class="space-y-2 pt-2" id="wishlist-container">
-                    <div class="bg-gray-50 p-3 rounded-xl flex items-center justify-between">
-                        <div>
-                            <h4 class="text-xs font-bold text-gray-800">葉隱烏龍麵</h4>
-                            <p class="text-[10px] text-gray-500">超Q彈手打烏龍麵（第二天順路午餐）</p>
-                        </div>
-                        <a href="https://maps.app.goo.gl/tHJ5sGRQmrtPerTL8" target="_blank" class="bg-peach-500 text-white px-3 py-1.5 rounded-xl text-xs font-medium hover:bg-peach-600 transition shadow-sm">
-                            導航
-                        </a>
-                    </div>
-                    <div class="bg-gray-50 p-3 rounded-xl flex items-center justify-between">
-                        <div>
-                            <h4 class="text-xs font-bold text-gray-800">The Full Full Hakata 法國麵包</h4>
-                            <p class="text-[10px] text-gray-500">第六天必買法國麵包帶回台灣</p>
-                        </div>
-                        <a href="https://maps.app.goo.gl/GWj35DhyeneQNgKy9" target="_blank" class="bg-peach-500 text-white px-3 py-1.5 rounded-xl text-xs font-medium hover:bg-peach-600 transition shadow-sm">
-                            導航
-                        </a>
-                    </div>
-                    <div class="bg-gray-50 p-3 rounded-xl flex items-center justify-between">
-                        <div>
-                            <h4 class="text-xs font-bold text-gray-800">燒肉上 (藥院)</h4>
-                            <p class="text-[10px] text-gray-500">第二天晚餐預約燒肉</p>
-                        </div>
-                        <a href="https://maps.app.goo.gl/rioR8kGCdeHo7Y6L7" target="_blank" class="bg-peach-500 text-white px-3 py-1.5 rounded-xl text-xs font-medium hover:bg-peach-600 transition shadow-sm">
-                            導航
-                        </a>
-                    </div>
-                    <div class="bg-gray-50 p-3 rounded-xl flex items-center justify-between">
-                        <div>
-                            <h4 class="text-xs font-bold text-gray-800">SG 博多旅居飯店</h4>
-                            <p class="text-[10px] text-gray-500">七天六夜溫馨住宿點</p>
-                        </div>
-                        <a href="https://maps.app.goo.gl/DvRteta1W1AVgtqT8" target="_blank" class="bg-peach-500 text-white px-3 py-1.5 rounded-xl text-xs font-medium hover:bg-peach-600 transition shadow-sm">
-                            導航
-                        </a>
-                    </div>
-                    <div class="bg-gray-50 p-3 rounded-xl flex items-center justify-between">
-                        <div>
-                            <h4 class="text-xs font-bold text-gray-800">博多車站築紫口</h4>
-                            <p class="text-[10px] text-gray-500">一日遊集合地點</p>
-                        </div>
-                        <a href="https://share.google/37R9QGXKA67WAtZQiHakata" target="_blank" class="bg-peach-500 text-white px-3 py-1.5 rounded-xl text-xs font-medium hover:bg-peach-600 transition shadow-sm">
-                            導航
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </main>
-
-    <!-- Custom Link Editor Modal -->
-    <div id="link-modal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl p-5 w-full max-w-sm space-y-4 shadow-xl">
-            <h3 class="text-sm font-bold text-gray-800 flex items-center gap-2">
-                <span>🔗</span> 編輯與自訂地圖連結
-            </h3>
-            <p class="text-xs text-gray-500">如果您想更改或新增許願池地圖連結，請直接在此輸入：</p>
-            <div class="space-y-3">
-                <div>
-                    <label class="text-[10px] text-gray-500">地標名稱</label>
-                    <input type="text" id="custom-place-name" placeholder="例如：某某人氣咖啡廳" class="w-full text-xs p-2.5 rounded-xl border border-gray-200 bg-gray-50">
-                </div>
-                <div>
-                    <label class="text-[10px] text-gray-500">Google Map 連結</label>
-                    <input type="text" id="custom-place-url" placeholder="https://maps.app.goo.gl/..." class="w-full text-xs p-2.5 rounded-xl border border-gray-200 bg-gray-50">
-                </div>
-            </div>
-            <div class="flex gap-2 pt-2">
-                <button onclick="closeLinkModal()" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 py-2 rounded-xl text-xs font-medium transition">取消</button>
-                <button onclick="saveCustomPlace()" class="flex-1 bg-peach-500 hover:bg-peach-600 text-white py-2 rounded-xl text-xs font-bold transition">新增至許願池</button>
-            </div>
-        </div>
-    </div>
 
     <!-- Image Modal for Full View -->
     <div id="image-modal" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4" onclick="closeFullImage()">
@@ -936,10 +853,6 @@
         <button onclick="switchTab('expense')" class="nav-btn flex flex-col items-center gap-1 text-gray-400 hover:text-peach-500 transition" data-tab="expense">
             <i class="fa-solid fa-wallet text-base"></i>
             <span class="text-[10px] font-medium">帳務</span>
-        </button>
-        <button onclick="switchTab('wishlist')" class="nav-btn flex flex-col items-center gap-1 text-gray-400 hover:text-peach-500 transition" data-tab="wishlist">
-            <i class="fa-solid fa-star text-base"></i>
-            <span class="text-[10px] font-medium">許願池</span>
         </button>
     </nav>
 
@@ -1391,60 +1304,11 @@
             loadPersonalExpenses();
         }
 
-        // Wishlist & Modal Handling
-        function openLinkModal() {
-            document.getElementById('link-modal').classList.remove('hidden');
-        }
-
-        function closeLinkModal() {
-            document.getElementById('link-modal').classList.add('hidden');
-            document.getElementById('custom-place-name').value = '';
-            document.getElementById('custom-place-url').value = '';
-        }
-
-        function saveCustomPlace() {
-            const name = document.getElementById('custom-place-name').value;
-            const url = document.getElementById('custom-place-url').value;
-            if(!name || !url) {
-                alert("請填寫完整的名稱與 Google Map 連結");
-                return;
-            }
-
-            let customWishlist = JSON.parse(localStorage.getItem('fukuoka_custom_wishlist')) || [];
-            customWishlist.push({ name, url });
-            localStorage.setItem('fukuoka_custom_wishlist', JSON.stringify(customWishlist));
-
-            closeLinkModal();
-            loadWishlist();
-            alert("成功新增至許願池！");
-        }
-
-        function loadWishlist() {
-            let customWishlist = JSON.parse(localStorage.getItem('fukuoka_custom_wishlist')) || [];
-            const container = document.getElementById('wishlist-container');
-            
-            customWishlist.forEach(item => {
-                const div = document.createElement('div');
-                div.className = "bg-peach-50/60 p-3 rounded-xl flex items-center justify-between border border-peach-200";
-                div.innerHTML = `
-                    <div>
-                        <h4 class="text-xs font-bold text-gray-800">${item.name} <span class="text-[9px] bg-peach-200 text-peach-800 px-1.5 py-0.5 rounded">自訂</span></h4>
-                        <p class="text-[10px] text-gray-500">使用者自訂許願地標</p>
-                    </div>
-                    <a href="${item.url}" target="_blank" class="bg-peach-500 text-white px-3 py-1.5 rounded-xl text-xs font-medium hover:bg-peach-600 transition shadow-sm">
-                        導航
-                    </a>
-                `;
-                container.appendChild(div);
-            });
-        }
-
         window.onload = function() {
             loadVoucherData();
             loadYakinikuData();
             loadPackingList();
             loadExpensesData();
-            loadWishlist();
         }
     </script>
 </body>
