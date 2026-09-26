@@ -825,6 +825,52 @@
 
         </div>
 
+        <!-- ================= TAB 6: 購物清單 (Shopping List) ================= -->
+        <div id="tab-shopping" class="tab-content hidden space-y-4">
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-peach-100 space-y-3">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <span class="bg-peach-100 text-peach-700 text-[10px] font-bold px-2 py-0.5 rounded-full">戰利品清單</span>
+                        <h3 class="text-sm font-bold text-gray-800 mt-1">🛒 購物清單</h3>
+                    </div>
+                    <span class="text-xs font-bold text-peach-600" id="shopping-total-count">共 0 項</span>
+                </div>
+                <p class="text-xs text-gray-500">記錄想買的東西，買到就打勾，一目瞭然！</p>
+
+                <details class="group border border-peach-100 rounded-xl bg-peach-50/40">
+                    <summary class="text-xs text-peach-700 font-bold cursor-pointer list-none flex items-center justify-between p-3">
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-plus"></i> 新增購物項目</span>
+                        <i class="fa-solid fa-chevron-down transition-transform group-open:rotate-180"></i>
+                    </summary>
+                    <form id="shopping-item-form" onsubmit="addShoppingItem(event)" class="space-y-2.5 px-3 pb-3 pt-1 border-t border-peach-100">
+                        <div>
+                            <label class="text-[10px] text-gray-500">商品名稱</label>
+                            <input type="text" id="shop-item-name" required placeholder="例如：明太子 / 藥妝" class="w-full text-xs p-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-peach-500 bg-white">
+                        </div>
+                        <div>
+                            <label class="text-[10px] text-gray-500">購入店家</label>
+                            <input type="text" id="shop-item-store" placeholder="例如：唐吉訶德 / 藥妝店" class="w-full text-xs p-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-peach-500 bg-white">
+                        </div>
+                        <div>
+                            <label class="text-[10px] text-gray-500">商品照片示意 (選填)</label>
+                            <input type="file" id="shop-item-photo" accept="image/*" onchange="previewShoppingPhoto(event)" class="w-full text-[10px] text-gray-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-[10px] file:font-medium file:bg-peach-500 file:text-white hover:file:bg-peach-600">
+                            <div id="shop-item-photo-preview" class="hidden mt-2 relative inline-block">
+                                <img id="shop-item-photo-preview-img" src="" class="w-16 h-16 object-cover rounded-lg border border-gray-200">
+                                <button type="button" onclick="clearShoppingPhotoPreview()" class="absolute -top-1.5 -right-1.5 bg-gray-700 text-white rounded-full w-4 h-4 flex items-center justify-center text-[9px] leading-none">✕</button>
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full bg-peach-500 hover:bg-peach-600 text-white py-2.5 rounded-xl text-xs font-bold transition shadow-sm">
+                            新增至購物清單
+                        </button>
+                    </form>
+                </details>
+
+                <div id="shopping-list-container" class="space-y-2 pt-1">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <!-- Image Modal for Full View -->
@@ -853,6 +899,10 @@
         <button onclick="switchTab('expense')" class="nav-btn flex flex-col items-center gap-1 text-gray-400 hover:text-peach-500 transition" data-tab="expense">
             <i class="fa-solid fa-wallet text-base"></i>
             <span class="text-[10px] font-medium">帳務</span>
+        </button>
+        <button onclick="switchTab('shopping')" class="nav-btn flex flex-col items-center gap-1 text-gray-400 hover:text-peach-500 transition" data-tab="shopping">
+            <i class="fa-solid fa-cart-shopping text-base"></i>
+            <span class="text-[10px] font-medium">購物清單</span>
         </button>
     </nav>
 
@@ -1304,11 +1354,128 @@
             loadPersonalExpenses();
         }
 
+        // Shopping List Functions
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace(/[&<>"']/g, (m) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+        }
+
+        function previewShoppingPhoto(event) {
+            const file = event.target.files[0];
+            const previewWrap = document.getElementById('shop-item-photo-preview');
+            const previewImg = document.getElementById('shop-item-photo-preview-img');
+            if (!file) {
+                previewWrap.classList.add('hidden');
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                previewImg.src = e.target.result;
+                previewWrap.classList.remove('hidden');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function clearShoppingPhotoPreview() {
+            document.getElementById('shop-item-photo').value = '';
+            document.getElementById('shop-item-photo-preview').classList.add('hidden');
+        }
+
+        function addShoppingItem(e) {
+            e.preventDefault();
+            const name = document.getElementById('shop-item-name').value.trim();
+            const store = document.getElementById('shop-item-store').value.trim();
+            const fileInput = document.getElementById('shop-item-photo');
+            const file = fileInput.files[0];
+
+            function saveItem(photoDataUrl) {
+                let list = JSON.parse(localStorage.getItem('fukuoka_shopping_list')) || [];
+                list.push({
+                    id: Date.now(),
+                    name: name,
+                    store: store,
+                    photo: photoDataUrl || null,
+                    checked: false
+                });
+                try {
+                    localStorage.setItem('fukuoka_shopping_list', JSON.stringify(list));
+                } catch (err) {
+                    alert("儲存失敗：圖片可能過大，建議選擇較小的照片。");
+                    return;
+                }
+                loadShoppingList();
+                document.getElementById('shopping-item-form').reset();
+                document.getElementById('shop-item-photo-preview').classList.add('hidden');
+            }
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(ev) {
+                    saveItem(ev.target.result);
+                };
+                reader.readAsDataURL(file);
+            } else {
+                saveItem(null);
+            }
+        }
+
+        function loadShoppingList() {
+            let list = JSON.parse(localStorage.getItem('fukuoka_shopping_list')) || [];
+            const container = document.getElementById('shopping-list-container');
+            const countLabel = document.getElementById('shopping-total-count');
+            container.innerHTML = '';
+
+            countLabel.innerText = `共 ${list.length} 項`;
+
+            if (list.length === 0) {
+                container.innerHTML = `<p class="text-xs text-gray-400 text-center py-4">尚未新增任何購物項目</p>`;
+                return;
+            }
+
+            list.forEach(item => {
+                const div = document.createElement('div');
+                div.className = `flex items-center gap-3 p-3 rounded-xl border transition ${item.checked ? 'bg-gray-50 border-gray-100' : 'bg-white border-peach-100 shadow-sm'}`;
+                const safeName = escapeHtml(item.name);
+                const safeStore = escapeHtml(item.store);
+                div.innerHTML = `
+                    <input type="checkbox" ${item.checked ? 'checked' : ''} onchange="toggleShoppingItem(${item.id})" class="w-4 h-4 accent-peach-500 rounded shrink-0">
+                    ${item.photo
+                        ? `<img src="${item.photo}" onclick="openFullImage('shop-img-${item.id}')" id="shop-img-${item.id}" class="w-10 h-10 rounded-lg object-cover shrink-0 cursor-zoom-in border border-gray-200">`
+                        : `<div class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-gray-300 shrink-0"><i class="fa-solid fa-image"></i></div>`
+                    }
+                    <div class="flex-1 min-w-0">
+                        <p class="text-xs font-bold truncate ${item.checked ? 'line-through text-gray-400' : 'text-gray-800'}">${safeName}</p>
+                        ${safeStore ? `<p class="text-[10px] truncate ${item.checked ? 'text-gray-300' : 'text-gray-500'}">📍 ${safeStore}</p>` : ''}
+                    </div>
+                    <button onclick="deleteShoppingItem(${item.id})" class="text-gray-300 hover:text-red-500 transition shrink-0">
+                        <i class="fa-solid fa-trash-can text-xs"></i>
+                    </button>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function toggleShoppingItem(id) {
+            let list = JSON.parse(localStorage.getItem('fukuoka_shopping_list')) || [];
+            const item = list.find(i => i.id === id);
+            if (item) item.checked = !item.checked;
+            localStorage.setItem('fukuoka_shopping_list', JSON.stringify(list));
+            loadShoppingList();
+        }
+
+        function deleteShoppingItem(id) {
+            let list = JSON.parse(localStorage.getItem('fukuoka_shopping_list')) || [];
+            list = list.filter(i => i.id !== id);
+            localStorage.setItem('fukuoka_shopping_list', JSON.stringify(list));
+            loadShoppingList();
+        }
+
         window.onload = function() {
             loadVoucherData();
             loadYakinikuData();
             loadPackingList();
             loadExpensesData();
+            loadShoppingList();
         }
     </script>
 </body>
