@@ -2254,6 +2254,9 @@
                             <button type="button" onclick="saveEditShopping(${item.id})" class="flex-1 bg-peach-500 hover:bg-peach-600 text-white py-1.5 rounded-lg text-[11px] font-bold transition">儲存</button>
                             <button type="button" onclick="cancelEditShopping()" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-1.5 rounded-lg text-[11px] font-bold transition">取消</button>
                         </div>
+                        <button type="button" onclick="deleteShoppingItem(${item.id})" class="w-full flex items-center justify-center gap-1.5 text-red-400 hover:text-red-600 hover:bg-red-50 py-1.5 rounded-lg text-[11px] font-bold transition">
+                            <i class="fa-solid fa-trash-can text-[10px]"></i> 刪除此項目
+                        </button>
                     `;
                     container.appendChild(div);
                     return;
@@ -2284,9 +2287,6 @@
                     }
                     <button onclick="startEditShopping(${item.id})" class="text-gray-300 hover:text-peach-500 transition shrink-0">
                         <i class="fa-solid fa-pen text-xs"></i>
-                    </button>
-                    <button onclick="deleteShoppingItem(${item.id})" class="text-gray-300 hover:text-red-500 transition shrink-0">
-                        <i class="fa-solid fa-trash-can text-xs"></i>
                     </button>
                 `;
                 container.appendChild(div);
@@ -2364,6 +2364,9 @@
 
         function deleteShoppingItem(id) {
             let list = JSON.parse(localStorage.getItem('fukuoka_shopping_list')) || [];
+            const item = list.find(i => i.id === id);
+            const itemName = item ? item.name : '此項目';
+            if (!confirm(`確定要刪除「${itemName}」嗎？此動作無法復原。`)) return;
             list = list.filter(i => i.id !== id);
             localStorage.setItem('fukuoka_shopping_list', JSON.stringify(list));
             if (shoppingEditingId === id) shoppingEditingId = null;
