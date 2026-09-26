@@ -108,7 +108,7 @@
                             <p class="text-xs text-gray-500">台灣桃園機場 (TPE)</p>
                         </div>
                         <div class="text-center text-peach-400">
-                            <i class="fa-solid fa-plane text-lg rotate-[-135deg]"></i>
+                            <i class="fa-solid fa-plane text-lg -scale-y-100"></i>
                             <p class="text-[10px] text-gray-400 mt-1">約 2h 25m</p>
                         </div>
                         <div class="text-right">
@@ -184,7 +184,7 @@
                             <p class="text-xs text-gray-500">福岡機場 (FUK)</p>
                         </div>
                         <div class="text-center text-stone-400">
-                            <i class="fa-solid fa-plane text-lg rotate-[-135deg]"></i>
+                            <i class="fa-solid fa-plane text-lg rotate-180"></i>
                             <p class="text-[10px] text-gray-400 mt-1">約 1h 30m</p>
                         </div>
                         <div class="text-right">
@@ -863,7 +863,7 @@
                 <div class="bg-peach-500 text-white px-4 py-2.5 flex justify-between items-center text-sm font-bold">
                     <span class="flex items-center gap-2"><span>💰</span> 旅遊花費總覽 <span class="text-[10px] font-normal text-peach-100">(台幣 NT$)</span></span>
                     <div class="flex items-center bg-white/20 rounded-full p-0.5 text-[10px] font-bold backdrop-blur-sm">
-                        <button type="button" onclick="setMyIdentity('Lucy')" id="identity-btn-Lucy" class="px-2.5 py-1 rounded-full transition text-white/70">我是 Lucy</button>
+                        <button type="button" onclick="setMyIdentity('RuRu')" id="identity-btn-RuRu" class="px-2.5 py-1 rounded-full transition text-white/70">我是 RuRu</button>
                         <button type="button" onclick="setMyIdentity('Rigo')" id="identity-btn-Rigo" class="px-2.5 py-1 rounded-full transition text-white/70">我是 Rigo</button>
                     </div>
                 </div>
@@ -938,7 +938,7 @@
                     <div>
                         <label class="text-[10px] text-gray-500">誰先代付的？</label>
                         <select id="shared-payer" class="w-full text-xs p-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-peach-500 bg-gray-50">
-                            <option value="Lucy">Lucy 先出</option>
+                            <option value="RuRu">RuRu 先出</option>
                             <option value="Rigo">Rigo 先出</option>
                         </select>
                     </div>
@@ -951,7 +951,7 @@
                     <div>
                         <label class="text-[10px] text-gray-500">記在誰的名下</label>
                         <select id="pers-owner" class="w-full text-xs p-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-peach-500 bg-gray-50">
-                            <option value="Lucy">Lucy 的個人花費</option>
+                            <option value="RuRu">RuRu 的個人花費</option>
                             <option value="Rigo">Rigo 的個人花費</option>
                         </select>
                     </div>
@@ -1025,13 +1025,10 @@
                         <h3 class="text-sm font-bold text-gray-800 mt-1">🛒 購物清單</h3>
                     </div>
                     <div class="flex items-center gap-2">
-                        <button type="button" onclick="toggleShoppingSortMode()" id="shopping-sort-toggle-btn" class="text-[10px] font-bold text-peach-600 border border-peach-200 rounded-full px-2.5 py-1 flex items-center gap-1 transition shrink-0">
-                            <i class="fa-solid fa-arrow-up-wide-short"></i> 排序
-                        </button>
                         <span class="text-xs font-bold text-peach-600" id="shopping-total-count">共 0 項</span>
                     </div>
                 </div>
-                <p class="text-xs text-gray-500" id="shopping-list-hint">記錄想買的東西，買到就打勾，一目瞭然！</p>
+                <p class="text-xs text-gray-500" id="shopping-list-hint">記錄想買的東西，買到就打勾，一目瞭然！用左側箭頭可調整順序。</p>
 
                 <details class="group border border-peach-100 rounded-xl bg-peach-50/40" id="shopping-add-details">
                     <summary class="text-xs text-peach-700 font-bold cursor-pointer list-none flex items-center justify-between p-3">
@@ -1569,7 +1566,7 @@
         // Shared & Personal Expense Functions
         // Identity & Unified Expense Entry
         function getMyIdentity() {
-            return localStorage.getItem('fukuoka_my_identity') || 'Lucy';
+            return localStorage.getItem('fukuoka_my_identity') || 'RuRu';
         }
 
         function setMyIdentity(name) {
@@ -1582,7 +1579,7 @@
 
         function updateIdentityButtons() {
             const me = getMyIdentity();
-            ['Lucy', 'Rigo'].forEach(name => {
+            ['RuRu', 'Rigo'].forEach(name => {
                 const btn = document.getElementById(`identity-btn-${name}`);
                 if (!btn) return;
                 if (name === me) {
@@ -1876,7 +1873,7 @@
                             </select>
                         </div>
                         <select id="edit-shared-payer-${idx}" class="w-full text-xs p-2 rounded-lg border border-gray-200 bg-white">
-                            <option value="Lucy" ${exp.payer === 'Lucy' ? 'selected' : ''}>Lucy 先出</option>
+                            <option value="RuRu" ${exp.payer === 'RuRu' ? 'selected' : ''}>RuRu 先出</option>
                             <option value="Rigo" ${exp.payer === 'Rigo' ? 'selected' : ''}>Rigo 先出</option>
                         </select>
                         <div class="flex gap-2 pt-1">
@@ -1933,8 +1930,8 @@
             listContainer.innerHTML = '';
 
             // Track JPY and TWD amounts separately — no cross-currency conversion.
-            let totalJPY = 0, paidLucyJPY = 0, paidRigoJPY = 0;
-            let totalTWDcur = 0, paidLucyTWD = 0, paidRigoTWD = 0;
+            let totalJPY = 0, paidRuRuJPY = 0, paidRigoJPY = 0;
+            let totalTWDcur = 0, paidRuRuTWD = 0, paidRigoTWD = 0;
 
             if (unsettled.length === 0) {
                 listContainer.innerHTML = `<p class="text-xs text-gray-400 text-center py-2">🎉 目前沒有未結清項目</p>`;
@@ -1944,11 +1941,11 @@
                     const amt = Number(exp.amount) || 0;
                     if (cur === 'TWD') {
                         totalTWDcur += amt;
-                        if (exp.payer === 'Lucy') paidLucyTWD += amt;
+                        if (exp.payer === 'RuRu') paidRuRuTWD += amt;
                         if (exp.payer === 'Rigo') paidRigoTWD += amt;
                     } else {
                         totalJPY += amt;
-                        if (exp.payer === 'Lucy') paidLucyJPY += amt;
+                        if (exp.payer === 'RuRu') paidRuRuJPY += amt;
                         if (exp.payer === 'Rigo') paidRigoJPY += amt;
                     }
                     const itemDiv = document.createElement('div');
@@ -1976,19 +1973,19 @@
                 } else if (unsettled.length === 0) {
                     summaryText.innerHTML = "🎉 目前已全部結清";
                 } else {
-                    function settle(paidLucy, total) {
-                        const diff = paidLucy - (total / 2);
+                    function settle(paidRuRu, total) {
+                        const diff = paidRuRu - (total / 2);
                         if (Math.abs(diff) < 1) return { balanced: true, diff: 0 };
                         return { balanced: false, diff };
                     }
                     function lineFor(result, symbol, prefix) {
                         const p = prefix ? `${prefix}：` : '';
                         if (result.balanced) return `${p}目前打平`;
-                        if (result.diff > 0) return `${p}Rigo 應給 Lucy ${symbol}${Math.round(result.diff).toLocaleString()}`;
-                        return `${p}Lucy 應給 Rigo ${symbol}${Math.round(-result.diff).toLocaleString()}`;
+                        if (result.diff > 0) return `${p}Rigo 應給 RuRu ${symbol}${Math.round(result.diff).toLocaleString()}`;
+                        return `${p}RuRu 應給 Rigo ${symbol}${Math.round(-result.diff).toLocaleString()}`;
                     }
-                    const jpyResult = totalJPY > 0 ? settle(paidLucyJPY, totalJPY) : null;
-                    const twdResult = totalTWDcur > 0 ? settle(paidLucyTWD, totalTWDcur) : null;
+                    const jpyResult = totalJPY > 0 ? settle(paidRuRuJPY, totalJPY) : null;
+                    const twdResult = totalTWDcur > 0 ? settle(paidRuRuTWD, totalTWDcur) : null;
                     const bothPresent = !!(jpyResult && twdResult);
                     const lines = [];
                     if (jpyResult) lines.push(lineFor(jpyResult, '¥', bothPresent ? '日幣' : ''));
@@ -2084,7 +2081,7 @@
                     itemDiv.className = "bg-stone-50 p-3 rounded-xl text-xs space-y-2 border border-stone-200";
                     itemDiv.innerHTML = `
                         <select id="edit-pers-owner-${idx}" class="w-full text-xs p-2 rounded-lg border border-gray-200 bg-white">
-                            <option value="Lucy" ${exp.owner === 'Lucy' ? 'selected' : ''}>Lucy 的個人花費</option>
+                            <option value="RuRu" ${exp.owner === 'RuRu' ? 'selected' : ''}>RuRu 的個人花費</option>
                             <option value="Rigo" ${exp.owner === 'Rigo' ? 'selected' : ''}>Rigo 的個人花費</option>
                         </select>
                         <input type="text" id="edit-pers-title-${idx}" value="${escapeHtml(exp.title)}" placeholder="項目名稱" class="w-full text-xs p-2 rounded-lg border border-gray-200 bg-white">
@@ -2146,39 +2143,9 @@
 
         // Shopping List Functions
         let shoppingEditingId = null;
-        let shoppingSortMode = false;
         function escapeHtml(str) {
             if (!str) return '';
             return str.replace(/[&<>"']/g, (m) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-        }
-
-        function toggleShoppingSortMode() {
-            shoppingSortMode = !shoppingSortMode;
-            shoppingEditingId = null;
-
-            const btn = document.getElementById('shopping-sort-toggle-btn');
-            const hint = document.getElementById('shopping-list-hint');
-            const addDetails = document.getElementById('shopping-add-details');
-
-            if (btn) {
-                if (shoppingSortMode) {
-                    btn.innerHTML = `<i class="fa-solid fa-check"></i> 完成排序`;
-                    btn.classList.add('bg-peach-500', 'text-white', 'border-peach-500');
-                    btn.classList.remove('text-peach-600', 'border-peach-200');
-                } else {
-                    btn.innerHTML = `<i class="fa-solid fa-arrow-up-wide-short"></i> 排序`;
-                    btn.classList.remove('bg-peach-500', 'text-white', 'border-peach-500');
-                    btn.classList.add('text-peach-600', 'border-peach-200');
-                }
-            }
-            if (hint) {
-                hint.innerText = shoppingSortMode ? '📌 用上下箭頭調整順序，排好後按「完成排序」' : '記錄想買的東西，買到就打勾，一目瞭然！';
-            }
-            if (addDetails) {
-                addDetails.classList.toggle('hidden', shoppingSortMode);
-            }
-
-            loadShoppingList();
         }
 
         function moveShoppingItem(id, direction) {
@@ -2267,26 +2234,7 @@
                 return;
             }
 
-            if (shoppingSortMode) {
-                list.forEach((item, idx) => {
-                    const div = document.createElement('div');
-                    div.className = "flex items-center gap-2 p-2.5 rounded-xl border border-peach-100 bg-white";
-                    div.innerHTML = `
-                        <i class="fa-solid fa-grip-lines text-gray-300 shrink-0"></i>
-                        <p class="flex-1 min-w-0 text-xs font-bold truncate ${item.checked ? 'text-gray-400 line-through' : 'text-gray-800'}">${escapeHtml(item.name)}</p>
-                        <button type="button" onclick="moveShoppingItem(${item.id}, -1)" ${idx === 0 ? 'disabled' : ''} class="w-7 h-7 flex items-center justify-center rounded-lg text-peach-600 hover:bg-peach-50 disabled:text-gray-200 disabled:hover:bg-transparent transition shrink-0">
-                            <i class="fa-solid fa-chevron-up text-xs"></i>
-                        </button>
-                        <button type="button" onclick="moveShoppingItem(${item.id}, 1)" ${idx === list.length - 1 ? 'disabled' : ''} class="w-7 h-7 flex items-center justify-center rounded-lg text-peach-600 hover:bg-peach-50 disabled:text-gray-200 disabled:hover:bg-transparent transition shrink-0">
-                            <i class="fa-solid fa-chevron-down text-xs"></i>
-                        </button>
-                    `;
-                    container.appendChild(div);
-                });
-                return;
-            }
-
-            list.forEach(item => {
+            list.forEach((item, idx) => {
                 const div = document.createElement('div');
                 const safeName = escapeHtml(item.name);
                 const safeStore = escapeHtml(item.store);
@@ -2311,8 +2259,16 @@
                     return;
                 }
 
-                div.className = `flex items-center gap-3 p-3 rounded-xl border transition ${item.checked ? 'bg-gray-50 border-gray-100' : 'bg-white border-peach-100 shadow-sm'}`;
+                div.className = `flex items-center gap-2 p-3 rounded-xl border transition ${item.checked ? 'bg-gray-50 border-gray-100' : 'bg-white border-peach-100 shadow-sm'}`;
                 div.innerHTML = `
+                    <div class="flex flex-col shrink-0 -my-1">
+                        <button type="button" onclick="moveShoppingItem(${item.id}, -1)" ${idx === 0 ? 'disabled' : ''} class="w-5 h-4 flex items-center justify-center text-peach-500 hover:text-peach-700 disabled:text-gray-200 transition">
+                            <i class="fa-solid fa-chevron-up text-[9px]"></i>
+                        </button>
+                        <button type="button" onclick="moveShoppingItem(${item.id}, 1)" ${idx === list.length - 1 ? 'disabled' : ''} class="w-5 h-4 flex items-center justify-center text-peach-500 hover:text-peach-700 disabled:text-gray-200 transition">
+                            <i class="fa-solid fa-chevron-down text-[9px]"></i>
+                        </button>
+                    </div>
                     <input type="checkbox" ${item.checked ? 'checked' : ''} onchange="toggleShoppingItem(${item.id})" class="w-4 h-4 accent-peach-500 rounded shrink-0">
                     ${item.photo
                         ? `<img src="${item.photo}" onclick="openFullImage('shop-img-${item.id}')" id="shop-img-${item.id}" class="w-10 h-10 rounded-lg object-cover shrink-0 cursor-zoom-in border border-gray-200">`
@@ -2393,8 +2349,15 @@
 
         function toggleShoppingItem(id) {
             let list = JSON.parse(localStorage.getItem('fukuoka_shopping_list')) || [];
-            const item = list.find(i => i.id === id);
-            if (item) item.checked = !item.checked;
+            const idx = list.findIndex(i => i.id === id);
+            if (idx === -1) return;
+            const item = list[idx];
+            item.checked = !item.checked;
+            if (item.checked) {
+                // Move newly-checked items to the bottom of the list
+                list.splice(idx, 1);
+                list.push(item);
+            }
             localStorage.setItem('fukuoka_shopping_list', JSON.stringify(list));
             loadShoppingList();
         }
