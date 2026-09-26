@@ -731,7 +731,7 @@
             <!-- Shared Expense Splitter Card -->
             <div class="bg-gradient-to-br from-peach-500 to-peach-600 text-white p-4 rounded-2xl shadow-md space-y-3">
                 <h3 class="text-sm font-bold flex items-center gap-2">
-                    <span>💰</span> 旅遊共用分帳 (Lucy & Rigo 平分)
+                    <span>💰</span> 旅遊共用分帳 (Ruru & Rigo 平分)
                 </h3>
                 <div class="grid grid-cols-2 gap-3 pt-1">
                     <div class="bg-white/10 backdrop-blur-sm p-3 rounded-xl">
@@ -761,7 +761,7 @@
                         <div>
                             <label class="text-[10px] text-gray-500">誰先代付的？</label>
                             <select id="shared-payer" class="w-full text-xs p-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-peach-500 bg-gray-50">
-                                <option value="Lucy">Lucy 先出</option>
+                                <option value="Ruru">Ruru 先出</option>
                                 <option value="Rigo">Rigo 先出</option>
                             </select>
                         </div>
@@ -795,7 +795,7 @@
                         <div>
                             <label class="text-[10px] text-gray-500">記在誰的名下</label>
                             <select id="pers-owner" class="w-full text-xs p-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-peach-500 bg-gray-50">
-                                <option value="Lucy">Lucy 的個人花費</option>
+                                <option value="Ruru">Ruru 的個人花費</option>
                                 <option value="Rigo">Rigo 的個人花費</option>
                             </select>
                         </div>
@@ -1268,7 +1268,7 @@
             listContainer.innerHTML = '';
             
             let total = 0;
-            let paidLucy = 0;
+            let paidRuru = 0;
             let paidRigo = 0;
 
             if(expenses.length === 0) {
@@ -1277,7 +1277,7 @@
 
             expenses.forEach((exp, idx) => {
                 total += Number(exp.amount);
-                if(exp.payer === 'Lucy') paidLucy += Number(exp.amount);
+                if(exp.payer === 'Ruru') paidRuru += Number(exp.amount);
                 if(exp.payer === 'Rigo') paidRigo += Number(exp.amount);
 
                 const itemDiv = document.createElement('div');
@@ -1298,16 +1298,16 @@
             document.getElementById('total-shared-amount').innerText = `¥${total.toLocaleString()}`;
 
             const half = total / 2;
-            const diff = paidLucy - half;
+            const diff = paidRuru - half;
             const summaryText = document.getElementById('settlement-summary-text');
             if (expenses.length === 0) {
                 summaryText.innerText = "尚無分帳記錄";
             } else if (Math.abs(diff) < 1) {
                 summaryText.innerText = "目前兩人完美打平！";
             } else if (diff > 0) {
-                summaryText.innerText = `Rigo 應給 Lucy ¥${Math.round(diff).toLocaleString()}`;
+                summaryText.innerText = `Rigo 應給 Ruru ¥${Math.round(diff).toLocaleString()}`;
             } else {
-                summaryText.innerText = `Lucy 應給 Rigo ¥${Math.round(-diff).toLocaleString()}`;
+                summaryText.innerText = `Ruru 應給 Rigo ¥${Math.round(-diff).toLocaleString()}`;
             }
         }
 
