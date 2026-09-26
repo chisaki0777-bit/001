@@ -870,17 +870,17 @@
                 <div class="p-4 space-y-3">
 
                 <!-- Currency settings (moved inside overview card) -->
-                <div class="flex items-center justify-end gap-2 flex-wrap !-mt-1">
-                    <div class="flex items-center gap-1.5">
+                <div class="flex items-center justify-between gap-2 flex-wrap !-mt-2">
+                    <p class="text-[10px] text-gray-400 flex-1 min-w-0">💡明細與未結清金額以記帳當下選擇的幣別為主</p>
+                    <div class="flex items-center gap-1.5 shrink-0">
                         <label for="jpy-rate-input" class="text-[10px] text-peach-600 font-medium whitespace-nowrap">匯率 1¥=</label>
                         <input type="number" step="0.0001" min="0" id="jpy-rate-input" oninput="updateJpyRate(this.value)" placeholder="0.21" class="w-16 text-[11px] py-1 px-2.5 rounded-full border border-peach-200 focus:outline-none focus:border-peach-400 bg-white text-gray-700 text-center">
                         <span class="text-[10px] text-peach-600">台幣</span>
                     </div>
                 </div>
-                <p class="text-[10px] text-gray-400 !-mt-1.5">💡 明細與未結清金額會同時顯示台幣＆日幣（以記帳當下選擇的幣別為主）</p>
 
                 <!-- My Total (top) -->
-                <div class="bg-peach-100 p-3 rounded-xl">
+                <div class="bg-peach-100 p-3 rounded-xl !mt-1.5">
                     <p class="text-[10px] text-peach-700 font-medium">我的總花費 (個人花費 + 共用平分)</p>
                     <p class="text-2xl font-bold mt-0.5 text-peach-800" id="my-total-amount">NT$0</p>
                 </div>
@@ -888,7 +888,7 @@
                 <div class="grid grid-cols-2 gap-3">
                     <!-- Bottom Left: Shared -->
                     <div class="bg-peach-50 p-3 rounded-xl">
-                        <p class="text-[10px] text-gray-500">共用總支出</p>
+                        <p class="text-[10px] text-gray-500">共用總支出 (每人)</p>
                         <p class="text-lg font-bold mt-0.5 text-gray-800" id="total-shared-amount">NT$0</p>
                         <p class="text-[10px] text-peach-600 mt-1.5" id="settlement-summary-text">尚無分帳記錄</p>
                     </div>
@@ -1024,11 +1024,16 @@
                         <span class="bg-peach-100 text-peach-700 text-[10px] font-bold px-2 py-0.5 rounded-full">戰利品清單</span>
                         <h3 class="text-sm font-bold text-gray-800 mt-1">🛒 購物清單</h3>
                     </div>
-                    <span class="text-xs font-bold text-peach-600" id="shopping-total-count">共 0 項</span>
+                    <div class="flex items-center gap-2">
+                        <button type="button" onclick="toggleShoppingSortMode()" id="shopping-sort-toggle-btn" class="text-[10px] font-bold text-peach-600 border border-peach-200 rounded-full px-2.5 py-1 flex items-center gap-1 transition shrink-0">
+                            <i class="fa-solid fa-arrow-up-wide-short"></i> 排序
+                        </button>
+                        <span class="text-xs font-bold text-peach-600" id="shopping-total-count">共 0 項</span>
+                    </div>
                 </div>
-                <p class="text-xs text-gray-500">記錄想買的東西，買到就打勾，一目瞭然！</p>
+                <p class="text-xs text-gray-500" id="shopping-list-hint">記錄想買的東西，買到就打勾，一目瞭然！</p>
 
-                <details class="group border border-peach-100 rounded-xl bg-peach-50/40">
+                <details class="group border border-peach-100 rounded-xl bg-peach-50/40" id="shopping-add-details">
                     <summary class="text-xs text-peach-700 font-bold cursor-pointer list-none flex items-center justify-between p-3">
                         <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-plus"></i> 新增購物項目</span>
                         <i class="fa-solid fa-chevron-down transition-transform group-open:rotate-180"></i>
@@ -1663,29 +1668,25 @@
             return `${sign}${symbol}${Math.round(Math.abs(converted)).toLocaleString()}`;
         }
 
-        // Formats a single record's amount showing BOTH currencies at once.
-        // The currency it was originally recorded in comes first (as requested),
-        // with the converted equivalent shown afterwards in parentheses.
+        // Formats a single record's amount using ONLY the currency it was
+        // recorded in — no conversion, per the current display rule.
         function formatDual(amount, fromCur) {
             const cur = fromCur || 'JPY';
-            const amtJPY = convertAmount(amount, cur, 'JPY');
-            const amtTWD = convertAmount(amount, cur, 'TWD');
-            const jpyStr = `¥${Math.round(Math.abs(amtJPY)).toLocaleString()}`;
-            const twdStr = `NT$${Math.round(Math.abs(amtTWD)).toLocaleString()}`;
-            const sign = amount < 0 ? '-' : '';
-            if (cur === 'TWD') {
-                return `${sign}${twdStr} <span class="font-normal text-gray-400">(${jpyStr})</span>`;
-            }
-            return `${sign}${jpyStr} <span class="font-normal text-gray-400">(${twdStr})</span>`;
+            const symbol = cur === 'TWD' ? 'NT$' : '¥';
+            const num = Number(amount) || 0;
+            const sign = num < 0 ? '-' : '';
+            return `${sign}${symbol}${Math.round(Math.abs(num)).toLocaleString()}`;
         }
 
-        // Formats an aggregate total (already summed in TWD) showing both currencies.
-        function formatDualTWD(amountTWD) {
-            const amtJPY = convertAmount(amountTWD, 'TWD', 'JPY');
-            const sign = amountTWD < 0 ? '-' : '';
-            const twdStr = `NT$${Math.round(Math.abs(amountTWD)).toLocaleString()}`;
-            const jpyStr = `¥${Math.round(Math.abs(amtJPY)).toLocaleString()}`;
-            return `${sign}${twdStr} <span class="font-normal text-gray-400">(${jpyStr})</span>`;
+        // Formats an aggregate total that may mix currencies: shows each
+        // currency's own raw sub-total side by side (no cross-conversion),
+        // omitting a currency entirely if there's nothing recorded in it.
+        function formatSplitTotal(rawJPY, rawTWD) {
+            const parts = [];
+            if (rawJPY) parts.push(`¥${Math.round(Math.abs(rawJPY)).toLocaleString()}`);
+            if (rawTWD) parts.push(`NT$${Math.round(Math.abs(rawTWD)).toLocaleString()}`);
+            if (parts.length === 0) return '¥0';
+            return parts.join('　');
         }
 
         function refreshAllExpenseDisplays() {
@@ -1846,6 +1847,8 @@
             listContainer.innerHTML = '';
             
             let totalTWD = 0;
+            let rawJPY = 0;
+            let rawTWD = 0;
 
             if(expenses.length === 0) {
                 listContainer.innerHTML = `<p class="text-xs text-gray-400 text-center py-2">尚無共用分帳記錄</p>`;
@@ -1855,6 +1858,8 @@
                 const cur = exp.currency || 'JPY';
                 const amtTWD = convertAmount(exp.amount, cur, 'TWD');
                 totalTWD += amtTWD;
+                if (cur === 'TWD') rawTWD += Number(exp.amount) || 0;
+                else rawJPY += Number(exp.amount) || 0;
 
                 const isSettled = !!exp.settled;
                 const itemDiv = document.createElement('div');
@@ -1899,11 +1904,11 @@
                 listContainer.appendChild(itemDiv);
             });
 
-            // Overview stat — always TWD
-            document.getElementById('total-shared-amount').innerText = formatTWD(totalTWD);
-            // Detail-list header total — follows the display-currency toggle
+            // Overview stat — per-person share (total ÷ 2), always shown in TWD
+            document.getElementById('total-shared-amount').innerText = formatTWD(totalTWD / 2);
+            // Detail-list header total — shows each currency's own raw sum, no conversion
             const listTotalEl = document.getElementById('shared-list-total');
-            if (listTotalEl) listTotalEl.innerHTML = `共同消費總計: ${formatDualTWD(totalTWD)}`;
+            if (listTotalEl) listTotalEl.innerHTML = `共同消費總計: ${formatSplitTotal(rawJPY, rawTWD)}`;
 
             renderUnsettledExpenses(expenses);
             updateMyTotalSummary();
@@ -1926,19 +1931,26 @@
 
             const unsettled = expenses.filter(exp => !exp.settled);
             listContainer.innerHTML = '';
-            let unsettledTotalTWD = 0;
-            let paidLucyTWD = 0;
-            let paidRigoTWD = 0;
+
+            // Track JPY and TWD amounts separately — no cross-currency conversion.
+            let totalJPY = 0, paidLucyJPY = 0, paidRigoJPY = 0;
+            let totalTWDcur = 0, paidLucyTWD = 0, paidRigoTWD = 0;
 
             if (unsettled.length === 0) {
                 listContainer.innerHTML = `<p class="text-xs text-gray-400 text-center py-2">🎉 目前沒有未結清項目</p>`;
             } else {
                 unsettled.forEach(exp => {
                     const cur = exp.currency || 'JPY';
-                    const amtTWD = convertAmount(exp.amount, cur, 'TWD');
-                    unsettledTotalTWD += amtTWD;
-                    if (exp.payer === 'Lucy') paidLucyTWD += amtTWD;
-                    if (exp.payer === 'Rigo') paidRigoTWD += amtTWD;
+                    const amt = Number(exp.amount) || 0;
+                    if (cur === 'TWD') {
+                        totalTWDcur += amt;
+                        if (exp.payer === 'Lucy') paidLucyTWD += amt;
+                        if (exp.payer === 'Rigo') paidRigoTWD += amt;
+                    } else {
+                        totalJPY += amt;
+                        if (exp.payer === 'Lucy') paidLucyJPY += amt;
+                        if (exp.payer === 'Rigo') paidRigoJPY += amt;
+                    }
                     const itemDiv = document.createElement('div');
                     itemDiv.className = "flex justify-between items-center bg-amber-50 p-2.5 rounded-xl text-xs border border-amber-100";
                     itemDiv.innerHTML = `
@@ -1952,23 +1964,36 @@
                 });
             }
 
-            totalLabel.innerHTML = `未結清: ${formatDualTWD(unsettledTotalTWD)}`;
+            totalLabel.innerHTML = `未結清: ${formatSplitTotal(totalJPY, totalTWDcur)}`;
 
             // Who-owes-whom is calculated from unsettled items only — once an
             // item is checked off as settled, it no longer affects this balance.
+            // JPY and TWD records are settled separately, with no conversion
+            // between them, and are listed out individually when both exist.
             if (summaryText) {
-                const halfTWD = unsettledTotalTWD / 2;
-                const diffTWD = paidLucyTWD - halfTWD;
                 if (expenses.length === 0) {
-                    summaryText.innerText = "尚無分帳記錄";
+                    summaryText.innerHTML = "尚無分帳記錄";
                 } else if (unsettled.length === 0) {
-                    summaryText.innerText = "🎉 目前已全部結清";
-                } else if (Math.abs(diffTWD) < 1) {
-                    summaryText.innerText = "目前兩人完美打平！";
-                } else if (diffTWD > 0) {
-                    summaryText.innerText = `Rigo 應給 Lucy ${formatTWD(diffTWD)}`;
+                    summaryText.innerHTML = "🎉 目前已全部結清";
                 } else {
-                    summaryText.innerText = `Lucy 應給 Rigo ${formatTWD(-diffTWD)}`;
+                    function settle(paidLucy, total) {
+                        const diff = paidLucy - (total / 2);
+                        if (Math.abs(diff) < 1) return { balanced: true, diff: 0 };
+                        return { balanced: false, diff };
+                    }
+                    function lineFor(result, symbol, prefix) {
+                        const p = prefix ? `${prefix}：` : '';
+                        if (result.balanced) return `${p}目前打平`;
+                        if (result.diff > 0) return `${p}Rigo 應給 Lucy ${symbol}${Math.round(result.diff).toLocaleString()}`;
+                        return `${p}Lucy 應給 Rigo ${symbol}${Math.round(-result.diff).toLocaleString()}`;
+                    }
+                    const jpyResult = totalJPY > 0 ? settle(paidLucyJPY, totalJPY) : null;
+                    const twdResult = totalTWDcur > 0 ? settle(paidLucyTWD, totalTWDcur) : null;
+                    const bothPresent = !!(jpyResult && twdResult);
+                    const lines = [];
+                    if (jpyResult) lines.push(lineFor(jpyResult, '¥', bothPresent ? '日幣' : ''));
+                    if (twdResult) lines.push(lineFor(twdResult, 'NT$', bothPresent ? '台幣' : ''));
+                    summaryText.innerHTML = lines.join('<br>');
                 }
             }
         }
@@ -2043,14 +2068,16 @@
             const listContainer = document.getElementById('personal-expense-list');
             listContainer.innerHTML = '';
 
-            let persTotalTWD = 0;
+            let rawJPY = 0;
+            let rawTWD = 0;
             if(persExpenses.length === 0) {
                 listContainer.innerHTML = `<p class="text-xs text-gray-400 text-center py-2">尚無個人消費記帳</p>`;
             }
 
             persExpenses.forEach((exp, idx) => {
                 const cur = exp.currency || 'JPY';
-                persTotalTWD += convertAmount(exp.amount, cur, 'TWD');
+                if (cur === 'TWD') rawTWD += Number(exp.amount) || 0;
+                else rawJPY += Number(exp.amount) || 0;
                 const itemDiv = document.createElement('div');
 
                 if (personalEditingIdx === idx) {
@@ -2089,7 +2116,7 @@
                 listContainer.appendChild(itemDiv);
             });
 
-            document.getElementById('personal-total-amount').innerHTML = `個人消費總計: ${formatDualTWD(persTotalTWD)}`;
+            document.getElementById('personal-total-amount').innerHTML = `個人消費總計: ${formatSplitTotal(rawJPY, rawTWD)}`;
             updateMyTotalSummary();
         }
 
@@ -2119,9 +2146,51 @@
 
         // Shopping List Functions
         let shoppingEditingId = null;
+        let shoppingSortMode = false;
         function escapeHtml(str) {
             if (!str) return '';
             return str.replace(/[&<>"']/g, (m) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+        }
+
+        function toggleShoppingSortMode() {
+            shoppingSortMode = !shoppingSortMode;
+            shoppingEditingId = null;
+
+            const btn = document.getElementById('shopping-sort-toggle-btn');
+            const hint = document.getElementById('shopping-list-hint');
+            const addDetails = document.getElementById('shopping-add-details');
+
+            if (btn) {
+                if (shoppingSortMode) {
+                    btn.innerHTML = `<i class="fa-solid fa-check"></i> 完成排序`;
+                    btn.classList.add('bg-peach-500', 'text-white', 'border-peach-500');
+                    btn.classList.remove('text-peach-600', 'border-peach-200');
+                } else {
+                    btn.innerHTML = `<i class="fa-solid fa-arrow-up-wide-short"></i> 排序`;
+                    btn.classList.remove('bg-peach-500', 'text-white', 'border-peach-500');
+                    btn.classList.add('text-peach-600', 'border-peach-200');
+                }
+            }
+            if (hint) {
+                hint.innerText = shoppingSortMode ? '📌 用上下箭頭調整順序，排好後按「完成排序」' : '記錄想買的東西，買到就打勾，一目瞭然！';
+            }
+            if (addDetails) {
+                addDetails.classList.toggle('hidden', shoppingSortMode);
+            }
+
+            loadShoppingList();
+        }
+
+        function moveShoppingItem(id, direction) {
+            let list = JSON.parse(localStorage.getItem('fukuoka_shopping_list')) || [];
+            const idx = list.findIndex(i => String(i.id) === String(id));
+            if (idx === -1) return;
+            const newIdx = idx + direction;
+            if (newIdx < 0 || newIdx >= list.length) return;
+            const [moved] = list.splice(idx, 1);
+            list.splice(newIdx, 0, moved);
+            localStorage.setItem('fukuoka_shopping_list', JSON.stringify(list));
+            loadShoppingList();
         }
 
         function previewShoppingPhoto(event) {
@@ -2195,6 +2264,25 @@
 
             if (list.length === 0) {
                 container.innerHTML = `<p class="text-xs text-gray-400 text-center py-4">尚未新增任何購物項目</p>`;
+                return;
+            }
+
+            if (shoppingSortMode) {
+                list.forEach((item, idx) => {
+                    const div = document.createElement('div');
+                    div.className = "flex items-center gap-2 p-2.5 rounded-xl border border-peach-100 bg-white";
+                    div.innerHTML = `
+                        <i class="fa-solid fa-grip-lines text-gray-300 shrink-0"></i>
+                        <p class="flex-1 min-w-0 text-xs font-bold truncate ${item.checked ? 'text-gray-400 line-through' : 'text-gray-800'}">${escapeHtml(item.name)}</p>
+                        <button type="button" onclick="moveShoppingItem(${item.id}, -1)" ${idx === 0 ? 'disabled' : ''} class="w-7 h-7 flex items-center justify-center rounded-lg text-peach-600 hover:bg-peach-50 disabled:text-gray-200 disabled:hover:bg-transparent transition shrink-0">
+                            <i class="fa-solid fa-chevron-up text-xs"></i>
+                        </button>
+                        <button type="button" onclick="moveShoppingItem(${item.id}, 1)" ${idx === list.length - 1 ? 'disabled' : ''} class="w-7 h-7 flex items-center justify-center rounded-lg text-peach-600 hover:bg-peach-50 disabled:text-gray-200 disabled:hover:bg-transparent transition shrink-0">
+                            <i class="fa-solid fa-chevron-down text-xs"></i>
+                        </button>
+                    `;
+                    container.appendChild(div);
+                });
                 return;
             }
 
