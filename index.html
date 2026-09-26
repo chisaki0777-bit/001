@@ -86,13 +86,13 @@
     <main id="main-container" class="flex-1 overflow-y-auto pb-24 pt-3 px-3 hide-scrollbar">
         
         <!-- ================= TAB 1: 航班 (Flights) ================= -->
-        <div id="tab-flights" class="tab-content ">
+        <div id="tab-flights" class="tab-content space-y-4">
             <div class="bg-amber-50 border border-amber-200 text-amber-800 p-3 rounded-xl text-xs flex items-start gap-2 shadow-sm">
-    <i class="fa-solid fa-circle-info mt-0.5 text-amber-600"></i>
-    <div>
-        <span class="font-bold">航班小叮嚀：</span>出發前請確認護照效期 (6個月以上)，並提前於線上填寫 Visit Japan Web 以加速通關。
-    </div>
-</div>
+                <i class="fa-solid fa-circle-info mt-0.5 text-amber-600"></i>
+                <div>
+                    <span class="font-bold">航班小叮嚀：</span>出發前請確認護照效期 (6個月以上)，並提前於線上填寫 Visit Japan Web 以加速通關。
+                </div>
+            </div>
 
             <!-- Departure Ticket -->
             <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-peach-100">
@@ -174,12 +174,12 @@
         </div>
 
         <!-- ================= TAB 2: 每日行程 (Daily Itinerary) ================= -->
-        <div id="tab-itinerary" class="tab-content hidden ">
+        <div id="tab-itinerary" class="tab-content hidden space-y-4">
             
             <!-- Day Selector Bar (Moved to Top) -->
             <div class="flex overflow-x-auto gap-2 pb-2 hide-scrollbar sticky top-0 bg-cream z-20 pt-1 shadow-sm">
                 <button onclick="switchDay(1)" class="day-btn active px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition" data-day="1">Day 1 抵達</button>
-                <button onclick="switchDay(2)" class="day-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition" data-day="2">Day 2 燒肉上</button>
+                <button onclick="switchDay(2)" class="day-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition" data-day="2">Day 2 藥院燒肉</button>
                 <button onclick="switchDay(3)" class="day-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition" data-day="3">Day 3 熊野一日遊</button>
                 <button onclick="switchDay(4)" class="day-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition" data-day="4">Day 4 天神採買</button>
                 <button onclick="switchDay(5)" class="day-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition" data-day="5">Day 5 由布院一日遊</button>
@@ -188,7 +188,7 @@
             </div>
 
             <!-- Day Panels -->
-            <div id="day-panels" class=" pt-1">
+            <div id="day-panels" class="space-y-4 pt-1">
                 
                 <!-- DAY 1 -->
                 <div class="day-panel space-y-3" data-day-content="1">
@@ -333,7 +333,7 @@
                                                 <i class="fa-solid fa-trash-can"></i> 移除/重新上傳
                                             </button>
                                         </div>
-                                        <img id="yakiniku-img-element" onclick="openFullImage('yakiniku-img-element')" src="" alt="燒肉訂位照片" class="w-full max-h-64 object-contain bg-gray-100 rounded-lg shadow-sm cursor-zoom-in border border-gray-200">
+                                        <img id="yakiniku-img-element" onclick="openFullImage('yakiniku-img-element')" src="" alt="燒肉上訂位照片" class="w-full max-h-64 object-contain bg-gray-100 rounded-lg shadow-sm cursor-zoom-in border border-gray-200">
                                         <p class="text-[9px] text-gray-400 text-center mt-1">點擊圖片可放大查看完整截圖</p>
                                     </div>
                                 </div>
@@ -622,7 +622,7 @@
         </div>
 
         <!-- ================= TAB 3: 交通 + 住宿 (Transport & Accommodation) ================= -->
-        <div id="tab-transport" class="tab-content hidden ">
+        <div id="tab-transport" class="tab-content hidden space-y-4">
             <div class="bg-white p-4 rounded-2xl shadow-sm border border-peach-100 space-y-3">
                 <div class="flex justify-between items-start">
                     <div>
@@ -708,8 +708,8 @@
         </div>
 
         <!-- ================= TAB 4: 行李清單 (Packing List) ================= -->
-        <div id="tab-packing" class="tab-content hidden ">
-            <div class="bg-white p-4 rounded-2xl shadow-sm border border-peach-100 ">
+        <div id="tab-packing" class="tab-content hidden space-y-4">
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-peach-100 space-y-4">
                 <div class="flex justify-between items-center">
                     <div>
                         <span class="bg-peach-100 text-peach-700 text-[10px] font-bold px-2 py-0.5 rounded-full">七天六夜極致詳細清單</span>
@@ -719,19 +719,19 @@
                 </div>
                 <p class="text-xs text-gray-500">點擊方框勾選已完成項目，分類打包安心出發！</p>
 
-                <div id="packing-list-container" class=" pt-1">
+                <div id="packing-list-container" class="space-y-4 pt-1">
                     <!-- Dynamic detailed packing list generated by JS -->
                 </div>
             </div>
         </div>
 
         <!-- ================= TAB 5: 帳務 (Expense Splitter & Personal Expenses) ================= -->
-        <div id="tab-expense" class="tab-content hidden ">
+        <div id="tab-expense" class="tab-content hidden space-y-4">
             
             <!-- Shared Expense Splitter Card -->
             <div class="bg-gradient-to-br from-peach-500 to-peach-600 text-white p-4 rounded-2xl shadow-md space-y-3">
                 <h3 class="text-sm font-bold flex items-center gap-2">
-                    <span>💰</span> 旅遊共用分帳 (Ruru & Rigo 平分)
+                    <span>💰</span> 旅遊共用分帳 (Lucy & Rigo 平分)
                 </h3>
                 <div class="grid grid-cols-2 gap-3 pt-1">
                     <div class="bg-white/10 backdrop-blur-sm p-3 rounded-xl">
@@ -761,7 +761,7 @@
                         <div>
                             <label class="text-[10px] text-gray-500">誰先代付的？</label>
                             <select id="shared-payer" class="w-full text-xs p-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-peach-500 bg-gray-50">
-                                <option value="Ruru">Ruru 先出</option>
+                                <option value="Lucy">Lucy 先出</option>
                                 <option value="Rigo">Rigo 先出</option>
                             </select>
                         </div>
@@ -795,7 +795,7 @@
                         <div>
                             <label class="text-[10px] text-gray-500">記在誰的名下</label>
                             <select id="pers-owner" class="w-full text-xs p-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-peach-500 bg-gray-50">
-                                <option value="Ruru">Ruru 的個人花費</option>
+                                <option value="Lucy">Lucy 的個人花費</option>
                                 <option value="Rigo">Rigo 的個人花費</option>
                             </select>
                         </div>
@@ -821,7 +821,7 @@
         </div>
 
         <!-- ================= TAB 6: 許願池 (Wishlist) ================= -->
-        <div id="tab-wishlist" class="tab-content hidden ">
+        <div id="tab-wishlist" class="tab-content hidden space-y-4">
             <div class="bg-white p-4 rounded-2xl shadow-sm border border-peach-100 space-y-3">
                 <div class="flex justify-between items-center">
                     <div>
@@ -888,7 +888,7 @@
 
     <!-- Custom Link Editor Modal -->
     <div id="link-modal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl p-5 w-full max-w-sm  shadow-xl">
+        <div class="bg-white rounded-2xl p-5 w-full max-w-sm space-y-4 shadow-xl">
             <h3 class="text-sm font-bold text-gray-800 flex items-center gap-2">
                 <span>🔗</span> 編輯與自訂地圖連結
             </h3>
@@ -1268,7 +1268,7 @@
             listContainer.innerHTML = '';
             
             let total = 0;
-            let paidRuru = 0;
+            let paidLucy = 0;
             let paidRigo = 0;
 
             if(expenses.length === 0) {
@@ -1277,7 +1277,7 @@
 
             expenses.forEach((exp, idx) => {
                 total += Number(exp.amount);
-                if(exp.payer === 'Ruru') paidRuru += Number(exp.amount);
+                if(exp.payer === 'Lucy') paidLucy += Number(exp.amount);
                 if(exp.payer === 'Rigo') paidRigo += Number(exp.amount);
 
                 const itemDiv = document.createElement('div');
@@ -1298,16 +1298,16 @@
             document.getElementById('total-shared-amount').innerText = `¥${total.toLocaleString()}`;
 
             const half = total / 2;
-            const diff = paidRuru - half;
+            const diff = paidLucy - half;
             const summaryText = document.getElementById('settlement-summary-text');
             if (expenses.length === 0) {
                 summaryText.innerText = "尚無分帳記錄";
             } else if (Math.abs(diff) < 1) {
                 summaryText.innerText = "目前兩人完美打平！";
             } else if (diff > 0) {
-                summaryText.innerText = `Rigo 應給 Ruru ¥${Math.round(diff).toLocaleString()}`;
+                summaryText.innerText = `Rigo 應給 Lucy ¥${Math.round(diff).toLocaleString()}`;
             } else {
-                summaryText.innerText = `Ruru 應給 Rigo ¥${Math.round(-diff).toLocaleString()}`;
+                summaryText.innerText = `Lucy 應給 Rigo ¥${Math.round(-diff).toLocaleString()}`;
             }
         }
 
