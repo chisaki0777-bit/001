@@ -132,7 +132,7 @@
                     </details>
                     <details class="group">
                         <summary class="text-xs text-peach-600 font-medium cursor-pointer list-none flex items-center justify-between pt-1">
-                            <span>✈️ 電子登機證上傳</span>
+                            <span>📱 電子登機證上傳</span>
                             <i class="fa-solid fa-chevron-down transition-transform group-open:rotate-180"></i>
                         </summary>
                         <div class="mt-2 pt-2 border-t border-gray-100 space-y-2">
@@ -208,7 +208,7 @@
                     </details>
                     <details class="group">
                         <summary class="text-xs text-stone-600 font-medium cursor-pointer list-none flex items-center justify-between pt-1">
-                            <span>✈️ 電子登機證上傳</span>
+                            <span>📱 電子登機證上傳</span>
                             <i class="fa-solid fa-chevron-down transition-transform group-open:rotate-180"></i>
                         </summary>
                         <div class="mt-2 pt-2 border-t border-gray-100 space-y-2">
@@ -302,13 +302,13 @@
             
             <!-- Day Selector Bar (Moved to Top) -->
             <div class="flex overflow-x-auto gap-2 pb-2 hide-scrollbar sticky top-0 bg-cream z-20 pt-1 shadow-sm">
-                <button onclick="switchDay(1)" class="day-btn active px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition" data-day="1">Day 1 抵達🇯🇵</button>
-                <button onclick="switchDay(2)" class="day-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition" data-day="2">Day 2 藥院GOGO🐾</button>
-                <button onclick="switchDay(3)" class="day-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition" data-day="3">Day 3 熊野一日遊🐻</button>
+                <button onclick="switchDay(1)" class="day-btn active px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition" data-day="1">Day 1 抵達</button>
+                <button onclick="switchDay(2)" class="day-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition" data-day="2">Day 2 藥院燒肉</button>
+                <button onclick="switchDay(3)" class="day-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition" data-day="3">Day 3 熊野一日遊</button>
                 <button onclick="switchDay(4)" class="day-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition" data-day="4">Day 4 天神採買</button>
-                <button onclick="switchDay(5)" class="day-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition" data-day="5">Day 5 由布院一日遊🌲</button>
-                <button onclick="switchDay(6)" class="day-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition" data-day="6">Day 6 最後一天瘋狂採買</button>
-                <button onclick="switchDay(7)" class="day-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition" data-day="7">Day 7 賦歸🇹🇼</button>
+                <button onclick="switchDay(5)" class="day-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition" data-day="5">Day 5 由布院一日遊</button>
+                <button onclick="switchDay(6)" class="day-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition" data-day="6">Day 6 買麵包/天神</button>
+                <button onclick="switchDay(7)" class="day-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition" data-day="7">Day 7 賦歸</button>
             </div>
 
             <!-- Day Panels -->
@@ -858,41 +858,57 @@
         <div id="tab-expense" class="tab-content hidden space-y-4">
             
             <!-- Expense Overview Card -->
-            <div class="bg-gradient-to-br from-peach-500 to-peach-600 text-white p-4 rounded-2xl shadow-md space-y-3">
-                <div class="flex justify-between items-center">
-                    <h3 class="text-sm font-bold flex items-center gap-2">
-                        <span>💰</span> 旅遊花費總覽
-                    </h3>
-                    <div class="flex items-center bg-white/15 rounded-full p-0.5 text-[10px] font-bold">
-                        <button type="button" onclick="setMyIdentity('RuRu')" id="identity-btn-RuRu" class="px-2.5 py-1 rounded-full transition">我是 RuRu</button>
-                        <button type="button" onclick="setMyIdentity('Rigo')" id="identity-btn-Rigo" class="px-2.5 py-1 rounded-full transition">我是 Rigo</button>
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-peach-100">
+                <div class="bg-peach-500 text-white px-4 py-2.5 flex justify-between items-center text-sm font-bold">
+                    <span class="flex items-center gap-2"><span>💰</span> 旅遊花費總覽 <span class="text-[10px] font-normal text-peach-100">(台幣 NT$)</span></span>
+                    <div class="flex items-center bg-white/20 rounded-full p-0.5 text-[10px] font-bold backdrop-blur-sm">
+                        <button type="button" onclick="setMyIdentity('Lucy')" id="identity-btn-Lucy" class="px-2.5 py-1 rounded-full transition text-white/70">我是 Lucy</button>
+                        <button type="button" onclick="setMyIdentity('Rigo')" id="identity-btn-Rigo" class="px-2.5 py-1 rounded-full transition text-white/70">我是 Rigo</button>
+                    </div>
+                </div>
+                <div class="p-4 space-y-3">
+
+                <!-- Currency settings (moved inside overview card) -->
+                <div class="flex items-center justify-between gap-2 flex-wrap !-mt-1">
+                    <div class="flex items-center gap-1.5">
+                        <span class="text-[10px] text-peach-600 font-medium whitespace-nowrap">明細顯示</span>
+                        <div class="flex bg-white rounded-full p-0.5 text-[10px] font-bold border border-peach-200">
+                            <button type="button" onclick="setDisplayCurrency('JPY')" id="currency-btn-JPY" class="px-2.5 py-1 rounded-full transition text-gray-500">日幣 ¥</button>
+                            <button type="button" onclick="setDisplayCurrency('TWD')" id="currency-btn-TWD" class="px-2.5 py-1 rounded-full transition text-gray-500">台幣 NT$</button>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <label for="jpy-rate-input" class="text-[10px] text-peach-600 font-medium whitespace-nowrap">匯率 1¥=</label>
+                        <input type="number" step="0.0001" min="0" id="jpy-rate-input" oninput="updateJpyRate(this.value)" placeholder="0.21" class="w-16 text-[11px] py-1 px-2.5 rounded-full border border-peach-200 focus:outline-none focus:border-peach-400 bg-white text-gray-700 text-center">
+                        <span class="text-[10px] text-peach-600">台幣</span>
                     </div>
                 </div>
 
                 <!-- My Total (top) -->
-                <div class="bg-white/15 backdrop-blur-sm p-3 rounded-xl">
-                    <p class="text-[10px] text-peach-100">我的總花費 (個人花費 + 共用平分)</p>
-                    <p class="text-2xl font-bold mt-0.5" id="my-total-amount">¥0</p>
+                <div class="bg-peach-100 p-3 rounded-xl">
+                    <p class="text-[10px] text-peach-700 font-medium">我的總花費 (個人花費 + 共用平分)</p>
+                    <p class="text-2xl font-bold mt-0.5 text-peach-800" id="my-total-amount">NT$0</p>
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
                     <!-- Bottom Left: Shared -->
-                    <div class="bg-white/10 backdrop-blur-sm p-3 rounded-xl">
-                        <p class="text-[10px] text-peach-100">共用總支出</p>
-                        <p class="text-lg font-bold mt-0.5" id="total-shared-amount">¥0</p>
-                        <p class="text-[10px] text-peach-100 mt-1.5" id="settlement-summary-text">尚無分帳記錄</p>
+                    <div class="bg-peach-50 p-3 rounded-xl">
+                        <p class="text-[10px] text-gray-500">共用總支出</p>
+                        <p class="text-lg font-bold mt-0.5 text-gray-800" id="total-shared-amount">NT$0</p>
+                        <p class="text-[10px] text-peach-600 mt-1.5" id="settlement-summary-text">尚無分帳記錄</p>
                     </div>
                     <!-- Bottom Right: My personal (collapsible) -->
-                    <div class="bg-white/10 backdrop-blur-sm p-3 rounded-xl">
+                    <div class="bg-peach-50 p-3 rounded-xl">
                         <button type="button" onclick="toggleMyExpenseCollapse()" class="w-full flex justify-between items-center text-left">
-                            <span class="text-[10px] text-peach-100">我的花費</span>
-                            <i id="my-expense-chevron" class="fa-solid fa-chevron-down text-[10px] transition-transform"></i>
+                            <span class="text-[10px] text-gray-500">我的花費</span>
+                            <i id="my-expense-chevron" class="fa-solid fa-chevron-down text-[10px] text-gray-400 transition-transform"></i>
                         </button>
-                        <p class="text-lg font-bold mt-0.5" id="my-personal-total-amount">¥0</p>
+                        <p class="text-lg font-bold mt-0.5 text-gray-800" id="my-personal-total-amount">NT$0</p>
                         <div id="my-expense-detail" class="hidden mt-2 space-y-1 max-h-28 overflow-y-auto text-left">
                             <!-- Populated dynamically -->
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
 
@@ -913,18 +929,23 @@
                         <label class="text-[10px] text-gray-500">消費項目名稱</label>
                         <input type="text" id="shared-title" required placeholder="例如：計程車費 / 燒肉晚餐" class="w-full text-xs p-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-peach-500 bg-gray-50">
                     </div>
-                    <div class="grid grid-cols-2 gap-2">
-                        <div>
-                            <label class="text-[10px] text-gray-500">金額 (日幣 ¥)</label>
-                            <input type="number" id="shared-amount" required placeholder="5000" class="w-full text-xs p-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-peach-500 bg-gray-50">
+                    <div>
+                        <label class="text-[10px] text-gray-500">金額</label>
+                        <div class="flex gap-2">
+                            <input type="number" id="shared-amount" required placeholder="5000" class="flex-1 min-w-0 text-xs p-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-peach-500 bg-gray-50">
+                            <div class="flex bg-gray-100 rounded-xl p-0.5 text-[10px] font-bold shrink-0">
+                                <button type="button" onclick="setFormCurrency('shared','JPY')" id="shared-currency-btn-JPY" class="px-3 py-1.5 rounded-lg transition">¥ 日幣</button>
+                                <button type="button" onclick="setFormCurrency('shared','TWD')" id="shared-currency-btn-TWD" class="px-3 py-1.5 rounded-lg transition">NT$ 台幣</button>
+                            </div>
+                            <input type="hidden" id="shared-currency" value="JPY">
                         </div>
-                        <div>
-                            <label class="text-[10px] text-gray-500">誰先代付的？</label>
-                            <select id="shared-payer" class="w-full text-xs p-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-peach-500 bg-gray-50">
-                                <option value="RuRu">RuRu 先出</option>
-                                <option value="Rigo">Rigo 先出</option>
-                            </select>
-                        </div>
+                    </div>
+                    <div>
+                        <label class="text-[10px] text-gray-500">誰先代付的？</label>
+                        <select id="shared-payer" class="w-full text-xs p-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-peach-500 bg-gray-50">
+                            <option value="Lucy">Lucy 先出</option>
+                            <option value="Rigo">Rigo 先出</option>
+                        </select>
                     </div>
                     <button type="submit" class="w-full bg-peach-500 hover:bg-peach-600 text-white py-2.5 rounded-xl text-xs font-bold transition shadow-sm">
                         新增共用帳務
@@ -932,22 +953,27 @@
                 </form>
 
                 <form id="personal-expense-form" onsubmit="addPersonalExpense(event)" class="space-y-2.5 hidden">
-                    <div class="grid grid-cols-2 gap-2">
-                        <div>
-                            <label class="text-[10px] text-gray-500">記在誰的名下</label>
-                            <select id="pers-owner" class="w-full text-xs p-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-peach-500 bg-gray-50">
-                                <option value="RuRu">RuRu 的個人花費</option>
-                                <option value="Rigo">Rigo 的個人花費</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="text-[10px] text-gray-500">金額 (日幣 ¥)</label>
-                            <input type="number" id="pers-amount" required placeholder="2000" class="w-full text-xs p-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-peach-500 bg-gray-50">
-                        </div>
+                    <div>
+                        <label class="text-[10px] text-gray-500">記在誰的名下</label>
+                        <select id="pers-owner" class="w-full text-xs p-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-peach-500 bg-gray-50">
+                            <option value="Lucy">Lucy 的個人花費</option>
+                            <option value="Rigo">Rigo 的個人花費</option>
+                        </select>
                     </div>
                     <div>
                         <label class="text-[10px] text-gray-500">個人消費項目/戰利品</label>
                         <input type="text" id="pers-title" required placeholder="例如：藥妝 / 衣服 / 伴手禮" class="w-full text-xs p-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-peach-500 bg-gray-50">
+                    </div>
+                    <div>
+                        <label class="text-[10px] text-gray-500">金額</label>
+                        <div class="flex gap-2">
+                            <input type="number" id="pers-amount" required placeholder="2000" class="flex-1 min-w-0 text-xs p-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-peach-500 bg-gray-50">
+                            <div class="flex bg-gray-100 rounded-xl p-0.5 text-[10px] font-bold shrink-0">
+                                <button type="button" onclick="setFormCurrency('pers','JPY')" id="pers-currency-btn-JPY" class="px-3 py-1.5 rounded-lg transition">¥ 日幣</button>
+                                <button type="button" onclick="setFormCurrency('pers','TWD')" id="pers-currency-btn-TWD" class="px-3 py-1.5 rounded-lg transition">NT$ 台幣</button>
+                            </div>
+                            <input type="hidden" id="pers-currency" value="JPY">
+                        </div>
                     </div>
                     <button type="submit" class="w-full bg-stone-700 hover:bg-stone-800 text-white py-2.5 rounded-xl text-xs font-bold transition shadow-sm">
                         記一筆個人花費
@@ -955,24 +981,40 @@
                 </form>
             </div>
 
-            <!-- Shared Expense List -->
+            <!-- Expense Detail List (Unified, switchable between shared/personal) -->
             <div class="bg-white p-4 rounded-2xl shadow-sm border border-peach-100 space-y-3">
-                <div class="flex justify-between items-center">
-                    <h4 class="text-xs font-bold text-gray-800">📋 共用消費明細</h4>
-                    <button onclick="clearSharedExpenses()" class="text-[11px] text-red-500 hover:underline">清空全部</button>
+                <div class="flex bg-peach-50 rounded-full p-0.5 text-[10px] font-bold w-fit">
+                    <button type="button" onclick="switchExpenseView('shared')" id="expense-view-btn-shared" class="px-3 py-1.5 rounded-full transition">📋 共同消費</button>
+                    <button type="button" onclick="switchExpenseView('personal')" id="expense-view-btn-personal" class="px-3 py-1.5 rounded-full transition">🛍️ 個人消費</button>
                 </div>
-                <div id="shared-expense-list" class="space-y-2 max-h-48 overflow-y-auto">
-                    <!-- Populated dynamically -->
+
+                <div id="expense-view-shared" class="space-y-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-bold text-gray-800" id="shared-list-total">共同消費總計: ¥0</span>
+                        <button onclick="clearSharedExpenses()" class="text-[11px] text-red-500 hover:underline">清空全部</button>
+                    </div>
+                    <div id="shared-expense-list" class="space-y-2 max-h-56 overflow-y-auto">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <div id="expense-view-personal" class="hidden space-y-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-bold text-gray-800" id="personal-total-amount">個人消費總計: ¥0</span>
+                    </div>
+                    <div id="personal-expense-list" class="space-y-2 max-h-56 overflow-y-auto">
+                        <!-- Populated dynamically -->
+                    </div>
                 </div>
             </div>
 
-            <!-- Personal Expense List -->
-            <div class="bg-white p-4 rounded-2xl shadow-sm border border-peach-100 space-y-3">
+            <!-- Unsettled Expense Summary (moved to the bottom) -->
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-amber-200 space-y-3">
                 <div class="flex justify-between items-center">
-                    <h4 class="text-xs font-bold text-gray-800">🛍️ 個人消費明細 (兩人各自記帳)</h4>
-                    <span class="text-xs font-bold text-peach-600" id="personal-total-amount">個人總計: ¥0</span>
+                    <h4 class="text-xs font-bold text-gray-800">⏳ 未結清項目</h4>
+                    <span class="text-xs font-bold text-amber-600" id="unsettled-total-amount">未結清: ¥0</span>
                 </div>
-                <div id="personal-expense-list" class="space-y-2 max-h-48 overflow-y-auto">
+                <div id="unsettled-expense-list" class="space-y-2 max-h-48 overflow-y-auto">
                     <!-- Populated dynamically -->
                 </div>
             </div>
@@ -1527,7 +1569,7 @@
         // Shared & Personal Expense Functions
         // Identity & Unified Expense Entry
         function getMyIdentity() {
-            return localStorage.getItem('fukuoka_my_identity') || 'RuRu';
+            return localStorage.getItem('fukuoka_my_identity') || 'Lucy';
         }
 
         function setMyIdentity(name) {
@@ -1540,15 +1582,110 @@
 
         function updateIdentityButtons() {
             const me = getMyIdentity();
-            ['RuRu', 'Rigo'].forEach(name => {
+            ['Lucy', 'Rigo'].forEach(name => {
                 const btn = document.getElementById(`identity-btn-${name}`);
                 if (!btn) return;
                 if (name === me) {
                     btn.classList.add('bg-white', 'text-peach-600');
-                    btn.classList.remove('text-white');
+                    btn.classList.remove('text-white/70');
                 } else {
                     btn.classList.remove('bg-white', 'text-peach-600');
-                    btn.classList.add('text-white');
+                    btn.classList.add('text-white/70');
+                }
+            });
+        }
+
+        // Currency Display Functions
+        function getDisplayCurrency() {
+            return localStorage.getItem('fukuoka_display_currency') || 'JPY';
+        }
+
+        function getJpyRate() {
+            const r = parseFloat(localStorage.getItem('fukuoka_jpy_rate'));
+            return isNaN(r) || r <= 0 ? 0.21 : r;
+        }
+
+        function setDisplayCurrency(cur) {
+            localStorage.setItem('fukuoka_display_currency', cur);
+            updateCurrencyButtons();
+            refreshAllExpenseDisplays();
+        }
+
+        function updateJpyRate(val) {
+            const rate = parseFloat(val);
+            if (!isNaN(rate) && rate > 0) {
+                localStorage.setItem('fukuoka_jpy_rate', rate);
+            } else {
+                localStorage.removeItem('fukuoka_jpy_rate');
+            }
+            refreshAllExpenseDisplays();
+        }
+
+        function updateCurrencyButtons() {
+            const cur = getDisplayCurrency();
+            ['JPY', 'TWD'].forEach(c => {
+                const btn = document.getElementById(`currency-btn-${c}`);
+                if (!btn) return;
+                if (c === cur) {
+                    btn.classList.add('bg-peach-500', 'text-white');
+                    btn.classList.remove('text-gray-500');
+                } else {
+                    btn.classList.remove('bg-peach-500', 'text-white');
+                    btn.classList.add('text-gray-500');
+                }
+            });
+            const rateInput = document.getElementById('jpy-rate-input');
+            if (rateInput && document.activeElement !== rateInput) {
+                rateInput.value = getJpyRate();
+            }
+        }
+
+        // Converts an amount from one currency to another using the stored JPY->TWD rate
+        function convertAmount(amount, fromCur, toCur) {
+            const rate = getJpyRate();
+            const num = Number(amount) || 0;
+            const from = fromCur || 'JPY';
+            const to = toCur || 'JPY';
+            if (from === to) return num;
+            if (from === 'JPY' && to === 'TWD') return num * rate;
+            if (from === 'TWD' && to === 'JPY') return num / rate;
+            return num;
+        }
+
+        // Always formats as NT$ — used for the overview card, which is fixed to TWD
+        function formatTWD(amount) {
+            const num = Number(amount) || 0;
+            const sign = num < 0 ? '-' : '';
+            return `${sign}NT$${Math.round(Math.abs(num)).toLocaleString()}`;
+        }
+
+        // Formats an amount (given in fromCur) converted into the user's chosen display currency
+        function formatMoney(amount, fromCur) {
+            const displayCur = getDisplayCurrency();
+            const converted = convertAmount(amount, fromCur || 'JPY', displayCur);
+            const symbol = displayCur === 'TWD' ? 'NT$' : '¥';
+            const sign = converted < 0 ? '-' : '';
+            return `${sign}${symbol}${Math.round(Math.abs(converted)).toLocaleString()}`;
+        }
+
+        function refreshAllExpenseDisplays() {
+            loadSharedExpenses();
+            loadPersonalExpenses();
+        }
+
+        // Currency toggle used inside the add-expense forms (per-entry currency)
+        function setFormCurrency(form, cur) {
+            const hiddenInput = document.getElementById(`${form}-currency`);
+            if (hiddenInput) hiddenInput.value = cur;
+            ['JPY', 'TWD'].forEach(c => {
+                const btn = document.getElementById(`${form}-currency-btn-${c}`);
+                if (!btn) return;
+                if (c === cur) {
+                    btn.classList.add('bg-peach-500', 'text-white');
+                    btn.classList.remove('text-gray-500');
+                } else {
+                    btn.classList.remove('bg-peach-500', 'text-white');
+                    btn.classList.add('text-gray-500');
                 }
             });
         }
@@ -1578,32 +1715,58 @@
             }
         }
 
+        // Toggle which detail list (shared / personal) is shown in the unified list card
+        function switchExpenseView(mode) {
+            const sharedView = document.getElementById('expense-view-shared');
+            const personalView = document.getElementById('expense-view-personal');
+            const sharedBtn = document.getElementById('expense-view-btn-shared');
+            const personalBtn = document.getElementById('expense-view-btn-personal');
+            if (!sharedView || !personalView || !sharedBtn || !personalBtn) return;
+
+            if (mode === 'shared') {
+                sharedView.classList.remove('hidden');
+                personalView.classList.add('hidden');
+                sharedBtn.classList.add('bg-peach-500', 'text-white');
+                sharedBtn.classList.remove('text-gray-500');
+                personalBtn.classList.remove('bg-peach-500', 'text-white');
+                personalBtn.classList.add('text-gray-500');
+            } else {
+                personalView.classList.remove('hidden');
+                sharedView.classList.add('hidden');
+                personalBtn.classList.add('bg-peach-500', 'text-white');
+                personalBtn.classList.remove('text-gray-500');
+                sharedBtn.classList.remove('bg-peach-500', 'text-white');
+                sharedBtn.classList.add('text-gray-500');
+            }
+        }
+
         function toggleMyExpenseCollapse() {
             document.getElementById('my-expense-detail').classList.toggle('hidden');
             document.getElementById('my-expense-chevron').classList.toggle('rotate-180');
         }
 
+        // Overview card totals are always shown in TWD, regardless of the display-currency toggle
         function updateMyTotalSummary() {
             const sharedExpenses = JSON.parse(localStorage.getItem('fukuoka_shared_expenses')) || [];
-            const sharedTotal = sharedExpenses.reduce((sum, e) => sum + Number(e.amount), 0);
+            const sharedTotalTWD = sharedExpenses.reduce((sum, e) => sum + convertAmount(e.amount, e.currency, 'TWD'), 0);
 
             const persExpenses = JSON.parse(localStorage.getItem('fukuoka_personal_expenses')) || [];
             const me = getMyIdentity();
             const myExpenses = persExpenses.filter(e => e.owner === me);
-            const myPersonalTotal = myExpenses.reduce((sum, e) => sum + Number(e.amount), 0);
-            const myTotal = myPersonalTotal + sharedTotal / 2;
+            const myPersonalTotalTWD = myExpenses.reduce((sum, e) => sum + convertAmount(e.amount, e.currency, 'TWD'), 0);
+            const myTotalTWD = myPersonalTotalTWD + sharedTotalTWD / 2;
 
-            document.getElementById('my-total-amount').innerText = `¥${Math.round(myTotal).toLocaleString()}`;
-            document.getElementById('my-personal-total-amount').innerText = `¥${myPersonalTotal.toLocaleString()}`;
+            document.getElementById('my-total-amount').innerText = formatTWD(myTotalTWD);
+            document.getElementById('my-personal-total-amount').innerText = formatTWD(myPersonalTotalTWD);
 
             const detailContainer = document.getElementById('my-expense-detail');
             if (myExpenses.length === 0) {
-                detailContainer.innerHTML = `<p class="text-[10px] text-peach-100/80">尚無個人消費記錄</p>`;
+                detailContainer.innerHTML = `<p class="text-[10px] text-gray-400">尚無個人消費記錄</p>`;
             } else {
                 detailContainer.innerHTML = myExpenses.map(e => `
-                    <div class="flex justify-between text-[10px] text-white/90">
+                    <div class="flex justify-between text-[10px] text-gray-600">
                         <span class="truncate mr-2">${escapeHtml(e.title)}</span>
-                        <span class="font-bold shrink-0">¥${Number(e.amount).toLocaleString()}</span>
+                        <span class="font-bold shrink-0 text-gray-800">${formatTWD(convertAmount(e.amount, e.currency, 'TWD'))}</span>
                     </div>
                 `).join('');
             }
@@ -1611,9 +1774,50 @@
 
         function loadExpensesData() {
             updateIdentityButtons();
+            updateCurrencyButtons();
+            setFormCurrency('shared', 'JPY');
+            setFormCurrency('pers', 'JPY');
             switchExpenseType('shared');
+            switchExpenseView('shared');
             loadSharedExpenses();
             loadPersonalExpenses();
+        }
+
+        // Inline-edit state (only one row editable at a time per list)
+        let sharedEditingIdx = null;
+        let personalEditingIdx = null;
+
+        function startEditShared(idx) {
+            sharedEditingIdx = idx;
+            loadSharedExpenses();
+        }
+
+        function cancelEditShared() {
+            sharedEditingIdx = null;
+            loadSharedExpenses();
+        }
+
+        function saveEditShared(idx) {
+            const titleEl = document.getElementById(`edit-shared-title-${idx}`);
+            const amountEl = document.getElementById(`edit-shared-amount-${idx}`);
+            const currencyEl = document.getElementById(`edit-shared-currency-${idx}`);
+            const payerEl = document.getElementById(`edit-shared-payer-${idx}`);
+            const title = titleEl.value.trim();
+            const amount = amountEl.value;
+            if (!title || !amount) {
+                alert('請完整填寫項目名稱與金額');
+                return;
+            }
+            let expenses = JSON.parse(localStorage.getItem('fukuoka_shared_expenses')) || [];
+            if (expenses[idx]) {
+                expenses[idx].title = title;
+                expenses[idx].amount = amount;
+                expenses[idx].currency = currencyEl.value;
+                expenses[idx].payer = payerEl.value;
+                localStorage.setItem('fukuoka_shared_expenses', JSON.stringify(expenses));
+            }
+            sharedEditingIdx = null;
+            loadSharedExpenses();
         }
 
         function loadSharedExpenses() {
@@ -1621,60 +1825,136 @@
             const listContainer = document.getElementById('shared-expense-list');
             listContainer.innerHTML = '';
             
-            let total = 0;
-            let paidRuRu = 0;
-            let paidRigo = 0;
+            let totalTWD = 0;
+            let paidLucyTWD = 0;
+            let paidRigoTWD = 0;
 
             if(expenses.length === 0) {
                 listContainer.innerHTML = `<p class="text-xs text-gray-400 text-center py-2">尚無共用分帳記錄</p>`;
             }
 
             expenses.forEach((exp, idx) => {
-                total += Number(exp.amount);
-                if(exp.payer === 'RuRu') paidRuRu += Number(exp.amount);
-                if(exp.payer === 'Rigo') paidRigo += Number(exp.amount);
+                const cur = exp.currency || 'JPY';
+                const amtTWD = convertAmount(exp.amount, cur, 'TWD');
+                totalTWD += amtTWD;
+                if(exp.payer === 'Lucy') paidLucyTWD += amtTWD;
+                if(exp.payer === 'Rigo') paidRigoTWD += amtTWD;
 
+                const isSettled = !!exp.settled;
                 const itemDiv = document.createElement('div');
-                itemDiv.className = "flex justify-between items-center bg-gray-50 p-2.5 rounded-xl text-xs";
-                itemDiv.innerHTML = `
-                    <div>
-                        <p class="font-bold text-gray-800">${exp.title}</p>
-                        <p class="text-[10px] text-gray-400">代付者: <span class="text-peach-600 font-medium">${exp.payer}</span></p>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <span class="font-bold text-gray-700">¥${Number(exp.amount).toLocaleString()}</span>
-                        <button onclick="deleteSharedExpense(${idx})" class="text-gray-300 hover:text-red-500"><i class="fa-solid fa-trash text-[11px]"></i></button>
-                    </div>
-                `;
+
+                if (sharedEditingIdx === idx) {
+                    itemDiv.className = "bg-peach-50 p-3 rounded-xl text-xs space-y-2 border border-peach-200";
+                    itemDiv.innerHTML = `
+                        <input type="text" id="edit-shared-title-${idx}" value="${escapeHtml(exp.title)}" placeholder="項目名稱" class="w-full text-xs p-2 rounded-lg border border-gray-200 bg-white">
+                        <div class="flex gap-2">
+                            <input type="number" id="edit-shared-amount-${idx}" value="${exp.amount}" placeholder="金額" class="flex-1 min-w-0 text-xs p-2 rounded-lg border border-gray-200 bg-white">
+                            <select id="edit-shared-currency-${idx}" class="text-xs p-2 rounded-lg border border-gray-200 bg-white shrink-0">
+                                <option value="JPY" ${cur === 'JPY' ? 'selected' : ''}>¥ 日幣</option>
+                                <option value="TWD" ${cur === 'TWD' ? 'selected' : ''}>NT$ 台幣</option>
+                            </select>
+                        </div>
+                        <select id="edit-shared-payer-${idx}" class="w-full text-xs p-2 rounded-lg border border-gray-200 bg-white">
+                            <option value="Lucy" ${exp.payer === 'Lucy' ? 'selected' : ''}>Lucy 先出</option>
+                            <option value="Rigo" ${exp.payer === 'Rigo' ? 'selected' : ''}>Rigo 先出</option>
+                        </select>
+                        <div class="flex gap-2 pt-1">
+                            <button type="button" onclick="saveEditShared(${idx})" class="flex-1 bg-peach-500 hover:bg-peach-600 text-white py-1.5 rounded-lg text-[11px] font-bold transition">儲存</button>
+                            <button type="button" onclick="cancelEditShared()" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-1.5 rounded-lg text-[11px] font-bold transition">取消</button>
+                        </div>
+                    `;
+                } else {
+                    itemDiv.className = `flex justify-between items-center p-2.5 rounded-xl text-xs transition ${isSettled ? 'bg-gray-100' : 'bg-gray-50'}`;
+                    itemDiv.innerHTML = `
+                        <div class="flex items-center gap-2 min-w-0">
+                            <input type="checkbox" ${isSettled ? 'checked' : ''} onchange="toggleSettleSharedExpense(${idx})" title="標記為已結清" class="w-4 h-4 accent-peach-500 rounded shrink-0">
+                            <div class="min-w-0">
+                                <p class="font-bold truncate ${isSettled ? 'text-gray-400 line-through' : 'text-gray-800'}">${escapeHtml(exp.title)}</p>
+                                <p class="text-[10px] ${isSettled ? 'text-gray-300' : 'text-gray-400'}">代付者: <span class="${isSettled ? 'text-gray-400' : 'text-peach-600'} font-medium">${exp.payer}</span></p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 shrink-0">
+                            <span class="font-bold ${isSettled ? 'text-gray-400' : 'text-gray-700'}">${formatMoney(exp.amount, cur)}</span>
+                            <button onclick="startEditShared(${idx})" class="text-gray-300 hover:text-peach-500"><i class="fa-solid fa-pen text-[11px]"></i></button>
+                            <button onclick="deleteSharedExpense(${idx})" class="text-gray-300 hover:text-red-500"><i class="fa-solid fa-trash text-[11px]"></i></button>
+                        </div>
+                    `;
+                }
                 listContainer.appendChild(itemDiv);
             });
 
-            document.getElementById('total-shared-amount').innerText = `¥${total.toLocaleString()}`;
+            // Overview stat — always TWD
+            document.getElementById('total-shared-amount').innerText = formatTWD(totalTWD);
+            // Detail-list header total — follows the display-currency toggle
+            const listTotalEl = document.getElementById('shared-list-total');
+            if (listTotalEl) listTotalEl.innerText = `共同消費總計: ${formatMoney(totalTWD, 'TWD')}`;
 
-            const half = total / 2;
-            const diff = paidRuRu - half;
+            const halfTWD = totalTWD / 2;
+            const diffTWD = paidLucyTWD - halfTWD;
             const summaryText = document.getElementById('settlement-summary-text');
             if (expenses.length === 0) {
                 summaryText.innerText = "尚無分帳記錄";
-            } else if (Math.abs(diff) < 1) {
+            } else if (Math.abs(diffTWD) < 1) {
                 summaryText.innerText = "目前兩人完美打平！";
-            } else if (diff > 0) {
-                summaryText.innerText = `Rigo 應給 RuRu ¥${Math.round(diff).toLocaleString()}`;
+            } else if (diffTWD > 0) {
+                summaryText.innerText = `Rigo 應給 Lucy ${formatTWD(diffTWD)}`;
             } else {
-                summaryText.innerText = `RuRu 應給 Rigo ¥${Math.round(-diff).toLocaleString()}`;
+                summaryText.innerText = `Lucy 應給 Rigo ${formatTWD(-diffTWD)}`;
             }
 
+            renderUnsettledExpenses(expenses);
             updateMyTotalSummary();
+        }
+
+        function toggleSettleSharedExpense(idx) {
+            let expenses = JSON.parse(localStorage.getItem('fukuoka_shared_expenses')) || [];
+            if (expenses[idx]) {
+                expenses[idx].settled = !expenses[idx].settled;
+                localStorage.setItem('fukuoka_shared_expenses', JSON.stringify(expenses));
+                loadSharedExpenses();
+            }
+        }
+
+        function renderUnsettledExpenses(expenses) {
+            const listContainer = document.getElementById('unsettled-expense-list');
+            const totalLabel = document.getElementById('unsettled-total-amount');
+            if (!listContainer || !totalLabel) return;
+
+            const unsettled = expenses.filter(exp => !exp.settled);
+            listContainer.innerHTML = '';
+            let unsettledTotalTWD = 0;
+
+            if (unsettled.length === 0) {
+                listContainer.innerHTML = `<p class="text-xs text-gray-400 text-center py-2">🎉 目前沒有未結清項目</p>`;
+            } else {
+                unsettled.forEach(exp => {
+                    const cur = exp.currency || 'JPY';
+                    unsettledTotalTWD += convertAmount(exp.amount, cur, 'TWD');
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = "flex justify-between items-center bg-amber-50 p-2.5 rounded-xl text-xs border border-amber-100";
+                    itemDiv.innerHTML = `
+                        <div class="min-w-0">
+                            <p class="font-bold text-gray-800 truncate">${escapeHtml(exp.title)}</p>
+                            <p class="text-[10px] text-gray-500">代付者: <span class="text-peach-600 font-medium">${exp.payer}</span></p>
+                        </div>
+                        <span class="font-bold text-amber-700 shrink-0">${formatMoney(exp.amount, cur)}</span>
+                    `;
+                    listContainer.appendChild(itemDiv);
+                });
+            }
+
+            totalLabel.innerText = `未結清: ${formatMoney(unsettledTotalTWD, 'TWD')}`;
         }
 
         function addSharedExpense(e) {
             e.preventDefault();
             const title = document.getElementById('shared-title').value;
             const amount = document.getElementById('shared-amount').value;
+            const currency = document.getElementById('shared-currency').value || 'JPY';
             const payer = document.getElementById('shared-payer').value;
 
             let expenses = JSON.parse(localStorage.getItem('fukuoka_shared_expenses')) || [];
-            expenses.push({ title, amount, payer });
+            expenses.push({ title, amount, currency, payer, settled: false });
             localStorage.setItem('fukuoka_shared_expenses', JSON.stringify(expenses));
 
             document.getElementById('shared-title').value = '';
@@ -1686,14 +1966,49 @@
             let expenses = JSON.parse(localStorage.getItem('fukuoka_shared_expenses')) || [];
             expenses.splice(index, 1);
             localStorage.setItem('fukuoka_shared_expenses', JSON.stringify(expenses));
+            sharedEditingIdx = null;
             loadSharedExpenses();
         }
 
         function clearSharedExpenses() {
             if(confirm("確定清空所有共用分帳記錄嗎？")) {
                 localStorage.removeItem('fukuoka_shared_expenses');
+                sharedEditingIdx = null;
                 loadSharedExpenses();
             }
+        }
+
+        function startEditPersonal(idx) {
+            personalEditingIdx = idx;
+            loadPersonalExpenses();
+        }
+
+        function cancelEditPersonal() {
+            personalEditingIdx = null;
+            loadPersonalExpenses();
+        }
+
+        function saveEditPersonal(idx) {
+            const ownerEl = document.getElementById(`edit-pers-owner-${idx}`);
+            const titleEl = document.getElementById(`edit-pers-title-${idx}`);
+            const amountEl = document.getElementById(`edit-pers-amount-${idx}`);
+            const currencyEl = document.getElementById(`edit-pers-currency-${idx}`);
+            const title = titleEl.value.trim();
+            const amount = amountEl.value;
+            if (!title || !amount) {
+                alert('請完整填寫項目名稱與金額');
+                return;
+            }
+            let persExpenses = JSON.parse(localStorage.getItem('fukuoka_personal_expenses')) || [];
+            if (persExpenses[idx]) {
+                persExpenses[idx].owner = ownerEl.value;
+                persExpenses[idx].title = title;
+                persExpenses[idx].amount = amount;
+                persExpenses[idx].currency = currencyEl.value;
+                localStorage.setItem('fukuoka_personal_expenses', JSON.stringify(persExpenses));
+            }
+            personalEditingIdx = null;
+            loadPersonalExpenses();
         }
 
         function loadPersonalExpenses() {
@@ -1701,28 +2016,53 @@
             const listContainer = document.getElementById('personal-expense-list');
             listContainer.innerHTML = '';
 
-            let persTotal = 0;
+            let persTotalTWD = 0;
             if(persExpenses.length === 0) {
                 listContainer.innerHTML = `<p class="text-xs text-gray-400 text-center py-2">尚無個人消費記帳</p>`;
             }
 
             persExpenses.forEach((exp, idx) => {
-                persTotal += Number(exp.amount);
+                const cur = exp.currency || 'JPY';
+                persTotalTWD += convertAmount(exp.amount, cur, 'TWD');
                 const itemDiv = document.createElement('div');
-                itemDiv.className = "flex justify-between items-center bg-gray-50 p-2.5 rounded-xl text-xs";
-                itemDiv.innerHTML = `
-                    <div>
-                        <p class="font-bold text-gray-800">${exp.title} <span class="text-[9px] bg-peach-100 text-peach-700 px-1.5 py-0.5 rounded ml-1">${exp.owner}</span></p>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <span class="font-bold text-gray-700">¥${Number(exp.amount).toLocaleString()}</span>
-                        <button onclick="deletePersonalExpense(${idx})" class="text-gray-300 hover:text-red-500"><i class="fa-solid fa-trash text-[11px]"></i></button>
-                    </div>
-                `;
+
+                if (personalEditingIdx === idx) {
+                    itemDiv.className = "bg-stone-50 p-3 rounded-xl text-xs space-y-2 border border-stone-200";
+                    itemDiv.innerHTML = `
+                        <select id="edit-pers-owner-${idx}" class="w-full text-xs p-2 rounded-lg border border-gray-200 bg-white">
+                            <option value="Lucy" ${exp.owner === 'Lucy' ? 'selected' : ''}>Lucy 的個人花費</option>
+                            <option value="Rigo" ${exp.owner === 'Rigo' ? 'selected' : ''}>Rigo 的個人花費</option>
+                        </select>
+                        <input type="text" id="edit-pers-title-${idx}" value="${escapeHtml(exp.title)}" placeholder="項目名稱" class="w-full text-xs p-2 rounded-lg border border-gray-200 bg-white">
+                        <div class="flex gap-2">
+                            <input type="number" id="edit-pers-amount-${idx}" value="${exp.amount}" placeholder="金額" class="flex-1 min-w-0 text-xs p-2 rounded-lg border border-gray-200 bg-white">
+                            <select id="edit-pers-currency-${idx}" class="text-xs p-2 rounded-lg border border-gray-200 bg-white shrink-0">
+                                <option value="JPY" ${cur === 'JPY' ? 'selected' : ''}>¥ 日幣</option>
+                                <option value="TWD" ${cur === 'TWD' ? 'selected' : ''}>NT$ 台幣</option>
+                            </select>
+                        </div>
+                        <div class="flex gap-2 pt-1">
+                            <button type="button" onclick="saveEditPersonal(${idx})" class="flex-1 bg-stone-700 hover:bg-stone-800 text-white py-1.5 rounded-lg text-[11px] font-bold transition">儲存</button>
+                            <button type="button" onclick="cancelEditPersonal()" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-1.5 rounded-lg text-[11px] font-bold transition">取消</button>
+                        </div>
+                    `;
+                } else {
+                    itemDiv.className = "flex justify-between items-center bg-gray-50 p-2.5 rounded-xl text-xs";
+                    itemDiv.innerHTML = `
+                        <div class="min-w-0">
+                            <p class="font-bold text-gray-800 truncate">${escapeHtml(exp.title)} <span class="text-[9px] bg-peach-100 text-peach-700 px-1.5 py-0.5 rounded ml-1">${escapeHtml(exp.owner)}</span></p>
+                        </div>
+                        <div class="flex items-center gap-2 shrink-0">
+                            <span class="font-bold text-gray-700">${formatMoney(exp.amount, cur)}</span>
+                            <button onclick="startEditPersonal(${idx})" class="text-gray-300 hover:text-peach-500"><i class="fa-solid fa-pen text-[11px]"></i></button>
+                            <button onclick="deletePersonalExpense(${idx})" class="text-gray-300 hover:text-red-500"><i class="fa-solid fa-trash text-[11px]"></i></button>
+                        </div>
+                    `;
+                }
                 listContainer.appendChild(itemDiv);
             });
 
-            document.getElementById('personal-total-amount').innerText = `個人總計: ¥${persTotal.toLocaleString()}`;
+            document.getElementById('personal-total-amount').innerText = `個人消費總計: ${formatMoney(persTotalTWD, 'TWD')}`;
             updateMyTotalSummary();
         }
 
@@ -1730,10 +2070,11 @@
             e.preventDefault();
             const owner = document.getElementById('pers-owner').value;
             const amount = document.getElementById('pers-amount').value;
+            const currency = document.getElementById('pers-currency').value || 'JPY';
             const title = document.getElementById('pers-title').value;
 
             let persExpenses = JSON.parse(localStorage.getItem('fukuoka_personal_expenses')) || [];
-            persExpenses.push({ owner, amount, title });
+            persExpenses.push({ owner, amount, currency, title });
             localStorage.setItem('fukuoka_personal_expenses', JSON.stringify(persExpenses));
 
             document.getElementById('pers-amount').value = '';
@@ -1745,10 +2086,12 @@
             let persExpenses = JSON.parse(localStorage.getItem('fukuoka_personal_expenses')) || [];
             persExpenses.splice(index, 1);
             localStorage.setItem('fukuoka_personal_expenses', JSON.stringify(persExpenses));
+            personalEditingIdx = null;
             loadPersonalExpenses();
         }
 
         // Shopping List Functions
+        let shoppingEditingId = null;
         function escapeHtml(str) {
             if (!str) return '';
             return str.replace(/[&<>"']/g, (m) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
@@ -1830,10 +2173,30 @@
 
             list.forEach(item => {
                 const div = document.createElement('div');
-                div.className = `flex items-center gap-3 p-3 rounded-xl border transition ${item.checked ? 'bg-gray-50 border-gray-100' : 'bg-white border-peach-100 shadow-sm'}`;
                 const safeName = escapeHtml(item.name);
                 const safeStore = escapeHtml(item.store);
                 const safeMapUrl = item.mapUrl ? escapeHtml(item.mapUrl) : '';
+
+                if (String(item.id) === String(shoppingEditingId)) {
+                    div.className = "bg-peach-50 p-3 rounded-xl border border-peach-200 space-y-2";
+                    div.innerHTML = `
+                        <input type="text" id="edit-shop-name-${item.id}" value="${safeName}" placeholder="商品名稱" class="w-full text-xs p-2 rounded-lg border border-gray-200 bg-white">
+                        <input type="text" id="edit-shop-store-${item.id}" value="${safeStore}" placeholder="購入店家" class="w-full text-xs p-2 rounded-lg border border-gray-200 bg-white">
+                        <input type="url" id="edit-shop-map-${item.id}" value="${safeMapUrl}" placeholder="貼上 Google Maps 分享連結" class="w-full text-xs p-2 rounded-lg border border-gray-200 bg-white">
+                        <div class="flex items-center gap-2">
+                            ${item.photo ? `<img src="${item.photo}" class="w-10 h-10 rounded-lg object-cover shrink-0 border border-gray-200">` : ''}
+                            <input type="file" id="edit-shop-photo-${item.id}" accept="image/*" class="flex-1 min-w-0 text-[10px] text-gray-500 file:mr-2 file:py-1 file:px-2.5 file:rounded-lg file:border-0 file:text-[10px] file:font-medium file:bg-peach-500 file:text-white hover:file:bg-peach-600">
+                        </div>
+                        <div class="flex gap-2 pt-1">
+                            <button type="button" onclick="saveEditShopping(${item.id})" class="flex-1 bg-peach-500 hover:bg-peach-600 text-white py-1.5 rounded-lg text-[11px] font-bold transition">儲存</button>
+                            <button type="button" onclick="cancelEditShopping()" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-1.5 rounded-lg text-[11px] font-bold transition">取消</button>
+                        </div>
+                    `;
+                    container.appendChild(div);
+                    return;
+                }
+
+                div.className = `flex items-center gap-3 p-3 rounded-xl border transition ${item.checked ? 'bg-gray-50 border-gray-100' : 'bg-white border-peach-100 shadow-sm'}`;
                 div.innerHTML = `
                     <input type="checkbox" ${item.checked ? 'checked' : ''} onchange="toggleShoppingItem(${item.id})" class="w-4 h-4 accent-peach-500 rounded shrink-0">
                     ${item.photo
@@ -1845,15 +2208,72 @@
                         ${safeStore ? `<p class="text-[10px] truncate ${item.checked ? 'text-gray-300' : 'text-gray-500'}">📍 ${safeStore}</p>` : ''}
                     </div>
                     ${safeMapUrl
-                        ? `<a href="${safeMapUrl}" target="_blank" onclick="event.stopPropagation()" class="text-peach-500 hover:text-peach-700 transition shrink-0" title="前往導航"><i class="fa-solid fa-map-location-dot text-sm"></i></a>`
+                        ? `<a href="${safeMapUrl}" onclick="event.stopPropagation()" class="text-peach-500 hover:text-peach-700 transition shrink-0" title="前往 Google Maps 導航"><i class="fa-solid fa-map-location-dot text-sm"></i></a>`
                         : ''
                     }
+                    <button onclick="startEditShopping(${item.id})" class="text-gray-300 hover:text-peach-500 transition shrink-0">
+                        <i class="fa-solid fa-pen text-xs"></i>
+                    </button>
                     <button onclick="deleteShoppingItem(${item.id})" class="text-gray-300 hover:text-red-500 transition shrink-0">
                         <i class="fa-solid fa-trash-can text-xs"></i>
                     </button>
                 `;
                 container.appendChild(div);
             });
+        }
+
+        function startEditShopping(id) {
+            shoppingEditingId = id;
+            loadShoppingList();
+        }
+
+        function cancelEditShopping() {
+            shoppingEditingId = null;
+            loadShoppingList();
+        }
+
+        function saveEditShopping(id) {
+            const nameEl = document.getElementById(`edit-shop-name-${id}`);
+            const storeEl = document.getElementById(`edit-shop-store-${id}`);
+            const mapEl = document.getElementById(`edit-shop-map-${id}`);
+            const photoEl = document.getElementById(`edit-shop-photo-${id}`);
+            const name = nameEl.value.trim();
+            if (!name) {
+                alert('請輸入商品名稱');
+                return;
+            }
+            const store = storeEl.value.trim();
+            const mapUrl = mapEl.value.trim();
+            const file = photoEl && photoEl.files[0];
+
+            function finishSave(photoDataUrl) {
+                let list = JSON.parse(localStorage.getItem('fukuoka_shopping_list')) || [];
+                const item = list.find(i => i.id === id);
+                if (item) {
+                    item.name = name;
+                    item.store = store;
+                    item.mapUrl = mapUrl || null;
+                    if (photoDataUrl !== undefined) item.photo = photoDataUrl;
+                }
+                try {
+                    localStorage.setItem('fukuoka_shopping_list', JSON.stringify(list));
+                } catch (err) {
+                    alert("儲存失敗：圖片可能過大，建議選擇較小的照片。");
+                    return;
+                }
+                shoppingEditingId = null;
+                loadShoppingList();
+            }
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(ev) {
+                    finishSave(ev.target.result);
+                };
+                reader.readAsDataURL(file);
+            } else {
+                finishSave(undefined);
+            }
         }
 
         function toggleShoppingItem(id) {
@@ -1868,6 +2288,7 @@
             let list = JSON.parse(localStorage.getItem('fukuoka_shopping_list')) || [];
             list = list.filter(i => i.id !== id);
             localStorage.setItem('fukuoka_shopping_list', JSON.stringify(list));
+            if (shoppingEditingId === id) shoppingEditingId = null;
             loadShoppingList();
         }
 
