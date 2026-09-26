@@ -130,6 +130,43 @@
                             <p>• 抵達福岡機場後跟隨指引搭乘免費接駁車至國內線地鐵站轉乘或搭計程車。</p>
                         </div>
                     </details>
+                    <details class="group">
+                        <summary class="text-xs text-peach-600 font-medium cursor-pointer list-none flex items-center justify-between pt-1">
+                            <span>✈️ 電子登機證上傳</span>
+                            <i class="fa-solid fa-chevron-down transition-transform group-open:rotate-180"></i>
+                        </summary>
+                        <div class="mt-2 pt-2 border-t border-gray-100 space-y-2">
+                            <div id="boarding-outbound-dropzone" ondragover="handleGenericDragOver(event, 'boarding-outbound')" ondragleave="handleGenericDragLeave(event, 'boarding-outbound')" ondrop="handleGenericDrop(event, 'boarding-outbound')" class="border-2 border-dashed border-peach-200 hover:border-peach-400 bg-peach-50/40 rounded-xl p-4 text-center transition cursor-pointer relative">
+                                <input type="file" id="boarding-outbound-input" onchange="handleGenericFileSelect(event, 'boarding-outbound')" class="hidden" accept="image/png, image/jpeg, application/pdf">
+                                <label for="boarding-outbound-input" class="cursor-pointer space-y-1 block">
+                                    <i class="fa-solid fa-cloud-arrow-up text-2xl text-peach-400"></i>
+                                    <p class="text-xs font-bold text-gray-700">點擊上傳或拖曳登機證至此</p>
+                                    <p class="text-[10px] text-gray-400">支援 PNG, JPG, PDF 檔案 (建議 5MB 以內)</p>
+                                </label>
+                            </div>
+                            <div id="boarding-outbound-preview-container" class="hidden border border-gray-100 bg-gray-50 p-3 rounded-xl space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-[11px] font-bold text-gray-700 flex items-center gap-1">
+                                        <i class="fa-solid fa-paperclip text-peach-500"></i> 已上傳登機證預覽
+                                    </span>
+                                    <button onclick="removeGenericFile('boarding-outbound')" class="text-[10px] text-red-500 hover:underline flex items-center gap-0.5">
+                                        <i class="fa-solid fa-trash-can"></i> 移除/重新上傳
+                                    </button>
+                                </div>
+                                <div id="boarding-outbound-img-preview" class="hidden">
+                                    <img id="boarding-outbound-img-element" onclick="openFullImage('boarding-outbound-img-element')" src="" alt="去程電子登機證" class="w-full max-h-48 object-cover rounded-lg shadow-sm cursor-zoom-in border border-gray-200">
+                                    <p class="text-[9px] text-gray-400 text-center mt-1">點擊圖片可放大查看大圖</p>
+                                </div>
+                                <div id="boarding-outbound-pdf-preview" class="hidden bg-white p-3 rounded-lg border border-gray-200 flex items-center justify-between">
+                                    <div class="flex items-center gap-2 overflow-hidden">
+                                        <i class="fa-solid fa-file-pdf text-red-500 text-xl shrink-0"></i>
+                                        <span id="boarding-outbound-filename-display" class="text-xs font-medium text-gray-700 truncate"></span>
+                                    </div>
+                                    <a id="boarding-outbound-pdf-link" href="#" target="_blank" class="bg-peach-500 text-white text-[11px] px-3 py-1 rounded-lg font-medium shrink-0 hover:bg-peach-600 transition">開啟 PDF</a>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
                 </div>
             </div>
 
@@ -167,6 +204,93 @@
                             <p>• 當天早上建議 08:15 從飯店搭計程車出發，約 15 分鐘直達國際線。</p>
                             <p>• 福岡機場國際線免稅店不大，若要買伴手禮建議提早排隊或在博多車站先買好。</p>
                             <p>• 行李重量請務必提前確認，避免超重。</p>
+                        </div>
+                    </details>
+                    <details class="group">
+                        <summary class="text-xs text-stone-600 font-medium cursor-pointer list-none flex items-center justify-between pt-1">
+                            <span>✈️ 電子登機證上傳</span>
+                            <i class="fa-solid fa-chevron-down transition-transform group-open:rotate-180"></i>
+                        </summary>
+                        <div class="mt-2 pt-2 border-t border-gray-100 space-y-2">
+                            <div id="boarding-return-dropzone" ondragover="handleGenericDragOver(event, 'boarding-return')" ondragleave="handleGenericDragLeave(event, 'boarding-return')" ondrop="handleGenericDrop(event, 'boarding-return')" class="border-2 border-dashed border-stone-200 hover:border-stone-400 bg-stone-50/60 rounded-xl p-4 text-center transition cursor-pointer relative">
+                                <input type="file" id="boarding-return-input" onchange="handleGenericFileSelect(event, 'boarding-return')" class="hidden" accept="image/png, image/jpeg, application/pdf">
+                                <label for="boarding-return-input" class="cursor-pointer space-y-1 block">
+                                    <i class="fa-solid fa-cloud-arrow-up text-2xl text-stone-400"></i>
+                                    <p class="text-xs font-bold text-gray-700">點擊上傳或拖曳登機證至此</p>
+                                    <p class="text-[10px] text-gray-400">支援 PNG, JPG, PDF 檔案 (建議 5MB 以內)</p>
+                                </label>
+                            </div>
+                            <div id="boarding-return-preview-container" class="hidden border border-gray-100 bg-gray-50 p-3 rounded-xl space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-[11px] font-bold text-gray-700 flex items-center gap-1">
+                                        <i class="fa-solid fa-paperclip text-stone-500"></i> 已上傳登機證預覽
+                                    </span>
+                                    <button onclick="removeGenericFile('boarding-return')" class="text-[10px] text-red-500 hover:underline flex items-center gap-0.5">
+                                        <i class="fa-solid fa-trash-can"></i> 移除/重新上傳
+                                    </button>
+                                </div>
+                                <div id="boarding-return-img-preview" class="hidden">
+                                    <img id="boarding-return-img-element" onclick="openFullImage('boarding-return-img-element')" src="" alt="回程電子登機證" class="w-full max-h-48 object-cover rounded-lg shadow-sm cursor-zoom-in border border-gray-200">
+                                    <p class="text-[9px] text-gray-400 text-center mt-1">點擊圖片可放大查看大圖</p>
+                                </div>
+                                <div id="boarding-return-pdf-preview" class="hidden bg-white p-3 rounded-lg border border-gray-200 flex items-center justify-between">
+                                    <div class="flex items-center gap-2 overflow-hidden">
+                                        <i class="fa-solid fa-file-pdf text-red-500 text-xl shrink-0"></i>
+                                        <span id="boarding-return-filename-display" class="text-xs font-medium text-gray-700 truncate"></span>
+                                    </div>
+                                    <a id="boarding-return-pdf-link" href="#" target="_blank" class="bg-stone-700 text-white text-[11px] px-3 py-1 rounded-lg font-medium shrink-0 hover:bg-stone-800 transition">開啟 PDF</a>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <!-- Visit Japan Web Upload Section -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-peach-100">
+                <div class="bg-gradient-to-r from-peach-500 to-peach-600 text-white px-4 py-2.5 flex justify-between items-center text-sm font-bold">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-passport"></i> Visit Japan Web</span>
+                    <a href="https://services.digital.go.jp/zh-cmn-hant/visit-japan-web/" target="_blank" class="bg-white/20 hover:bg-white/30 text-white text-[11px] px-2.5 py-1 rounded-full font-medium transition flex items-center gap-1">
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i> 前往官網填寫
+                    </a>
+                </div>
+                <div class="p-4 space-y-3">
+                    <p class="text-xs text-gray-500">建議出發前於官網完成入境審查與海關申報線上手續，並將完成後的 QR Code 截圖上傳保存於此，入境時可快速出示。</p>
+                    <details class="group" open>
+                        <summary class="text-xs text-peach-600 font-medium cursor-pointer list-none flex items-center justify-between">
+                            <span>📲 Visit Japan Web QR Code 上傳</span>
+                            <i class="fa-solid fa-chevron-down transition-transform group-open:rotate-180"></i>
+                        </summary>
+                        <div class="mt-2 pt-2 border-t border-gray-100 space-y-2">
+                            <div id="visit-japan-web-dropzone" ondragover="handleGenericDragOver(event, 'visit-japan-web')" ondragleave="handleGenericDragLeave(event, 'visit-japan-web')" ondrop="handleGenericDrop(event, 'visit-japan-web')" class="border-2 border-dashed border-peach-200 hover:border-peach-400 bg-peach-50/40 rounded-xl p-4 text-center transition cursor-pointer relative">
+                                <input type="file" id="visit-japan-web-input" onchange="handleGenericFileSelect(event, 'visit-japan-web')" class="hidden" accept="image/png, image/jpeg, application/pdf">
+                                <label for="visit-japan-web-input" class="cursor-pointer space-y-1 block">
+                                    <i class="fa-solid fa-cloud-arrow-up text-2xl text-peach-400"></i>
+                                    <p class="text-xs font-bold text-gray-700">點擊上傳或拖曳 QR Code 截圖至此</p>
+                                    <p class="text-[10px] text-gray-400">支援 PNG, JPG, PDF 檔案 (建議 5MB 以內)</p>
+                                </label>
+                            </div>
+                            <div id="visit-japan-web-preview-container" class="hidden border border-gray-100 bg-gray-50 p-3 rounded-xl space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-[11px] font-bold text-gray-700 flex items-center gap-1">
+                                        <i class="fa-solid fa-paperclip text-peach-500"></i> 已上傳截圖預覽
+                                    </span>
+                                    <button onclick="removeGenericFile('visit-japan-web')" class="text-[10px] text-red-500 hover:underline flex items-center gap-0.5">
+                                        <i class="fa-solid fa-trash-can"></i> 移除/重新上傳
+                                    </button>
+                                </div>
+                                <div id="visit-japan-web-img-preview" class="hidden">
+                                    <img id="visit-japan-web-img-element" onclick="openFullImage('visit-japan-web-img-element')" src="" alt="Visit Japan Web QR Code" class="w-full max-h-48 object-cover rounded-lg shadow-sm cursor-zoom-in border border-gray-200">
+                                    <p class="text-[9px] text-gray-400 text-center mt-1">點擊圖片可放大查看大圖</p>
+                                </div>
+                                <div id="visit-japan-web-pdf-preview" class="hidden bg-white p-3 rounded-lg border border-gray-200 flex items-center justify-between">
+                                    <div class="flex items-center gap-2 overflow-hidden">
+                                        <i class="fa-solid fa-file-pdf text-red-500 text-xl shrink-0"></i>
+                                        <span id="visit-japan-web-filename-display" class="text-xs font-medium text-gray-700 truncate"></span>
+                                    </div>
+                                    <a id="visit-japan-web-pdf-link" href="#" target="_blank" class="bg-peach-500 text-white text-[11px] px-3 py-1 rounded-lg font-medium shrink-0 hover:bg-peach-600 transition">開啟 PDF</a>
+                                </div>
+                            </div>
                         </div>
                     </details>
                 </div>
@@ -733,26 +857,57 @@
         <!-- ================= TAB 5: 帳務 (Expense Splitter & Personal Expenses) ================= -->
         <div id="tab-expense" class="tab-content hidden space-y-4">
             
-            <!-- Shared Expense Splitter Card -->
+            <!-- Expense Overview Card -->
             <div class="bg-gradient-to-br from-peach-500 to-peach-600 text-white p-4 rounded-2xl shadow-md space-y-3">
-                <h3 class="text-sm font-bold flex items-center gap-2">
-                    <span>💰</span> 旅遊共用分帳 (Lucy & Rigo 平分)
-                </h3>
-                <div class="grid grid-cols-2 gap-3 pt-1">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-sm font-bold flex items-center gap-2">
+                        <span>💰</span> 旅遊花費總覽
+                    </h3>
+                    <div class="flex items-center bg-white/15 rounded-full p-0.5 text-[10px] font-bold">
+                        <button type="button" onclick="setMyIdentity('Lucy')" id="identity-btn-Lucy" class="px-2.5 py-1 rounded-full transition">我是 Lucy</button>
+                        <button type="button" onclick="setMyIdentity('Rigo')" id="identity-btn-Rigo" class="px-2.5 py-1 rounded-full transition">我是 Rigo</button>
+                    </div>
+                </div>
+
+                <!-- My Total (top) -->
+                <div class="bg-white/15 backdrop-blur-sm p-3 rounded-xl">
+                    <p class="text-[10px] text-peach-100">我的總花費 (個人花費 + 共用平分)</p>
+                    <p class="text-2xl font-bold mt-0.5" id="my-total-amount">¥0</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <!-- Bottom Left: Shared -->
                     <div class="bg-white/10 backdrop-blur-sm p-3 rounded-xl">
                         <p class="text-[10px] text-peach-100">共用總支出</p>
                         <p class="text-lg font-bold mt-0.5" id="total-shared-amount">¥0</p>
+                        <p class="text-[10px] text-peach-100 mt-1.5" id="settlement-summary-text">尚無分帳記錄</p>
                     </div>
+                    <!-- Bottom Right: My personal (collapsible) -->
                     <div class="bg-white/10 backdrop-blur-sm p-3 rounded-xl">
-                        <p class="text-[10px] text-peach-100">分帳結算結果</p>
-                        <p class="text-xs font-bold mt-1" id="settlement-summary-text">尚無分帳記錄</p>
+                        <button type="button" onclick="toggleMyExpenseCollapse()" class="w-full flex justify-between items-center text-left">
+                            <span class="text-[10px] text-peach-100">我的花費</span>
+                            <i id="my-expense-chevron" class="fa-solid fa-chevron-down text-[10px] transition-transform"></i>
+                        </button>
+                        <p class="text-lg font-bold mt-0.5" id="my-personal-total-amount">¥0</p>
+                        <div id="my-expense-detail" class="hidden mt-2 space-y-1 max-h-28 overflow-y-auto text-left">
+                            <!-- Populated dynamically -->
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Add Shared Expense Form -->
+            <!-- Unified Add Expense Form -->
             <div class="bg-white p-4 rounded-2xl shadow-sm border border-peach-100 space-y-3">
-                <h4 class="text-xs font-bold text-gray-800">➕ 記錄共用消費 (誰先出 / 平分)</h4>
+                <h4 class="text-xs font-bold text-gray-800">➕ 新增一筆消費</h4>
+                <div class="grid grid-cols-2 gap-2">
+                    <button type="button" onclick="switchExpenseType('shared')" id="expense-type-btn-shared" class="py-2 rounded-xl text-xs font-bold transition border-2 flex items-center justify-center gap-1.5">
+                        💰 共用花費
+                    </button>
+                    <button type="button" onclick="switchExpenseType('personal')" id="expense-type-btn-personal" class="py-2 rounded-xl text-xs font-bold transition border-2 flex items-center justify-center gap-1.5">
+                        🛍️ 我的花費
+                    </button>
+                </div>
+
                 <form id="shared-expense-form" onsubmit="addSharedExpense(event)" class="space-y-2.5">
                     <div>
                         <label class="text-[10px] text-gray-500">消費項目名稱</label>
@@ -775,27 +930,8 @@
                         新增共用帳務
                     </button>
                 </form>
-            </div>
 
-            <!-- Shared Expense List -->
-            <div class="bg-white p-4 rounded-2xl shadow-sm border border-peach-100 space-y-3">
-                <div class="flex justify-between items-center">
-                    <h4 class="text-xs font-bold text-gray-800">📋 共用消費明細</h4>
-                    <button onclick="clearSharedExpenses()" class="text-[11px] text-red-500 hover:underline">清空全部</button>
-                </div>
-                <div id="shared-expense-list" class="space-y-2 max-h-48 overflow-y-auto">
-                    <!-- Populated dynamically -->
-                </div>
-            </div>
-
-            <!-- Personal Expense Recorder Card -->
-            <div class="bg-white p-4 rounded-2xl shadow-sm border border-peach-100 space-y-3 pt-2">
-                <div class="flex justify-between items-center border-t border-gray-100 pt-3">
-                    <h4 class="text-xs font-bold text-gray-800">🛍️ 個人專屬記帳 (自己花了多少)</h4>
-                    <span class="text-xs font-bold text-peach-600" id="personal-total-amount">個人總計: ¥0</span>
-                </div>
-                
-                <form id="personal-expense-form" onsubmit="addPersonalExpense(event)" class="space-y-2.5">
+                <form id="personal-expense-form" onsubmit="addPersonalExpense(event)" class="space-y-2.5 hidden">
                     <div class="grid grid-cols-2 gap-2">
                         <div>
                             <label class="text-[10px] text-gray-500">記在誰的名下</label>
@@ -817,8 +953,26 @@
                         記一筆個人花費
                     </button>
                 </form>
+            </div>
 
-                <div id="personal-expense-list" class="space-y-2 max-h-48 overflow-y-auto pt-2">
+            <!-- Shared Expense List -->
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-peach-100 space-y-3">
+                <div class="flex justify-between items-center">
+                    <h4 class="text-xs font-bold text-gray-800">📋 共用消費明細</h4>
+                    <button onclick="clearSharedExpenses()" class="text-[11px] text-red-500 hover:underline">清空全部</button>
+                </div>
+                <div id="shared-expense-list" class="space-y-2 max-h-48 overflow-y-auto">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+
+            <!-- Personal Expense List -->
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-peach-100 space-y-3">
+                <div class="flex justify-between items-center">
+                    <h4 class="text-xs font-bold text-gray-800">🛍️ 個人消費明細 (兩人各自記帳)</h4>
+                    <span class="text-xs font-bold text-peach-600" id="personal-total-amount">個人總計: ¥0</span>
+                </div>
+                <div id="personal-expense-list" class="space-y-2 max-h-48 overflow-y-auto">
                     <!-- Populated dynamically -->
                 </div>
             </div>
@@ -852,10 +1006,14 @@
                             <input type="text" id="shop-item-store" placeholder="例如：唐吉訶德 / 藥妝店" class="w-full text-xs p-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-peach-500 bg-white">
                         </div>
                         <div>
+                            <label class="text-[10px] text-gray-500">店家地圖連結 (選填，可貼 Google Maps 網址供導航)</label>
+                            <input type="url" id="shop-item-map" placeholder="貼上 Google Maps 分享連結" class="w-full text-xs p-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-peach-500 bg-white">
+                        </div>
+                        <div>
                             <label class="text-[10px] text-gray-500">商品照片示意 (選填)</label>
                             <input type="file" id="shop-item-photo" accept="image/*" onchange="previewShoppingPhoto(event)" class="w-full text-[10px] text-gray-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-[10px] file:font-medium file:bg-peach-500 file:text-white hover:file:bg-peach-600">
                             <div id="shop-item-photo-preview" class="hidden mt-2 relative inline-block">
-                                <img id="shop-item-photo-preview-img" src="" class="w-16 h-16 object-cover rounded-lg border border-gray-200">
+                                <img id="shop-item-photo-preview-img" onclick="openFullImage('shop-item-photo-preview-img')" src="" class="w-16 h-16 object-cover rounded-lg border border-gray-200 cursor-zoom-in">
                                 <button type="button" onclick="clearShoppingPhotoPreview()" class="absolute -top-1.5 -right-1.5 bg-gray-700 text-white rounded-full w-4 h-4 flex items-center justify-center text-[9px] leading-none">✕</button>
                             </div>
                         </div>
@@ -1021,6 +1179,94 @@
             }
         }
 
+        // Generic file upload widget (used for boarding passes & Visit Japan Web)
+        function handleGenericFileSelect(event, key) {
+            const file = event.target.files[0];
+            if (file) processGenericFile(file, key);
+        }
+
+        function handleGenericDragOver(e, key) {
+            e.preventDefault();
+            e.stopPropagation();
+            document.getElementById(`${key}-dropzone`).classList.add('bg-peach-100/60');
+        }
+
+        function handleGenericDragLeave(e, key) {
+            e.preventDefault();
+            e.stopPropagation();
+            document.getElementById(`${key}-dropzone`).classList.remove('bg-peach-100/60');
+        }
+
+        function handleGenericDrop(e, key) {
+            e.preventDefault();
+            e.stopPropagation();
+            document.getElementById(`${key}-dropzone`).classList.remove('bg-peach-100/60');
+            const file = e.dataTransfer.files[0];
+            if (file) processGenericFile(file, key);
+        }
+
+        function processGenericFile(file, key) {
+            if (file.size > 8 * 1024 * 1024) {
+                alert("檔案較大，建議上傳 5MB 以下之圖片或 PDF。");
+            }
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const fileData = { name: file.name, type: file.type, dataUrl: e.target.result };
+                try {
+                    localStorage.setItem(`fukuoka_${key}_filedata`, JSON.stringify(fileData));
+                    renderGenericPreview(key, fileData);
+                } catch (err) {
+                    alert("儲存檔案失敗：檔案過大超過瀏覽器儲存限制。");
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function renderGenericPreview(key, fileData) {
+            if (!fileData || !fileData.dataUrl) return;
+            const previewContainer = document.getElementById(`${key}-preview-container`);
+            const dropzone = document.getElementById(`${key}-dropzone`);
+            const imgPreview = document.getElementById(`${key}-img-preview`);
+            const imgEl = document.getElementById(`${key}-img-element`);
+            const pdfPreview = document.getElementById(`${key}-pdf-preview`);
+            const filenameDisplay = document.getElementById(`${key}-filename-display`);
+            const pdfLink = document.getElementById(`${key}-pdf-link`);
+
+            previewContainer.classList.remove('hidden');
+            dropzone.classList.add('hidden');
+
+            if (fileData.type.startsWith('image/')) {
+                imgPreview.classList.remove('hidden');
+                pdfPreview.classList.add('hidden');
+                imgEl.src = fileData.dataUrl;
+            } else {
+                pdfPreview.classList.remove('hidden');
+                imgPreview.classList.add('hidden');
+                filenameDisplay.innerText = fileData.name || "已上傳檔案.pdf";
+                pdfLink.href = fileData.dataUrl;
+            }
+        }
+
+        function removeGenericFile(key) {
+            if (confirm("確定要移除現有的檔案嗎？")) {
+                localStorage.removeItem(`fukuoka_${key}_filedata`);
+                document.getElementById(`${key}-preview-container`).classList.add('hidden');
+                document.getElementById(`${key}-dropzone`).classList.remove('hidden');
+                document.getElementById(`${key}-input`).value = '';
+            }
+        }
+
+        function loadGenericFile(key) {
+            const savedFileData = localStorage.getItem(`fukuoka_${key}_filedata`);
+            if (savedFileData) {
+                try {
+                    renderGenericPreview(key, JSON.parse(savedFileData));
+                } catch(e) {
+                    console.error("無法載入檔案", e);
+                }
+            }
+        }
+
         function openFullImage(sourceId = 'voucher-img-element') {
             const imgSrc = document.getElementById(sourceId).src;
             if (imgSrc) {
@@ -1174,17 +1420,26 @@
                     { id: 501, text: "輕便隨身小背包 / 托特包 (逛街與一日遊裝隨身物品)", checked: false },
                     { id: 502, text: "摺疊傘 / 輕量雨具 (應付秋天偶陣雨)", checked: false },
                     { id: 503, text: "分裝夾鏈袋 / 購物袋 (裝藥妝或備用)", checked: false },
-                    { id: 504, text: "空行李箱 (準備第六天裝滿法國麵包與戰利品回台)", checked: false }
+                    { id: 504, text: "空行李箱 (準備第六天裝滿戰利品回台)", checked: false }
                 ]
             }
         ];
 
+        function loadCustomPackingItems() {
+            return JSON.parse(localStorage.getItem('fukuoka_custom_packing_items')) || {};
+        }
+
+        function saveCustomPackingItems(data) {
+            localStorage.setItem('fukuoka_custom_packing_items', JSON.stringify(data));
+        }
+
         function loadPackingList() {
             let savedState = JSON.parse(localStorage.getItem('fukuoka_detailed_packing')) || {};
+            let customItems = loadCustomPackingItems();
             const container = document.getElementById('packing-list-container');
             container.innerHTML = '';
 
-            detailedPackingCategories.forEach(cat => {
+            detailedPackingCategories.forEach((cat, catIdx) => {
                 const sectionDiv = document.createElement('div');
                 sectionDiv.className = "bg-gray-50 p-3.5 rounded-2xl space-y-2 border border-peach-100";
                 
@@ -1199,7 +1454,25 @@
                         </label>
                     `;
                 });
-                html += `</div>`;
+
+                const catCustomItems = customItems[catIdx] || [];
+                catCustomItems.forEach(item => {
+                    const safeText = escapeHtml(item.text);
+                    html += `
+                        <label class="flex items-start gap-2.5 cursor-pointer hover:bg-peach-50/50 p-1 rounded transition">
+                            <input type="checkbox" ${item.checked ? 'checked' : ''} onchange="toggleCustomPacking(${catIdx}, ${item.id})" class="w-4 h-4 mt-0.5 accent-peach-500 rounded shrink-0">
+                            <span class="text-xs flex-1 ${item.checked ? 'line-through text-gray-400' : 'text-gray-700 font-medium'}">${safeText}</span>
+                            <button type="button" onclick="deleteCustomPacking(${catIdx}, ${item.id})" class="text-gray-300 hover:text-red-500 shrink-0"><i class="fa-solid fa-trash-can text-[10px]"></i></button>
+                        </label>
+                    `;
+                });
+
+                html += `</div>
+                    <form onsubmit="addCustomPacking(event, ${catIdx})" class="flex gap-1.5 pt-1.5 mt-1 border-t border-gray-200">
+                        <input type="text" id="custom-packing-input-${catIdx}" placeholder="自訂項目，例如：耳機" class="flex-1 text-xs p-2 rounded-lg border border-gray-200 focus:outline-none focus:border-peach-500 bg-white">
+                        <button type="submit" class="bg-peach-500 hover:bg-peach-600 text-white w-8 h-8 rounded-lg text-xs font-bold transition shrink-0 flex items-center justify-center"><i class="fa-solid fa-plus"></i></button>
+                    </form>
+                `;
                 sectionDiv.innerHTML = html;
                 container.appendChild(sectionDiv);
             });
@@ -1212,15 +1485,133 @@
             loadPackingList();
         }
 
+        function addCustomPacking(e, catIdx) {
+            e.preventDefault();
+            const input = document.getElementById(`custom-packing-input-${catIdx}`);
+            const text = input.value.trim();
+            if (!text) return;
+            let customItems = loadCustomPackingItems();
+            if (!customItems[catIdx]) customItems[catIdx] = [];
+            customItems[catIdx].push({ id: Date.now(), text: text, checked: false });
+            saveCustomPackingItems(customItems);
+            loadPackingList();
+        }
+
+        function toggleCustomPacking(catIdx, id) {
+            let customItems = loadCustomPackingItems();
+            const item = (customItems[catIdx] || []).find(i => i.id === id);
+            if (item) item.checked = !item.checked;
+            saveCustomPackingItems(customItems);
+            loadPackingList();
+        }
+
+        function deleteCustomPacking(catIdx, id) {
+            let customItems = loadCustomPackingItems();
+            customItems[catIdx] = (customItems[catIdx] || []).filter(i => i.id !== id);
+            saveCustomPackingItems(customItems);
+            loadPackingList();
+        }
+
         function resetPacking() {
-            if(confirm("確定要重置所有行李勾選狀態嗎？")) {
+            if(confirm("確定要重置所有行李勾選狀態嗎？(自訂項目將會保留，僅重置勾選狀態)")) {
                 localStorage.removeItem('fukuoka_detailed_packing');
+                let customItems = loadCustomPackingItems();
+                Object.keys(customItems).forEach(catIdx => {
+                    customItems[catIdx].forEach(item => item.checked = false);
+                });
+                saveCustomPackingItems(customItems);
                 loadPackingList();
             }
         }
 
         // Shared & Personal Expense Functions
+        // Identity & Unified Expense Entry
+        function getMyIdentity() {
+            return localStorage.getItem('fukuoka_my_identity') || 'Lucy';
+        }
+
+        function setMyIdentity(name) {
+            localStorage.setItem('fukuoka_my_identity', name);
+            updateIdentityButtons();
+            const persOwnerSelect = document.getElementById('pers-owner');
+            if (persOwnerSelect) persOwnerSelect.value = name;
+            updateMyTotalSummary();
+        }
+
+        function updateIdentityButtons() {
+            const me = getMyIdentity();
+            ['Lucy', 'Rigo'].forEach(name => {
+                const btn = document.getElementById(`identity-btn-${name}`);
+                if (!btn) return;
+                if (name === me) {
+                    btn.classList.add('bg-white', 'text-peach-600');
+                    btn.classList.remove('text-white');
+                } else {
+                    btn.classList.remove('bg-white', 'text-peach-600');
+                    btn.classList.add('text-white');
+                }
+            });
+        }
+
+        function switchExpenseType(type) {
+            const sharedForm = document.getElementById('shared-expense-form');
+            const personalForm = document.getElementById('personal-expense-form');
+            const sharedBtn = document.getElementById('expense-type-btn-shared');
+            const personalBtn = document.getElementById('expense-type-btn-personal');
+
+            if (type === 'shared') {
+                sharedForm.classList.remove('hidden');
+                personalForm.classList.add('hidden');
+                sharedBtn.classList.add('border-peach-500', 'bg-peach-50', 'text-peach-700');
+                sharedBtn.classList.remove('border-gray-200', 'text-gray-400');
+                personalBtn.classList.add('border-gray-200', 'text-gray-400');
+                personalBtn.classList.remove('border-stone-700', 'bg-stone-50', 'text-stone-700');
+            } else {
+                personalForm.classList.remove('hidden');
+                sharedForm.classList.add('hidden');
+                const persOwnerSelect = document.getElementById('pers-owner');
+                if (persOwnerSelect) persOwnerSelect.value = getMyIdentity();
+                personalBtn.classList.add('border-stone-700', 'bg-stone-50', 'text-stone-700');
+                personalBtn.classList.remove('border-gray-200', 'text-gray-400');
+                sharedBtn.classList.add('border-gray-200', 'text-gray-400');
+                sharedBtn.classList.remove('border-peach-500', 'bg-peach-50', 'text-peach-700');
+            }
+        }
+
+        function toggleMyExpenseCollapse() {
+            document.getElementById('my-expense-detail').classList.toggle('hidden');
+            document.getElementById('my-expense-chevron').classList.toggle('rotate-180');
+        }
+
+        function updateMyTotalSummary() {
+            const sharedExpenses = JSON.parse(localStorage.getItem('fukuoka_shared_expenses')) || [];
+            const sharedTotal = sharedExpenses.reduce((sum, e) => sum + Number(e.amount), 0);
+
+            const persExpenses = JSON.parse(localStorage.getItem('fukuoka_personal_expenses')) || [];
+            const me = getMyIdentity();
+            const myExpenses = persExpenses.filter(e => e.owner === me);
+            const myPersonalTotal = myExpenses.reduce((sum, e) => sum + Number(e.amount), 0);
+            const myTotal = myPersonalTotal + sharedTotal / 2;
+
+            document.getElementById('my-total-amount').innerText = `¥${Math.round(myTotal).toLocaleString()}`;
+            document.getElementById('my-personal-total-amount').innerText = `¥${myPersonalTotal.toLocaleString()}`;
+
+            const detailContainer = document.getElementById('my-expense-detail');
+            if (myExpenses.length === 0) {
+                detailContainer.innerHTML = `<p class="text-[10px] text-peach-100/80">尚無個人消費記錄</p>`;
+            } else {
+                detailContainer.innerHTML = myExpenses.map(e => `
+                    <div class="flex justify-between text-[10px] text-white/90">
+                        <span class="truncate mr-2">${escapeHtml(e.title)}</span>
+                        <span class="font-bold shrink-0">¥${Number(e.amount).toLocaleString()}</span>
+                    </div>
+                `).join('');
+            }
+        }
+
         function loadExpensesData() {
+            updateIdentityButtons();
+            switchExpenseType('shared');
             loadSharedExpenses();
             loadPersonalExpenses();
         }
@@ -1272,6 +1663,8 @@
             } else {
                 summaryText.innerText = `Lucy 應給 Rigo ¥${Math.round(-diff).toLocaleString()}`;
             }
+
+            updateMyTotalSummary();
         }
 
         function addSharedExpense(e) {
@@ -1330,6 +1723,7 @@
             });
 
             document.getElementById('personal-total-amount').innerText = `個人總計: ¥${persTotal.toLocaleString()}`;
+            updateMyTotalSummary();
         }
 
         function addPersonalExpense(e) {
@@ -1385,6 +1779,7 @@
             e.preventDefault();
             const name = document.getElementById('shop-item-name').value.trim();
             const store = document.getElementById('shop-item-store').value.trim();
+            const mapUrl = document.getElementById('shop-item-map').value.trim();
             const fileInput = document.getElementById('shop-item-photo');
             const file = fileInput.files[0];
 
@@ -1394,6 +1789,7 @@
                     id: Date.now(),
                     name: name,
                     store: store,
+                    mapUrl: mapUrl || null,
                     photo: photoDataUrl || null,
                     checked: false
                 });
@@ -1437,6 +1833,7 @@
                 div.className = `flex items-center gap-3 p-3 rounded-xl border transition ${item.checked ? 'bg-gray-50 border-gray-100' : 'bg-white border-peach-100 shadow-sm'}`;
                 const safeName = escapeHtml(item.name);
                 const safeStore = escapeHtml(item.store);
+                const safeMapUrl = item.mapUrl ? escapeHtml(item.mapUrl) : '';
                 div.innerHTML = `
                     <input type="checkbox" ${item.checked ? 'checked' : ''} onchange="toggleShoppingItem(${item.id})" class="w-4 h-4 accent-peach-500 rounded shrink-0">
                     ${item.photo
@@ -1447,6 +1844,10 @@
                         <p class="text-xs font-bold truncate ${item.checked ? 'line-through text-gray-400' : 'text-gray-800'}">${safeName}</p>
                         ${safeStore ? `<p class="text-[10px] truncate ${item.checked ? 'text-gray-300' : 'text-gray-500'}">📍 ${safeStore}</p>` : ''}
                     </div>
+                    ${safeMapUrl
+                        ? `<a href="${safeMapUrl}" target="_blank" onclick="event.stopPropagation()" class="text-peach-500 hover:text-peach-700 transition shrink-0" title="前往導航"><i class="fa-solid fa-map-location-dot text-sm"></i></a>`
+                        : ''
+                    }
                     <button onclick="deleteShoppingItem(${item.id})" class="text-gray-300 hover:text-red-500 transition shrink-0">
                         <i class="fa-solid fa-trash-can text-xs"></i>
                     </button>
@@ -1476,6 +1877,9 @@
             loadPackingList();
             loadExpensesData();
             loadShoppingList();
+            loadGenericFile('boarding-outbound');
+            loadGenericFile('boarding-return');
+            loadGenericFile('visit-japan-web');
         }
     </script>
 </body>
