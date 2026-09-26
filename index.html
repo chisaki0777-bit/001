@@ -1846,8 +1846,6 @@
             listContainer.innerHTML = '';
             
             let totalTWD = 0;
-            let paidLucyTWD = 0;
-            let paidRigoTWD = 0;
 
             if(expenses.length === 0) {
                 listContainer.innerHTML = `<p class="text-xs text-gray-400 text-center py-2">尚無共用分帳記錄</p>`;
@@ -1857,8 +1855,6 @@
                 const cur = exp.currency || 'JPY';
                 const amtTWD = convertAmount(exp.amount, cur, 'TWD');
                 totalTWD += amtTWD;
-                if(exp.payer === 'Lucy') paidLucyTWD += amtTWD;
-                if(exp.payer === 'Rigo') paidRigoTWD += amtTWD;
 
                 const isSettled = !!exp.settled;
                 const itemDiv = document.createElement('div');
@@ -1909,19 +1905,6 @@
             const listTotalEl = document.getElementById('shared-list-total');
             if (listTotalEl) listTotalEl.innerHTML = `共同消費總計: ${formatDualTWD(totalTWD)}`;
 
-            const halfTWD = totalTWD / 2;
-            const diffTWD = paidLucyTWD - halfTWD;
-            const summaryText = document.getElementById('settlement-summary-text');
-            if (expenses.length === 0) {
-                summaryText.innerText = "尚無分帳記錄";
-            } else if (Math.abs(diffTWD) < 1) {
-                summaryText.innerText = "目前兩人完美打平！";
-            } else if (diffTWD > 0) {
-                summaryText.innerText = `Rigo 應給 Lucy ${formatTWD(diffTWD)}`;
-            } else {
-                summaryText.innerText = `Lucy 應給 Rigo ${formatTWD(-diffTWD)}`;
-            }
-
             renderUnsettledExpenses(expenses);
             updateMyTotalSummary();
         }
@@ -1938,18 +1921,24 @@
         function renderUnsettledExpenses(expenses) {
             const listContainer = document.getElementById('unsettled-expense-list');
             const totalLabel = document.getElementById('unsettled-total-amount');
+            const summaryText = document.getElementById('settlement-summary-text');
             if (!listContainer || !totalLabel) return;
 
             const unsettled = expenses.filter(exp => !exp.settled);
             listContainer.innerHTML = '';
             let unsettledTotalTWD = 0;
+            let paidLucyTWD = 0;
+            let paidRigoTWD = 0;
 
             if (unsettled.length === 0) {
                 listContainer.innerHTML = `<p class="text-xs text-gray-400 text-center py-2">🎉 目前沒有未結清項目</p>`;
             } else {
                 unsettled.forEach(exp => {
                     const cur = exp.currency || 'JPY';
-                    unsettledTotalTWD += convertAmount(exp.amount, cur, 'TWD');
+                    const amtTWD = convertAmount(exp.amount, cur, 'TWD');
+                    unsettledTotalTWD += amtTWD;
+                    if (exp.payer === 'Lucy') paidLucyTWD += amtTWD;
+                    if (exp.payer === 'Rigo') paidRigoTWD += amtTWD;
                     const itemDiv = document.createElement('div');
                     itemDiv.className = "flex justify-between items-center bg-amber-50 p-2.5 rounded-xl text-xs border border-amber-100";
                     itemDiv.innerHTML = `
@@ -1964,6 +1953,24 @@
             }
 
             totalLabel.innerHTML = `未結清: ${formatDualTWD(unsettledTotalTWD)}`;
+
+            // Who-owes-whom is calculated from unsettled items only — once an
+            // item is checked off as settled, it no longer affects this balance.
+            if (summaryText) {
+                const halfTWD = unsettledTotalTWD / 2;
+                const diffTWD = paidLucyTWD - halfTWD;
+                if (expenses.length === 0) {
+                    summaryText.innerText = "尚無分帳記錄";
+                } else if (unsettled.length === 0) {
+                    summaryText.innerText = "🎉 目前已全部結清";
+                } else if (Math.abs(diffTWD) < 1) {
+                    summaryText.innerText = "目前兩人完美打平！";
+                } else if (diffTWD > 0) {
+                    summaryText.innerText = `Rigo 應給 Lucy ${formatTWD(diffTWD)}`;
+                } else {
+                    summaryText.innerText = `Lucy 應給 Rigo ${formatTWD(-diffTWD)}`;
+                }
+            }
         }
 
         function addSharedExpense(e) {
