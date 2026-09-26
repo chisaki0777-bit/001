@@ -870,20 +870,14 @@
                 <div class="p-4 space-y-3">
 
                 <!-- Currency settings (moved inside overview card) -->
-                <div class="flex items-center justify-between gap-2 flex-wrap !-mt-1">
-                    <div class="flex items-center gap-1.5">
-                        <span class="text-[10px] text-peach-600 font-medium whitespace-nowrap">明細顯示</span>
-                        <div class="flex bg-white rounded-full p-0.5 text-[10px] font-bold border border-peach-200">
-                            <button type="button" onclick="setDisplayCurrency('JPY')" id="currency-btn-JPY" class="px-2.5 py-1 rounded-full transition text-gray-500">日幣 ¥</button>
-                            <button type="button" onclick="setDisplayCurrency('TWD')" id="currency-btn-TWD" class="px-2.5 py-1 rounded-full transition text-gray-500">台幣 NT$</button>
-                        </div>
-                    </div>
+                <div class="flex items-center justify-end gap-2 flex-wrap !-mt-1">
                     <div class="flex items-center gap-1.5">
                         <label for="jpy-rate-input" class="text-[10px] text-peach-600 font-medium whitespace-nowrap">匯率 1¥=</label>
                         <input type="number" step="0.0001" min="0" id="jpy-rate-input" oninput="updateJpyRate(this.value)" placeholder="0.21" class="w-16 text-[11px] py-1 px-2.5 rounded-full border border-peach-200 focus:outline-none focus:border-peach-400 bg-white text-gray-700 text-center">
                         <span class="text-[10px] text-peach-600">台幣</span>
                     </div>
                 </div>
+                <p class="text-[10px] text-gray-400 !-mt-1.5">💡 明細與未結清金額會同時顯示台幣＆日幣（以記帳當下選擇的幣別為主）</p>
 
                 <!-- My Total (top) -->
                 <div class="bg-peach-100 p-3 rounded-xl">
@@ -1669,6 +1663,31 @@
             return `${sign}${symbol}${Math.round(Math.abs(converted)).toLocaleString()}`;
         }
 
+        // Formats a single record's amount showing BOTH currencies at once.
+        // The currency it was originally recorded in comes first (as requested),
+        // with the converted equivalent shown afterwards in parentheses.
+        function formatDual(amount, fromCur) {
+            const cur = fromCur || 'JPY';
+            const amtJPY = convertAmount(amount, cur, 'JPY');
+            const amtTWD = convertAmount(amount, cur, 'TWD');
+            const jpyStr = `¥${Math.round(Math.abs(amtJPY)).toLocaleString()}`;
+            const twdStr = `NT$${Math.round(Math.abs(amtTWD)).toLocaleString()}`;
+            const sign = amount < 0 ? '-' : '';
+            if (cur === 'TWD') {
+                return `${sign}${twdStr} <span class="font-normal text-gray-400">(${jpyStr})</span>`;
+            }
+            return `${sign}${jpyStr} <span class="font-normal text-gray-400">(${twdStr})</span>`;
+        }
+
+        // Formats an aggregate total (already summed in TWD) showing both currencies.
+        function formatDualTWD(amountTWD) {
+            const amtJPY = convertAmount(amountTWD, 'TWD', 'JPY');
+            const sign = amountTWD < 0 ? '-' : '';
+            const twdStr = `NT$${Math.round(Math.abs(amountTWD)).toLocaleString()}`;
+            const jpyStr = `¥${Math.round(Math.abs(amtJPY)).toLocaleString()}`;
+            return `${sign}${twdStr} <span class="font-normal text-gray-400">(${jpyStr})</span>`;
+        }
+
         function refreshAllExpenseDisplays() {
             loadSharedExpenses();
             loadPersonalExpenses();
@@ -1875,7 +1894,7 @@
                             </div>
                         </div>
                         <div class="flex items-center gap-2 shrink-0">
-                            <span class="font-bold ${isSettled ? 'text-gray-400' : 'text-gray-700'}">${formatMoney(exp.amount, cur)}</span>
+                            <span class="font-bold ${isSettled ? 'text-gray-400' : 'text-gray-700'}">${formatDual(exp.amount, cur)}</span>
                             <button onclick="startEditShared(${idx})" class="text-gray-300 hover:text-peach-500"><i class="fa-solid fa-pen text-[11px]"></i></button>
                             <button onclick="deleteSharedExpense(${idx})" class="text-gray-300 hover:text-red-500"><i class="fa-solid fa-trash text-[11px]"></i></button>
                         </div>
@@ -1888,7 +1907,7 @@
             document.getElementById('total-shared-amount').innerText = formatTWD(totalTWD);
             // Detail-list header total — follows the display-currency toggle
             const listTotalEl = document.getElementById('shared-list-total');
-            if (listTotalEl) listTotalEl.innerText = `共同消費總計: ${formatMoney(totalTWD, 'TWD')}`;
+            if (listTotalEl) listTotalEl.innerHTML = `共同消費總計: ${formatDualTWD(totalTWD)}`;
 
             const halfTWD = totalTWD / 2;
             const diffTWD = paidLucyTWD - halfTWD;
@@ -1938,13 +1957,13 @@
                             <p class="font-bold text-gray-800 truncate">${escapeHtml(exp.title)}</p>
                             <p class="text-[10px] text-gray-500">代付者: <span class="text-peach-600 font-medium">${exp.payer}</span></p>
                         </div>
-                        <span class="font-bold text-amber-700 shrink-0">${formatMoney(exp.amount, cur)}</span>
+                        <span class="font-bold text-amber-700 shrink-0">${formatDual(exp.amount, cur)}</span>
                     `;
                     listContainer.appendChild(itemDiv);
                 });
             }
 
-            totalLabel.innerText = `未結清: ${formatMoney(unsettledTotalTWD, 'TWD')}`;
+            totalLabel.innerHTML = `未結清: ${formatDualTWD(unsettledTotalTWD)}`;
         }
 
         function addSharedExpense(e) {
@@ -2054,7 +2073,7 @@
                             <p class="font-bold text-gray-800 truncate">${escapeHtml(exp.title)} <span class="text-[9px] bg-peach-100 text-peach-700 px-1.5 py-0.5 rounded ml-1">${escapeHtml(exp.owner)}</span></p>
                         </div>
                         <div class="flex items-center gap-2 shrink-0">
-                            <span class="font-bold text-gray-700">${formatMoney(exp.amount, cur)}</span>
+                            <span class="font-bold text-gray-700">${formatDual(exp.amount, cur)}</span>
                             <button onclick="startEditPersonal(${idx})" class="text-gray-300 hover:text-peach-500"><i class="fa-solid fa-pen text-[11px]"></i></button>
                             <button onclick="deletePersonalExpense(${idx})" class="text-gray-300 hover:text-red-500"><i class="fa-solid fa-trash text-[11px]"></i></button>
                         </div>
@@ -2063,7 +2082,7 @@
                 listContainer.appendChild(itemDiv);
             });
 
-            document.getElementById('personal-total-amount').innerText = `個人消費總計: ${formatMoney(persTotalTWD, 'TWD')}`;
+            document.getElementById('personal-total-amount').innerHTML = `個人消費總計: ${formatDualTWD(persTotalTWD)}`;
             updateMyTotalSummary();
         }
 
