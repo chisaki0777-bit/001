@@ -76,7 +76,7 @@
             <h1 class="text-xl font-bold tracking-wide flex items-center gap-2">
                 <span>✈️</span> 福岡鬆一下
             </h1>
-            <p class="text-xs text-peach-100 font-medium mt-0.5">2026/10/15 (三) ~ 10/21 (二) • 七天六夜</p>
+            <p class="text-xs text-peach-100 font-medium mt-0.5">2026/10/15 (四) ~ 10/21 (三) • 七天六夜</p>
         </div>
         <a href="https://maps.app.goo.gl/N9F8tJiQ9wgMCCvC8" target="_blank" class="bg-white/20 hover:bg-white/30 text-white px-3 py-1.5 rounded-full text-xs font-medium backdrop-blur-sm transition flex items-center gap-1 shadow-sm">
             <i class="fa-solid fa-map-location-dot text-[10px]"></i> 📍 福岡散策
@@ -99,7 +99,7 @@
             <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-peach-100">
                 <div class="bg-peach-500 text-white px-4 py-2.5 flex justify-between items-center text-sm font-bold">
                     <span class="flex items-center gap-2"><i class="fa-solid fa-plane-departure"></i> 去程航班 (IT720)</span>
-                    <span class="bg-white/20 text-xs px-2.5 py-1 rounded-full">10/15 (三)</span>
+                    <span class="bg-white/20 text-xs px-2.5 py-1 rounded-full">10/15 (四)</span>
                 </div>
                 <div class="p-4 space-y-3">
                     <div class="flex justify-between items-center border-b border-dashed border-gray-200 pb-3">
@@ -175,7 +175,7 @@
             <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-peach-100">
                 <div class="bg-stone-700 text-white px-4 py-2.5 flex justify-between items-center text-sm font-bold">
                     <span class="flex items-center gap-2"><i class="fa-solid fa-plane-arrival"></i> 回程航班 (IT241)</span>
-                    <span class="bg-white/20 text-xs px-2.5 py-1 rounded-full">10/21 (二)</span>
+                    <span class="bg-white/20 text-xs px-2.5 py-1 rounded-full">10/21 (三)</span>
                 </div>
                 <div class="p-4 space-y-3">
                     <div class="flex justify-between items-center border-b border-dashed border-gray-200 pb-3">
@@ -306,9 +306,9 @@
                 <button onclick="switchDay(1)" class="day-btn active px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition" data-day="1">Day 1 抵達</button>
                 <button onclick="switchDay(2)" class="day-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition" data-day="2">Day 2 藥院GOGO</button>
                 <button onclick="switchDay(3)" class="day-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition" data-day="3">Day 3 熊野一日遊</button>
-                <button onclick="switchDay(4)" class="day-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition" data-day="4">Day 4 天神採買</button>
+                <button onclick="switchDay(4)" class="day-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition" data-day="4">Day 4 採購Day</button>
                 <button onclick="switchDay(5)" class="day-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition" data-day="5">Day 5 由布院一日遊</button>
-                <button onclick="switchDay(6)" class="day-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition" data-day="6">Day 6 天神買到爆</button>
+                <button onclick="switchDay(6)" class="day-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition" data-day="6">Day 6 採購Day</button>
                 <button onclick="switchDay(7)" class="day-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition" data-day="7">Day 7 賦歸</button>
             </div>
 
@@ -318,7 +318,7 @@
                 <!-- DAY 1 -->
                 <div class="day-panel space-y-3" data-day-content="1">
                     <div class="bg-peach-100 text-peach-800 p-3 rounded-xl text-xs font-bold flex items-center justify-between">
-                        <span>📅 10/15 (三) 第一天：飛向福岡・入住休息</span>
+                        <span>📅 10/15 (四) 第一天：飛向福岡・入住休息</span>
                         <span class="text-peach-600">預估車資: ¥260~1,260</span>
                     </div>
 
@@ -372,46 +372,47 @@
 
                     <div class="bg-white p-4 rounded-2xl shadow-sm border border-peach-100 space-y-3">
                         <div class="flex items-start gap-3">
-                            <span class="bg-peach-500 text-white text-xs font-bold px-2 py-1 rounded-lg">14:25</span>
-                            <div>
-                                <h3 class="text-sm font-bold text-gray-800">桃園機場起飛 (IT720)</h3>
-                                <p class="text-xs text-gray-500">座位 23F, 24F，展開難忘的福岡假期！</p>
+                            <span id="bi-d1-1-time" class="bg-peach-500 text-white text-xs font-bold px-2 py-1 rounded-lg">14:25</span>
+                            <div id="bi-d1-1-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <h3 id="bi-d1-1-title" class="text-sm font-bold text-gray-800">桃園機場起飛 (IT720)</h3>
+                                </div>
+                                <p id="bi-d1-1-note" class="text-xs text-gray-500">座位 23F, 24F，展開難忘的福岡假期！</p>
                             </div>
                         </div>
                         <div class="border-l-2 border-peach-200 ml-4 pl-4 space-y-3">
-                            <div>
-                                <span class="text-xs font-bold text-peach-600">17:50 降落福岡機場</span>
-                                <p class="text-xs text-gray-600 mt-0.5">完成入境審查與領取行李。</p>
+                            <div id="bi-d1-2-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <span id="bi-d1-2-title" class="text-xs font-bold text-peach-600">17:50 降落福岡機場</span>
+                                </div>
+                                <p id="bi-d1-2-note" class="text-xs text-gray-600 mt-0.5">完成入境審查與領取行李。</p>
                             </div>
-                            <div>
-                                <span class="text-xs font-bold text-peach-600">18:30 - 19:15 前往飯店</span>
-                                <p class="text-xs text-gray-600 mt-0.5">搭乘國內線接駁車轉地下鐵機場線至「博多站」 (¥260/人) 或搭計程車直達飯店 (~¥1,000)。</p>
+                            <div id="bi-d1-3-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <span id="bi-d1-3-title" class="text-xs font-bold text-peach-600">18:30 - 19:15 前往飯店</span>
+                                </div>
+                                <p id="bi-d1-3-note" class="text-xs text-gray-600 mt-0.5">搭乘國內線接駁車轉地下鐵機場線至「博多站」 (¥260/人) 或搭計程車直達飯店 (~¥1,000)。</p>
                                 <div class="flex gap-2 mt-2">
-                                    <a href="https://maps.app.goo.gl/DvRteta1W1AVgtqT8" target="_blank" class="bg-peach-50 text-peach-700 px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-peach-100 transition flex items-center gap-1">
+                                    <a id="bi-d1-3-link" href="https://maps.app.goo.gl/DvRteta1W1AVgtqT8" target="_blank" class="bg-peach-50 text-peach-700 px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-peach-100 transition flex items-center gap-1">
                                         <i class="fa-solid fa-map-location-dot"></i> SG 博多旅居飯店導航
                                     </a>
                                 </div>
                             </div>
-                            <div>
-                                <span class="text-xs font-bold text-peach-600">19:30 入住與晚餐</span>
-                                <p class="text-xs text-gray-600 mt-0.5">於飯店附近超商或博多站周邊輕鬆享用晚餐，儲存體力準備隔天行程。</p>
+                            <div id="bi-d1-4-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <span id="bi-d1-4-title" class="text-xs font-bold text-peach-600">19:30 入住與晚餐</span>
+                                </div>
+                                <p id="bi-d1-4-note" class="text-xs text-gray-600 mt-0.5">於飯店附近超商或博多站周邊輕鬆享用晚餐，儲存體力準備隔天行程。</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Custom Locations (Day 1) -->
-                    <div class="bg-white p-3 rounded-2xl shadow-sm border border-dashed border-peach-300 space-y-2">
-                        <div id="custom-locations-day-1" class="space-y-2"></div>
-                        <button onclick="openLocationForm(1)" class="w-full flex items-center justify-center gap-1.5 text-xs font-bold text-peach-600 bg-peach-50 hover:bg-peach-100 transition py-2 rounded-xl">
-                            <i class="fa-solid fa-plus"></i> 新增地點
-                        </button>
-                    </div>
                 </div>
 
                 <!-- DAY 2 -->
                 <div class="day-panel hidden space-y-3" data-day-content="2">
                     <div class="bg-peach-100 text-peach-800 p-3 rounded-xl text-xs font-bold flex items-center justify-between">
-                        <span>📅 10/16 (四) 第二天：藥院散策 & 美味燒肉</span>
+                        <span>📅 10/16 (五) 第二天：藥院散策 & 美味燒肉</span>
                         <span class="text-peach-600">預估車資: ¥630~800</span>
                     </div>
 
@@ -480,42 +481,62 @@
                         </div>
 
                         <div class="flex items-start gap-3">
-                            <span class="bg-peach-500 text-white text-xs font-bold px-2 py-1 rounded-lg">10:00</span>
-                            <div>
-                                <h3 class="text-sm font-bold text-gray-800">旅館出發</h3>
-                                <p class="text-xs text-gray-500">悠閒早晨，準備前往藥院商圈。</p>
+                            <span id="bi-d2-1-time" class="bg-peach-500 text-white text-xs font-bold px-2 py-1 rounded-lg">10:00</span>
+                            <div id="bi-d2-1-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <h3 id="bi-d2-1-title" class="text-sm font-bold text-gray-800">旅館出發</h3>
+                                    <div class="flex items-center gap-1.5 shrink-0 pl-2">
+                                        <button onclick="openBuiltinItemForm('bi-d2-1', 'typeA')" class="text-gray-300 hover:text-peach-600"><i class="fa-solid fa-pen text-[10px]"></i></button>
+                                    </div>
+                                </div>
+                                <p id="bi-d2-1-note" class="text-xs text-gray-500">悠閒早晨，準備前往藥院商圈。</p>
                             </div>
                         </div>
                         <div class="border-l-2 border-peach-200 ml-4 pl-4 space-y-3">
-                            <div>
-                                <span class="text-xs font-bold text-peach-600">12:15 - 17:30 藥院質感散策</span>
-                                <p class="text-xs text-gray-600 mt-0.5">藥院一帶充滿精緻雜貨店、咖啡廳與選品店，慢步調享受午後時光。</p>
+                            <div id="bi-d2-2-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <span id="bi-d2-2-title" class="text-xs font-bold text-peach-600">12:15 - 17:30 藥院質感散策</span>
+                                    <div class="flex items-center gap-1.5 shrink-0 pl-2">
+                                        <button onclick="openBuiltinItemForm('bi-d2-2', 'typeB')" class="text-gray-300 hover:text-peach-600"><i class="fa-solid fa-pen text-[10px]"></i></button>
+                                    </div>
+                                </div>
+                                <p id="bi-d2-2-note" class="text-xs text-gray-600 mt-0.5">藥院一帶充滿精緻雜貨店、咖啡廳與選品店，慢步調享受午後時光。</p>
                                 <div class="flex gap-2 mt-2">
-                                    <a href="https://maps.app.goo.gl/rioR8kGCdeHo7Y6L7" target="_blank" class="bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-gray-200 transition flex items-center gap-1">
+                                    <a id="bi-d2-2-link" href="https://maps.app.goo.gl/rioR8kGCdeHo7Y6L7" target="_blank" class="bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-gray-200 transition flex items-center gap-1">
                                         <i class="fa-solid fa-store"></i> 藥院商圈景點地圖
                                     </a>
                                 </div>
                             </div>
-                            <div>
-                                <span class="text-xs font-bold text-peach-600">18:30 晚餐：燒肉上 (推薦 18:30 時段)</span>
-                                <p class="text-xs text-gray-600 mt-0.5">預約 18:30 吃完約 20:00，周邊地鐵與店家皆有營業，從容返回飯店不趕時間！</p>
+                            <div id="bi-d2-3-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <span id="bi-d2-3-title" class="text-xs font-bold text-peach-600">18:30 晚餐：燒肉上 (推薦 18:30 時段)</span>
+                                    <div class="flex items-center gap-1.5 shrink-0 pl-2">
+                                        <button onclick="openBuiltinItemForm('bi-d2-3', 'typeB')" class="text-gray-300 hover:text-peach-600"><i class="fa-solid fa-pen text-[10px]"></i></button>
+                                    </div>
+                                </div>
+                                <p id="bi-d2-3-note" class="text-xs text-gray-600 mt-0.5">預約 18:30 吃完約 20:00，周邊地鐵與店家皆有營業，從容返回飯店不趕時間！</p>
                                 <p class="text-[11px] text-gray-500 mt-1">地址：福岡県福岡市中央区渡辺通2丁目2-8 デンエンビル 2F</p>
                                 <div class="flex gap-2 mt-2">
-                                    <a href="https://maps.app.goo.gl/txfadE9qWtHx2fR5A" target="_blank" class="bg-peach-50 text-peach-700 px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-peach-100 transition flex items-center gap-1">
+                                    <a id="bi-d2-3-link" href="https://maps.app.goo.gl/txfadE9qWtHx2fR5A" target="_blank" class="bg-peach-50 text-peach-700 px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-peach-100 transition flex items-center gap-1">
                                         <i class="fa-solid fa-fire"></i> 燒肉店導航
                                     </a>
                                 </div>
                             </div>
-                            <div>
-                                <span class="text-xs font-bold text-peach-600">20:00 返回旅館</span>
-                                <p class="text-xs text-gray-600 mt-0.5">從藥院回「SG 博多旅居飯店」約 2km，推薦以下幾種方式：</p>
+                            <div id="bi-d2-4-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <span id="bi-d2-4-title" class="text-xs font-bold text-peach-600">20:00 返回旅館</span>
+                                    <div class="flex items-center gap-1.5 shrink-0 pl-2">
+                                        <button onclick="openBuiltinItemForm('bi-d2-4', 'typeB')" class="text-gray-300 hover:text-peach-600"><i class="fa-solid fa-pen text-[10px]"></i></button>
+                                    </div>
+                                </div>
+                                <p id="bi-d2-4-note" class="text-xs text-gray-600 mt-0.5">從藥院回「SG 博多旅居飯店」約 2km，推薦以下幾種方式：</p>
                                 <div class="text-xs text-gray-600 space-y-1 mt-1.5 bg-gray-50 p-2.5 rounded-xl">
                                     <p>🚕 <strong>計程車 (最推薦)：</strong>約 10-15 分鐘直達，車資約 ¥1,000~1,500，吃飽不用走太多路。</p>
                                     <p>🚇 <strong>地鐵：</strong>七隈線「薬院」站搭乘 → 「天神南」站轉乘空港線 → 「博多」站下車，約 20 分鐘，¥260。</p>
                                     <p>🚶 <strong>散步：</strong>沿渡辺通步行約 25-30 分鐘可到博多站周邊，適合想消化一下的人。</p>
                                 </div>
                                 <div class="flex gap-2 mt-2">
-                                    <a href="https://maps.app.goo.gl/DvRteta1W1AVgtqT8" target="_blank" class="bg-peach-50 text-peach-700 px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-peach-100 transition flex items-center gap-1">
+                                    <a id="bi-d2-4-link" href="https://maps.app.goo.gl/DvRteta1W1AVgtqT8" target="_blank" class="bg-peach-50 text-peach-700 px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-peach-100 transition flex items-center gap-1">
                                         <i class="fa-solid fa-map-location-dot"></i> SG 博多旅居飯店導航
                                     </a>
                                 </div>
@@ -535,7 +556,7 @@
                 <!-- DAY 3 -->
                 <div class="day-panel hidden space-y-3" data-day-content="3">
                     <div class="bg-peach-100 text-peach-800 p-3 rounded-xl text-xs font-bold flex items-center justify-between">
-                        <span>📅 10/17 (五) 第三天：熊野座神社 & 阿蘇火山一日遊</span>
+                        <span>📅 10/17 (六) 第三天：熊野座神社 & 阿蘇火山一日遊</span>
                         <span class="text-peach-600">一日遊包車方案</span>
                     </div>
 
@@ -545,10 +566,12 @@
                         </div>
 
                         <div class="flex items-start gap-3">
-                            <span class="bg-peach-500 text-white text-xs font-bold px-2 py-1 rounded-lg">07:10</span>
-                            <div>
-                                <h3 class="text-sm font-bold text-gray-800">由旅館出發步行</h3>
-                                <p class="text-xs text-gray-500">步行約 10-12 分鐘至博多車站築紫口。</p>
+                            <span id="bi-d3-1-time" class="bg-peach-500 text-white text-xs font-bold px-2 py-1 rounded-lg">07:10</span>
+                            <div id="bi-d3-1-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <h3 id="bi-d3-1-title" class="text-sm font-bold text-gray-800">由旅館出發步行</h3>
+                                </div>
+                                <p id="bi-d3-1-note" class="text-xs text-gray-500">步行約 10-12 分鐘至博多車站築紫口。</p>
                                 <div class="flex gap-2 mt-2">
                                     <a href="https://maps.app.goo.gl/zk2MyS1c5zrxEVNy6" target="_blank" class="bg-peach-50 text-peach-700 px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-peach-100 transition flex items-center gap-1">
                                         <i class="fa-solid fa-location-arrow"></i> 博多站築紫口集合點導航
@@ -558,71 +581,113 @@
                         </div>
 
                         <div class="border-l-2 border-peach-200 ml-4 pl-4 space-y-3">
-                            <div>
-                                <span class="text-xs font-bold text-peach-600">07:40 羅森 博多車站築紫口集合出發</span>
+                            <div id="bi-d3-2-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <span id="bi-d3-2-title" class="text-xs font-bold text-peach-600">07:40 羅森 博多車站築紫口集合出發</span>
+                                </div>
                             </div>
-                            <div>
-                                <span class="text-xs font-bold text-peach-600">10:00 上色見熊野座神社 (自由活動 1.5小時)</span>
-                                <p class="text-xs text-gray-600 mt-0.5">神祕且充滿綠意苔蘚的神社參道，宛如走入精靈系動漫場景。</p>
+                            <div id="bi-d3-3-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <span id="bi-d3-3-title" class="text-xs font-bold text-peach-600">10:00 上色見熊野座神社 (自由活動 1.5小時)</span>
+                                </div>
+                                <p id="bi-d3-3-note" class="text-xs text-gray-600 mt-0.5">神祕且充滿綠意苔蘚的神社參道，宛如走入精靈系動漫場景。</p>
                             </div>
-                            <div>
-                                <span class="text-xs font-bold text-peach-600">12:00 阿蘇火山 (自由活動 1.5小時)</span>
-                                <p class="text-xs text-gray-600 mt-0.5">壯麗的火山地形與中岳火口景觀，現場自理午餐。</p>
+                            <div id="bi-d3-4-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <span id="bi-d3-4-title" class="text-xs font-bold text-peach-600">12:00 阿蘇火山 (自由活動 1.5小時)</span>
+                                </div>
+                                <p id="bi-d3-4-note" class="text-xs text-gray-600 mt-0.5">壯麗的火山地形與中岳火口景觀，現場自理午餐。</p>
                             </div>
-                            <div>
-                                <span class="text-xs font-bold text-peach-600">14:30 黑川溫泉 (自由活動 1.5小時)</span>
-                                <p class="text-xs text-gray-600 mt-0.5">散策古風溫泉街，品嚐在地名物布丁或享受足湯。</p>
+                            <div id="bi-d3-5-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <span id="bi-d3-5-title" class="text-xs font-bold text-peach-600">14:30 黑川溫泉 (自由活動 1.5小時)</span>
+                                </div>
+                                <p id="bi-d3-5-note" class="text-xs text-gray-600 mt-0.5">散策古風溫泉街，品嚐在地名物布丁或享受足湯。</p>
                             </div>
-                            <div>
-                                <span class="text-xs font-bold text-peach-600">18:00 返回博多解散</span>
-                                <p class="text-xs text-gray-600 mt-0.5">抵達羅森 福岡東方飯店解散，步行回飯店休息晚餐。</p>
+                            <div id="bi-d3-6-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <span id="bi-d3-6-title" class="text-xs font-bold text-peach-600">18:00 返回博多解散</span>
+                                </div>
+                                <p id="bi-d3-6-note" class="text-xs text-gray-600 mt-0.5">抵達羅森 福岡東方飯店解散，步行回飯店休息。</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Custom Locations (Day 3) -->
-                    <div class="bg-white p-3 rounded-2xl shadow-sm border border-dashed border-peach-300 space-y-2">
-                        <div id="custom-locations-day-3" class="space-y-2"></div>
-                        <button onclick="openLocationForm(3)" class="w-full flex items-center justify-center gap-1.5 text-xs font-bold text-peach-600 bg-peach-50 hover:bg-peach-100 transition py-2 rounded-xl">
-                            <i class="fa-solid fa-plus"></i> 新增地點
-                        </button>
+                    <!-- Malls still open after 6pm near Hakata Station -->
+                    <div class="bg-white p-4 rounded-2xl shadow-sm border border-peach-100 space-y-3">
+                        <h3 class="text-sm font-bold text-gray-800 flex items-center gap-2">
+                            <span>🌃</span> 回程還有時間？博多站周邊六點後仍營業商場
+                        </h3>
+                        <p class="text-xs text-gray-500 -mt-1.5">18:00 解散後若還有體力，這幾間商場都還開著，可以順路逛逛。</p>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="grid grid-cols-1 gap-2">
+                                <a href="https://maps.app.goo.gl/p5cNQW4nxS1jsMaaA" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                    <span class="text-xs font-bold text-gray-700">AMU PLAZA博多</span>
+                                </a>
+                                <a href="https://maps.app.goo.gl/1jGRT2zGB68R7Get8" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                    <span class="text-xs font-bold text-gray-700">博多丸井OIOI百貨</span>
+                                </a>
+                                <a href="https://maps.app.goo.gl/dNz4HKhqm8aDiFrz7" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                    <span class="text-xs font-bold text-gray-700">Yodobashi 友都八喜 博多</span>
+                                </a>
+                            </div>
+                            <div class="grid grid-cols-1 gap-2">
+                                <a href="https://maps.app.goo.gl/7hyXH15QAM7eSXJm9" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                    <span class="text-xs font-bold text-gray-700">3COINS (博多站)</span>
+                                </a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=%E5%8D%9A%E5%A4%9A%E9%98%AA%E6%80%A5" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                    <span class="text-xs font-bold text-gray-700">博多阪急</span>
+                                </a>
+                                <a href="https://maps.app.goo.gl/vt5vwStzj7APEVhJ7" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                    <span class="text-xs font-bold text-gray-700">堂吉訶德 中洲店</span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- DAY 4 -->
                 <div class="day-panel hidden space-y-3" data-day-content="4">
                     <div class="bg-peach-100 text-peach-800 p-3 rounded-xl text-xs font-bold flex items-center justify-between">
-                        <span>📅 10/18 (六) 第四天：天神商圈大肆採買日</span>
+                        <span>📅 10/18 (日) 第四天：採購Day</span>
                         <span class="text-peach-600">預估車資: ¥420</span>
                     </div>
 
                     <div class="bg-white p-4 rounded-2xl shadow-sm border border-peach-100 space-y-3">
                         <div class="text-xs bg-gray-50 p-2.5 rounded-xl text-gray-600">
-                            🚇 <strong>今日交通：</strong>10:00 從旅館出發步行至博多站，搭乘地下鐵至「天神站」 (~¥210)。
+                            🚇 <strong>今日交通：</strong>10:00 從旅館出發步行至博多站，自由採購一整天。
                         </div>
 
                         <div class="flex items-start gap-3">
-                            <span class="bg-peach-500 text-white text-xs font-bold px-2 py-1 rounded-lg">10:00</span>
-                            <div>
-                                <h3 class="text-sm font-bold text-gray-800">旅館出發</h3>
+                            <span id="bi-d4-1-time" class="bg-peach-500 text-white text-xs font-bold px-2 py-1 rounded-lg">10:00</span>
+                            <div id="bi-d4-1-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <h3 id="bi-d4-1-title" class="text-sm font-bold text-gray-800">旅館出發</h3>
+                                    <div class="flex items-center gap-1.5 shrink-0 pl-2">
+                                        <button onclick="openBuiltinItemForm('bi-d4-1', 'typeA')" class="text-gray-300 hover:text-peach-600"><i class="fa-solid fa-pen text-[10px]"></i></button>
+                                    </div>
+                                </div>
+                                <p id="bi-d4-1-note" class="text-xs text-gray-500">步行前往博多車站，展開自由採購行程。</p>
                             </div>
                         </div>
                         <div class="border-l-2 border-peach-200 ml-4 pl-4 space-y-3">
-                            <div>
-                                <span class="text-xs font-bold text-peach-600">10:30 - 12:30 天神地下街 & 百貨採買</span>
-                                <p class="text-xs text-gray-600 mt-0.5">大丸、三越、PARCO、天神地下街盡情購物。</p>
+                            <div id="bi-d4-1b-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <span id="bi-d4-1b-title" class="text-xs font-bold text-peach-600">10:30 - 19:30 採買／自由活動</span>
+                                    <div class="flex items-center gap-1.5 shrink-0 pl-2">
+                                        <button onclick="openBuiltinItemForm('bi-d4-1b', 'typeB')" class="text-gray-300 hover:text-peach-600"><i class="fa-solid fa-pen text-[10px]"></i></button>
+                                    </div>
+                                </div>
+                                <p id="bi-d4-1b-note" class="text-xs text-gray-600 mt-0.5">依下方採購血拚地圖，在博多／天神商圈自由逛街採購。</p>
                             </div>
-                            <div>
-                                <span class="text-xs font-bold text-peach-600">12:30 - 13:30 午餐時間</span>
-                                <p class="text-xs text-gray-600 mt-0.5">天神商圈自由覓食美味午餐。</p>
-                            </div>
-                            <div>
-                                <span class="text-xs font-bold text-peach-600">13:30 - 18:00 藥妝與選品雜貨掃貨</span>
-                                <p class="text-xs text-gray-600 mt-0.5">持續在天神與中洲川端一帶逛街血拚。</p>
-                            </div>
-                            <div>
-                                <span class="text-xs font-bold text-peach-600">18:30 晚餐與返回</span>
-                                <p class="text-xs text-gray-600 mt-0.5">於天神或博多站享用晚餐後搭地鐵返回飯店整理戰利品。</p>
+                            <div id="bi-d4-2-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <span id="bi-d4-2-title" class="text-xs font-bold text-peach-600">20:00 出發回旅館</span>
+                                    <div class="flex items-center gap-1.5 shrink-0 pl-2">
+                                        <button onclick="openBuiltinItemForm('bi-d4-2', 'typeB')" class="text-gray-300 hover:text-peach-600"><i class="fa-solid fa-pen text-[10px]"></i></button>
+                                    </div>
+                                </div>
+                                <p id="bi-d4-2-note" class="text-xs text-gray-600 mt-0.5">結束一天自由採購，返回飯店休息。</p>
                             </div>
                         </div>
                     </div>
@@ -634,12 +699,76 @@
                             <i class="fa-solid fa-plus"></i> 新增地點
                         </button>
                     </div>
+
+                    <!-- Shopping / Malls Reference (Hakata & Tenjin) -->
+                    <div class="bg-white p-4 rounded-2xl shadow-sm border border-peach-100 space-y-3">
+                        <h3 class="text-sm font-bold text-gray-800 flex items-center gap-2">
+                            <span>🛍️</span> 採購血拚地圖
+                        </h3>
+                        <p class="text-xs text-gray-500 -mt-1.5">依區域分類，點擊店名即可導航。</p>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="space-y-2">
+                                <p class="text-[10px] font-bold text-peach-600">📍 博多</p>
+                                <div class="grid grid-cols-1 gap-2">
+                                    <a href="https://maps.app.goo.gl/p5cNQW4nxS1jsMaaA" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                        <span class="text-xs font-bold text-gray-700">AMU PLAZA博多</span>
+                                    </a>
+                                    <a href="https://maps.app.goo.gl/1jGRT2zGB68R7Get8" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                        <span class="text-xs font-bold text-gray-700">博多丸井OIOI百貨</span>
+                                    </a>
+                                    <a href="https://maps.app.goo.gl/dNz4HKhqm8aDiFrz7" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                        <span class="text-xs font-bold text-gray-700">Yodobashi 友都八喜 博多</span>
+                                    </a>
+                                    <a href="https://maps.app.goo.gl/7hyXH15QAM7eSXJm9" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                        <span class="text-xs font-bold text-gray-700">3COINS (博多站)</span>
+                                    </a>
+                                    <a href="https://maps.app.goo.gl/vt5vwStzj7APEVhJ7" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                        <span class="text-xs font-bold text-gray-700">堂吉訶德 中洲店</span>
+                                    </a>
+                                    <a href="https://www.google.com/maps/search/?api=1&query=%E5%8D%9A%E5%A4%9A%E9%98%AA%E6%80%A5" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                        <span class="text-xs font-bold text-gray-700">博多阪急</span>
+                                    </a>
+                                    <a href="https://www.google.com/maps/search/?api=1&query=%E3%82%AD%E3%83%A3%E3%83%8A%E3%83%AB%E3%82%B7%E3%83%86%E3%82%A3%E5%8D%9A%E5%A4%9A" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                        <span class="text-xs font-bold text-gray-700">運河城 Canal City 博多</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <p class="text-[10px] font-bold text-peach-600">📍 天神</p>
+                                <div class="grid grid-cols-1 gap-2">
+                                    <a href="https://maps.app.goo.gl/N2iL24Mhypesp7oSA" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                        <span class="text-xs font-bold text-gray-700">福岡三越</span>
+                                    </a>
+                                    <a href="https://maps.app.goo.gl/VaDHLiPvXingduCG8" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                        <span class="text-xs font-bold text-gray-700">Mina 天神</span>
+                                    </a>
+                                    <a href="https://maps.app.goo.gl/txLUHBP36zZmx4Mn6" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                        <span class="text-xs font-bold text-gray-700">3COINS (ミーナ天神店)</span>
+                                    </a>
+                                    <a href="https://maps.app.goo.gl/3DbSLAgUqJ2tpAdw9" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                        <span class="text-xs font-bold text-gray-700">唐吉訶德 福岡天神本店</span>
+                                    </a>
+                                    <a href="https://maps.app.goo.gl/DF9TAsFBmkacKs2o8" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                        <span class="text-xs font-bold text-gray-700">福岡PARCO</span>
+                                    </a>
+                                    <a href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A9%E7%A5%9E%E5%9C%B0%E4%B8%8B%E8%A1%97" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                        <span class="text-xs font-bold text-gray-700">天神地下街</span>
+                                    </a>
+                                    <a href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E4%B8%B8%E7%A6%8F%E5%B2%A1%E5%A4%A9%E7%A5%9E%E5%BA%97" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                        <span class="text-xs font-bold text-gray-700">大丸福岡天神店</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- DAY 5 -->
                 <div class="day-panel hidden space-y-3" data-day-content="5">
                     <div class="bg-peach-100 text-peach-800 p-3 rounded-xl text-xs font-bold flex items-center justify-between">
-                        <span>📅 10/19 (日) 第五天：由布院 & 野生動物園一日遊</span>
+                        <span>📅 10/19 (一) 第五天：由布院 & 野生動物園一日遊</span>
                         <span class="text-peach-600">一日遊包車方案</span>
                     </div>
 
@@ -649,10 +778,12 @@
                         </div>
 
                         <div class="flex items-start gap-3">
-                            <span class="bg-peach-500 text-white text-xs font-bold px-2 py-1 rounded-lg">07:30</span>
-                            <div>
-                                <h3 class="text-sm font-bold text-gray-800">由旅館出發步行</h3>
-                                <p class="text-xs text-gray-500">步行至博多車站築紫口集合點。</p>
+                            <span id="bi-d5-1-time" class="bg-peach-500 text-white text-xs font-bold px-2 py-1 rounded-lg">07:30</span>
+                            <div id="bi-d5-1-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <h3 id="bi-d5-1-title" class="text-sm font-bold text-gray-800">由旅館出發步行</h3>
+                                </div>
+                                <p id="bi-d5-1-note" class="text-xs text-gray-500">步行至博多車站築紫口集合點。</p>
                                 <div class="flex gap-2 mt-2">
                                     <a href="https://maps.app.goo.gl/zk2MyS1c5zrxEVNy6" target="_blank" class="bg-peach-50 text-peach-700 px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-peach-100 transition flex items-center gap-1">
                                         <i class="fa-solid fa-location-arrow"></i> 博多站築紫口集合點導航
@@ -662,41 +793,75 @@
                         </div>
 
                         <div class="border-l-2 border-peach-200 ml-4 pl-4 space-y-3">
-                            <div>
-                                <span class="text-xs font-bold text-peach-600">08:00 博多站築紫口出發</span>
+                            <div id="bi-d5-2-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <span id="bi-d5-2-title" class="text-xs font-bold text-peach-600">08:00 博多站築紫口出發</span>
+                                </div>
                             </div>
-                            <div>
-                                <span class="text-xs font-bold text-peach-600">10:00 海地獄溫泉 (自由活動 30分鐘)</span>
-                                <p class="text-xs text-gray-600 mt-0.5">欣賞夢幻湛藍的別府地獄溫泉奇景與特色蒸氣。</p>
+                            <div id="bi-d5-3-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <span id="bi-d5-3-title" class="text-xs font-bold text-peach-600">10:00 海地獄溫泉 (自由活動 30分鐘)</span>
+                                </div>
+                                <p id="bi-d5-3-note" class="text-xs text-gray-600 mt-0.5">欣賞夢幻湛藍的別府地獄溫泉奇景與特色蒸氣。</p>
                             </div>
-                            <div>
-                                <span class="text-xs font-bold text-peach-600">12:00 Kyushu Wildlife Park African Safari (2小時)</span>
-                                <p class="text-xs text-gray-600 mt-0.5">搭乘叢林巴士近距離餵食猛獸，園區內自理午餐。</p>
+                            <div id="bi-d5-4-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <span id="bi-d5-4-title" class="text-xs font-bold text-peach-600">12:00 Kyushu Wildlife Park African Safari (2小時)</span>
+                                </div>
+                                <p id="bi-d5-4-note" class="text-xs text-gray-600 mt-0.5">搭乘叢林巴士近距離餵食猛獸，園區內自理午餐。</p>
                             </div>
-                            <div>
-                                <span class="text-xs font-bold text-peach-600">14:30 湯布院町/金鱗湖 (2小時)</span>
-                                <p class="text-xs text-gray-600 mt-0.5">漫步童話小鎮湯之坪街道、欣賞湖面氤氳的金鱗湖美景。</p>
+                            <div id="bi-d5-5-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <span id="bi-d5-5-title" class="text-xs font-bold text-peach-600">14:30 湯布院町/金鱗湖 (2小時)</span>
+                                </div>
+                                <p id="bi-d5-5-note" class="text-xs text-gray-600 mt-0.5">漫步童話小鎮湯之坪街道、欣賞湖面氤氳的金鱗湖美景。</p>
                             </div>
-                            <div>
-                                <span class="text-xs font-bold text-peach-600">18:00 返回博多解散</span>
-                                <p class="text-xs text-gray-600 mt-0.5">抵達羅森 福岡東方飯店解散，返回飯店晚餐。</p>
+                            <div id="bi-d5-6-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <span id="bi-d5-6-title" class="text-xs font-bold text-peach-600">18:00 返回博多解散</span>
+                                </div>
+                                <p id="bi-d5-6-note" class="text-xs text-gray-600 mt-0.5">抵達羅森 福岡東方飯店解散，返回飯店休息。</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Custom Locations (Day 5) -->
-                    <div class="bg-white p-3 rounded-2xl shadow-sm border border-dashed border-peach-300 space-y-2">
-                        <div id="custom-locations-day-5" class="space-y-2"></div>
-                        <button onclick="openLocationForm(5)" class="w-full flex items-center justify-center gap-1.5 text-xs font-bold text-peach-600 bg-peach-50 hover:bg-peach-100 transition py-2 rounded-xl">
-                            <i class="fa-solid fa-plus"></i> 新增地點
-                        </button>
+                    <!-- Malls still open after 6pm near Hakata Station -->
+                    <div class="bg-white p-4 rounded-2xl shadow-sm border border-peach-100 space-y-3">
+                        <h3 class="text-sm font-bold text-gray-800 flex items-center gap-2">
+                            <span>🌃</span> 回程還有時間？博多站周邊六點後仍營業商場
+                        </h3>
+                        <p class="text-xs text-gray-500 -mt-1.5">18:00 解散後若還有體力，這幾間商場都還開著，可以順路逛逛。</p>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="grid grid-cols-1 gap-2">
+                                <a href="https://maps.app.goo.gl/p5cNQW4nxS1jsMaaA" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                    <span class="text-xs font-bold text-gray-700">AMU PLAZA博多</span>
+                                </a>
+                                <a href="https://maps.app.goo.gl/1jGRT2zGB68R7Get8" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                    <span class="text-xs font-bold text-gray-700">博多丸井OIOI百貨</span>
+                                </a>
+                                <a href="https://maps.app.goo.gl/dNz4HKhqm8aDiFrz7" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                    <span class="text-xs font-bold text-gray-700">Yodobashi 友都八喜 博多</span>
+                                </a>
+                            </div>
+                            <div class="grid grid-cols-1 gap-2">
+                                <a href="https://maps.app.goo.gl/7hyXH15QAM7eSXJm9" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                    <span class="text-xs font-bold text-gray-700">3COINS (博多站)</span>
+                                </a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=%E5%8D%9A%E5%A4%9A%E9%98%AA%E6%80%A5" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                    <span class="text-xs font-bold text-gray-700">博多阪急</span>
+                                </a>
+                                <a href="https://maps.app.goo.gl/vt5vwStzj7APEVhJ7" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                    <span class="text-xs font-bold text-gray-700">堂吉訶德 中洲店</span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- DAY 6 -->
                 <div class="day-panel hidden space-y-3" data-day-content="6">
                     <div class="bg-peach-100 text-peach-800 p-3 rounded-xl text-xs font-bold flex items-center justify-between">
-                        <span>📅 10/20 (一) 第六天：法國麵包掃貨日 & 博多採買</span>
+                        <span>📅 10/20 (二) 第六天：採購Day</span>
                         <span class="text-peach-600">預估車資: ¥210~420</span>
                     </div>
 
@@ -761,39 +926,56 @@
 
                     <div class="bg-white p-4 rounded-2xl shadow-sm border border-peach-100 space-y-3">
                         <div class="text-xs bg-gray-50 p-2.5 rounded-xl text-gray-600">
-                            🚇 <strong>今日交通：</strong>10:00 從旅館出發，步行或搭地鐵至祇園/中洲一帶。
+                            🚇 <strong>今日交通：</strong>10:00 從旅館出發步行至博多站，自由採購一整天。
                         </div>
 
                         <div class="flex items-start gap-3">
-                            <span class="bg-peach-500 text-white text-xs font-bold px-2 py-1 rounded-lg">10:00</span>
-                            <div>
-                                <h3 class="text-sm font-bold text-gray-800">旅館出發</h3>
+                            <span id="bi-d6-1-time" class="bg-peach-500 text-white text-xs font-bold px-2 py-1 rounded-lg">10:00</span>
+                            <div id="bi-d6-1-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <h3 id="bi-d6-1-title" class="text-sm font-bold text-gray-800">旅館出發</h3>
+                                    <div class="flex items-center gap-1.5 shrink-0 pl-2">
+                                        <button onclick="openBuiltinItemForm('bi-d6-1', 'typeA')" class="text-gray-300 hover:text-peach-600"><i class="fa-solid fa-pen text-[10px]"></i></button>
+                                    </div>
+                                </div>
+                                <p id="bi-d6-1-note" class="text-xs text-gray-500">步行前往博多車站，展開自由採購行程。</p>
                             </div>
                         </div>
                         <div class="border-l-2 border-peach-200 ml-4 pl-4 space-y-3">
-                            <div>
-                                <span class="text-xs font-bold text-peach-600">10:30 購買人氣法國麵包！</span>
-                                <p class="text-xs text-gray-600 mt-0.5">前往您指定必買的超人氣法國麵包店採購，可留作隔天早餐或帶回台灣享用。</p>
+                            <div id="bi-d6-1b-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <span id="bi-d6-1b-title" class="text-xs font-bold text-peach-600">10:30 - 18:30 採買／自由活動</span>
+                                    <div class="flex items-center gap-1.5 shrink-0 pl-2">
+                                        <button onclick="openBuiltinItemForm('bi-d6-1b', 'typeB')" class="text-gray-300 hover:text-peach-600"><i class="fa-solid fa-pen text-[10px]"></i></button>
+                                    </div>
+                                </div>
+                                <p id="bi-d6-1b-note" class="text-xs text-gray-600 mt-0.5">依下方採購血拚地圖，在博多／天神商圈自由逛街採購，之後前往晚餐。</p>
+                            </div>
+                            <div id="bi-d6-2-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <span id="bi-d6-2-title" class="text-xs font-bold text-peach-600">19:15 博多牛雜前田屋 大名店（見上方訂位資訊）</span>
+                                    <div class="flex items-center gap-1.5 shrink-0 pl-2">
+                                        <button onclick="openBuiltinItemForm('bi-d6-2', 'typeB')" class="text-gray-300 hover:text-peach-600"><i class="fa-solid fa-pen text-[10px]"></i></button>
+                                    </div>
+                                </div>
+                                <p id="bi-d6-2-note" class="text-xs text-gray-600 mt-0.5">用餐時間約兩小時，結束後返回飯店打包行李。</p>
                                 <div class="flex gap-2 mt-2">
-                                    <a href="https://maps.app.goo.gl/GWj35DhyeneQNgKy9" target="_blank" class="bg-peach-50 text-peach-700 px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-peach-100 transition flex items-center gap-1">
-                                        <i class="fa-solid fa-bread-slice"></i> The Full Full Hakata 導航
+                                    <a id="bi-d6-2-link" href="https://maps.app.goo.gl/KHPykd2h1ei4P7Sr7" target="_blank" class="bg-peach-50 text-peach-700 px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-peach-100 transition flex items-center gap-1">
+                                        <i class="fa-solid fa-map-location-dot"></i> 博多牛雜前田屋 大名店 導航
                                     </a>
                                 </div>
                             </div>
-                            <div>
-                                <span class="text-xs font-bold text-peach-600">12:30 - 13:30 午餐時間</span>
-                                <p class="text-xs text-gray-600 mt-0.5">博多車站周邊自由覓食。</p>
-                            </div>
-                            <div>
-                                <span class="text-xs font-bold text-peach-600">14:00 - 18:00 最後衝刺採買與打包</span>
-                                <p class="text-xs text-gray-600 mt-0.5">AMU Plaza、博多阪急、Yodobashi Camera 伴手禮最後補貨與行李整理。</p>
-                            </div>
-                            <div>
-                                <span class="text-xs font-bold text-peach-600">19:15 博多牛雜前田屋 大名店（見上方訂位資訊）</span>
-                                <p class="text-xs text-gray-600 mt-0.5">用餐時間約兩小時，結束後回飯店打包行李。</p>
+                            <div id="bi-d6-3-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <span id="bi-d6-3-title" class="text-xs font-bold text-peach-600">21:15 出發回旅館</span>
+                                    <div class="flex items-center gap-1.5 shrink-0 pl-2">
+                                        <button onclick="openBuiltinItemForm('bi-d6-3', 'typeB')" class="text-gray-300 hover:text-peach-600"><i class="fa-solid fa-pen text-[10px]"></i></button>
+                                    </div>
+                                </div>
+                                <p id="bi-d6-3-note" class="text-xs text-gray-600 mt-0.5">用完晚餐後返回飯店，打包整理戰利品。</p>
                                 <div class="flex gap-2 mt-2">
-                                    <a href="https://maps.app.goo.gl/KHPykd2h1ei4P7Sr7" target="_blank" class="bg-peach-50 text-peach-700 px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-peach-100 transition flex items-center gap-1">
-                                        <i class="fa-solid fa-map-location-dot"></i> 博多牛雜前田屋 大名店 導航
+                                    <a id="bi-d6-3-link" href="https://maps.app.goo.gl/DvRteta1W1AVgtqT8" target="_blank" class="bg-peach-50 text-peach-700 px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-peach-100 transition flex items-center gap-1">
+                                        <i class="fa-solid fa-map-location-dot"></i> SG 博多旅居飯店導航
                                     </a>
                                 </div>
                             </div>
@@ -807,12 +989,76 @@
                             <i class="fa-solid fa-plus"></i> 新增地點
                         </button>
                     </div>
+
+                    <!-- Shopping / Malls Reference (Hakata & Tenjin) -->
+                    <div class="bg-white p-4 rounded-2xl shadow-sm border border-peach-100 space-y-3">
+                        <h3 class="text-sm font-bold text-gray-800 flex items-center gap-2">
+                            <span>🛍️</span> 採購血拚地圖
+                        </h3>
+                        <p class="text-xs text-gray-500 -mt-1.5">依區域分類，點擊店名即可導航。</p>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="space-y-2">
+                                <p class="text-[10px] font-bold text-peach-600">📍 博多</p>
+                                <div class="grid grid-cols-1 gap-2">
+                                    <a href="https://maps.app.goo.gl/p5cNQW4nxS1jsMaaA" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                        <span class="text-xs font-bold text-gray-700">AMU PLAZA博多</span>
+                                    </a>
+                                    <a href="https://maps.app.goo.gl/1jGRT2zGB68R7Get8" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                        <span class="text-xs font-bold text-gray-700">博多丸井OIOI百貨</span>
+                                    </a>
+                                    <a href="https://maps.app.goo.gl/dNz4HKhqm8aDiFrz7" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                        <span class="text-xs font-bold text-gray-700">Yodobashi 友都八喜 博多</span>
+                                    </a>
+                                    <a href="https://maps.app.goo.gl/7hyXH15QAM7eSXJm9" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                        <span class="text-xs font-bold text-gray-700">3COINS (博多站)</span>
+                                    </a>
+                                    <a href="https://maps.app.goo.gl/vt5vwStzj7APEVhJ7" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                        <span class="text-xs font-bold text-gray-700">堂吉訶德 中洲店</span>
+                                    </a>
+                                    <a href="https://www.google.com/maps/search/?api=1&query=%E5%8D%9A%E5%A4%9A%E9%98%AA%E6%80%A5" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                        <span class="text-xs font-bold text-gray-700">博多阪急</span>
+                                    </a>
+                                    <a href="https://www.google.com/maps/search/?api=1&query=%E3%82%AD%E3%83%A3%E3%83%8A%E3%83%AB%E3%82%B7%E3%83%86%E3%82%A3%E5%8D%9A%E5%A4%9A" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                        <span class="text-xs font-bold text-gray-700">運河城 Canal City 博多</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <p class="text-[10px] font-bold text-peach-600">📍 天神</p>
+                                <div class="grid grid-cols-1 gap-2">
+                                    <a href="https://maps.app.goo.gl/N2iL24Mhypesp7oSA" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                        <span class="text-xs font-bold text-gray-700">福岡三越</span>
+                                    </a>
+                                    <a href="https://maps.app.goo.gl/VaDHLiPvXingduCG8" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                        <span class="text-xs font-bold text-gray-700">Mina 天神</span>
+                                    </a>
+                                    <a href="https://maps.app.goo.gl/txLUHBP36zZmx4Mn6" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                        <span class="text-xs font-bold text-gray-700">3COINS (ミーナ天神店)</span>
+                                    </a>
+                                    <a href="https://maps.app.goo.gl/3DbSLAgUqJ2tpAdw9" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                        <span class="text-xs font-bold text-gray-700">唐吉訶德 福岡天神本店</span>
+                                    </a>
+                                    <a href="https://maps.app.goo.gl/DF9TAsFBmkacKs2o8" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                        <span class="text-xs font-bold text-gray-700">福岡PARCO</span>
+                                    </a>
+                                    <a href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A9%E7%A5%9E%E5%9C%B0%E4%B8%8B%E8%A1%97" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                        <span class="text-xs font-bold text-gray-700">天神地下街</span>
+                                    </a>
+                                    <a href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E4%B8%B8%E7%A6%8F%E5%B2%A1%E5%A4%A9%E7%A5%9E%E5%BA%97" target="_blank" class="flex items-center justify-between bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl transition gap-1">
+                                        <span class="text-xs font-bold text-gray-700">大丸福岡天神店</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- DAY 7 -->
                 <div class="day-panel hidden space-y-3" data-day-content="7">
                     <div class="bg-peach-100 text-peach-800 p-3 rounded-xl text-xs font-bold flex items-center justify-between">
-                        <span>📅 10/21 (二) 第七天：福岡賦歸・平安返台</span>
+                        <span>📅 10/21 (三) 第七天：福岡賦歸・平安返台</span>
                         <span class="text-peach-600">計程車資: 約 ¥1,500</span>
                     </div>
 
@@ -828,24 +1074,44 @@
                         </div>
 
                         <div class="flex items-start gap-3">
-                            <span class="bg-peach-500 text-white text-xs font-bold px-2 py-1 rounded-lg">07:30</span>
-                            <div>
-                                <h3 class="text-sm font-bold text-gray-800">起床與最後檢查</h3>
-                                <p class="text-xs text-gray-500">檢查護照、隨身行李與戰利品是否齊全。</p>
+                            <span id="bi-d7-1-time" class="bg-peach-500 text-white text-xs font-bold px-2 py-1 rounded-lg">06:30</span>
+                            <div id="bi-d7-1-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <h3 id="bi-d7-1-title" class="text-sm font-bold text-gray-800">起床與最後檢查</h3>
+                                    <div class="flex items-center gap-1.5 shrink-0 pl-2">
+                                        <button onclick="openBuiltinItemForm('bi-d7-1', 'typeA')" class="text-gray-300 hover:text-peach-600"><i class="fa-solid fa-pen text-[10px]"></i></button>
+                                    </div>
+                                </div>
+                                <p id="bi-d7-1-note" class="text-xs text-gray-500">檢查護照、隨身行李與戰利品是否齊全。</p>
                             </div>
                         </div>
                         <div class="border-l-2 border-peach-200 ml-4 pl-4 space-y-3">
-                            <div>
-                                <span class="text-xs font-bold text-peach-600">08:15 飯店搭計程車出發</span>
-                                <p class="text-xs text-gray-600 mt-0.5">從 SG 博多旅居飯店出發直達福岡機場國際線航廈（約 15 分鐘）。</p>
+                            <div id="bi-d7-2-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <span id="bi-d7-2-title" class="text-xs font-bold text-peach-600">07:30 飯店搭計程車出發</span>
+                                    <div class="flex items-center gap-1.5 shrink-0 pl-2">
+                                        <button onclick="openBuiltinItemForm('bi-d7-2', 'typeB')" class="text-gray-300 hover:text-peach-600"><i class="fa-solid fa-pen text-[10px]"></i></button>
+                                    </div>
+                                </div>
+                                <p id="bi-d7-2-note" class="text-xs text-gray-600 mt-0.5">從 SG 博多旅居飯店出發直達福岡機場國際線航廈（約 15 分鐘）。</p>
                             </div>
-                            <div>
-                                <span class="text-xs font-bold text-peach-600">08:40 抵達福岡機場國際線</span>
-                                <p class="text-xs text-gray-600 mt-0.5">辦理登機手續、過安檢、免稅店最後血拚。</p>
+                            <div id="bi-d7-3-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <span id="bi-d7-3-title" class="text-xs font-bold text-peach-600">07:45 抵達福岡機場國際線</span>
+                                    <div class="flex items-center gap-1.5 shrink-0 pl-2">
+                                        <button onclick="openBuiltinItemForm('bi-d7-3', 'typeB')" class="text-gray-300 hover:text-peach-600"><i class="fa-solid fa-pen text-[10px]"></i></button>
+                                    </div>
+                                </div>
+                                <p id="bi-d7-3-note" class="text-xs text-gray-600 mt-0.5">距離 10:25 起飛約 2 小時 40 分，從容辦理登機手續、過安檢、免稅店最後血拚。</p>
                             </div>
-                            <div>
-                                <span class="text-xs font-bold text-peach-600">10:25 搭機返回台灣 (IT241)</span>
-                                <p class="text-xs text-gray-600 mt-0.5">11:55 平安降落桃園國際機場，結束美好福岡之旅！</p>
+                            <div id="bi-d7-4-container">
+                                <div class="flex items-start justify-between gap-2">
+                                    <span id="bi-d7-4-title" class="text-xs font-bold text-peach-600">10:25 搭機返回台灣 (IT241)</span>
+                                    <div class="flex items-center gap-1.5 shrink-0 pl-2">
+                                        <button onclick="openBuiltinItemForm('bi-d7-4', 'typeB')" class="text-gray-300 hover:text-peach-600"><i class="fa-solid fa-pen text-[10px]"></i></button>
+                                    </div>
+                                </div>
+                                <p id="bi-d7-4-note" class="text-xs text-gray-600 mt-0.5">11:55 平安降落桃園國際機場，結束美好福岡之旅！</p>
                             </div>
                         </div>
                     </div>
@@ -885,34 +1151,19 @@
                 <h3 class="text-sm font-bold text-gray-800 flex items-center gap-2">
                     <span>🏪</span> 旅館周遭便利商店 (深夜補給站)
                 </h3>
-                <div class="grid grid-cols-1 gap-2 pt-1">
-                    <div class="flex items-center justify-between bg-gray-50 p-2.5 rounded-xl">
-                        <div class="flex items-center gap-2.5">
-                            <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
-                            <span class="text-xs font-bold text-gray-700">FamilyMart 全家便利商店</span>
-                        </div>
-                        <a href="https://maps.app.goo.gl/EcpgBrgqNZdakuzV9" target="_blank" class="bg-white border border-gray-200 text-peach-600 px-2.5 py-1 rounded-lg text-xs font-medium hover:bg-peach-50 transition">
-                            導航 <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                        </a>
-                    </div>
-                    <div class="flex items-center justify-between bg-gray-50 p-2.5 rounded-xl">
-                        <div class="flex items-center gap-2.5">
-                            <span class="w-2.5 h-2.5 rounded-full bg-orange-500"></span>
-                            <span class="text-xs font-bold text-gray-700">7-Eleven 超商</span>
-                        </div>
-                        <a href="https://maps.app.goo.gl/rPp8e7AP2BiUntS29" target="_blank" class="bg-white border border-gray-200 text-peach-600 px-2.5 py-1 rounded-lg text-xs font-medium hover:bg-peach-50 transition">
-                            導航 <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                        </a>
-                    </div>
-                    <div class="flex items-center justify-between bg-gray-50 p-2.5 rounded-xl">
-                        <div class="flex items-center gap-2.5">
-                            <span class="w-2.5 h-2.5 rounded-full bg-blue-400"></span>
-                            <span class="text-xs font-bold text-gray-700">LAWSON 羅森超商</span>
-                        </div>
-                        <a href="https://maps.app.goo.gl/DhuQ1pAgRc3QnbkB9" target="_blank" class="bg-white border border-gray-200 text-peach-600 px-2.5 py-1 rounded-lg text-xs font-medium hover:bg-peach-50 transition">
-                            導航 <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                        </a>
-                    </div>
+                <div class="grid grid-cols-3 gap-2 pt-1">
+                    <a href="https://maps.app.goo.gl/EcpgBrgqNZdakuzV9" target="_blank" class="flex flex-row items-center justify-center gap-1.5 bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl text-center transition">
+                        <span class="w-2.5 h-2.5 rounded-full bg-blue-500 shrink-0"></span>
+                        <span class="text-[11px] font-bold text-gray-700 leading-tight">全家</span>
+                    </a>
+                    <a href="https://maps.app.goo.gl/rPp8e7AP2BiUntS29" target="_blank" class="flex flex-row items-center justify-center gap-1.5 bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl text-center transition">
+                        <span class="w-2.5 h-2.5 rounded-full bg-orange-500 shrink-0"></span>
+                        <span class="text-[11px] font-bold text-gray-700 leading-tight">7-11</span>
+                    </a>
+                    <a href="https://maps.app.goo.gl/DhuQ1pAgRc3QnbkB9" target="_blank" class="flex flex-row items-center justify-center gap-1.5 bg-gray-50 hover:bg-peach-50 p-2.5 rounded-xl text-center transition">
+                        <span class="w-2.5 h-2.5 rounded-full bg-blue-400 shrink-0"></span>
+                        <span class="text-[11px] font-bold text-gray-700 leading-tight">LAWSON</span>
+                    </a>
                 </div>
             </div>
 
@@ -940,9 +1191,9 @@
                     <li>• <strong>Day 1：</strong> 機場至博多/飯店 (地鐵 ¥260 或計程車 ~¥1,000)</li>
                     <li>• <strong>Day 2：</strong> 市區地鐵/巴士移動 (~¥630 - ¥800)</li>
                     <li>• <strong>Day 3：</strong> 熊野火山一日遊 (套裝行程已含車資)</li>
-                    <li>• <strong>Day 4：</strong> 天神商圈地鐵來回 (~¥420)</li>
+                    <li>• <strong>Day 4：</strong> 採購Day 地鐵來回 (~¥420)</li>
                     <li>• <strong>Day 5：</strong> 由布院一日遊 (套裝行程已含車資)</li>
-                    <li>• <strong>Day 6：</strong> 買麵包與市區移動 (~¥210 - ¥420)</li>
+                    <li>• <strong>Day 6：</strong> 採購Day 市區移動 (~¥210 - ¥420)</li>
                     <li>• <strong>Day 7：</strong> 飯店至機場計程車 (~¥1,500)</li>
                 </ul>
             </div>
@@ -1195,13 +1446,14 @@
             </div>
             <input type="hidden" id="location-form-day">
             <input type="hidden" id="location-form-id">
+            <input type="hidden" id="location-form-type" value="custom">
             <div class="space-y-2">
-                <div>
+                <div id="location-form-time-field">
                     <label class="text-[10px] font-bold text-gray-500">時間 (選填)</label>
                     <input type="text" id="location-form-time" placeholder="例：15:00" class="w-full text-xs mt-1 px-3 py-2 rounded-lg border border-gray-200 focus:outline-none focus:border-peach-400">
                 </div>
                 <div>
-                    <label class="text-[10px] font-bold text-gray-500">地點名稱</label>
+                    <label id="location-form-name-label" class="text-[10px] font-bold text-gray-500">地點名稱</label>
                     <input type="text" id="location-form-name" placeholder="例：某某咖啡廳" class="w-full text-xs mt-1 px-3 py-2 rounded-lg border border-gray-200 focus:outline-none focus:border-peach-400">
                 </div>
                 <div>
@@ -1215,8 +1467,11 @@
             </div>
             <div class="flex gap-2 pt-1">
                 <button onclick="closeLocationForm()" class="flex-1 text-xs font-bold text-gray-500 bg-gray-100 hover:bg-gray-200 transition py-2 rounded-xl">取消</button>
-                <button onclick="saveLocationForm()" class="flex-1 text-xs font-bold text-white bg-peach-500 hover:bg-peach-600 transition py-2 rounded-xl">儲存</button>
+                <button onclick="handleModalSave()" class="flex-1 text-xs font-bold text-white bg-peach-500 hover:bg-peach-600 transition py-2 rounded-xl">儲存</button>
             </div>
+            <button id="location-form-delete-btn" onclick="handleModalDelete()" class="hidden w-full text-xs font-bold text-red-400 hover:text-white hover:bg-red-500 transition py-2 rounded-xl">
+                <i class="fa-solid fa-trash-can"></i> 刪除
+            </button>
         </div>
     </div>
 
@@ -2606,6 +2861,7 @@
         }
 
         function openLocationForm(day, id = null) {
+            document.getElementById('location-form-type').value = 'custom';
             document.getElementById('location-form-day').value = day;
             document.getElementById('location-form-id').value = id || '';
             const store = getCustomLocationsStore();
@@ -2613,16 +2869,49 @@
             const item = id ? dayList.find(l => l.id === id) : null;
 
             document.getElementById('location-modal-title').textContent = item ? '編輯地點' : '新增地點';
+            document.getElementById('location-form-time-field').classList.remove('hidden');
+            document.getElementById('location-form-name-label').textContent = '地點名稱';
             document.getElementById('location-form-time').value = item ? item.time : '';
             document.getElementById('location-form-name').value = item ? item.name : '';
             document.getElementById('location-form-note').value = item ? item.note : '';
             document.getElementById('location-form-link').value = item ? item.link : '';
+
+            document.getElementById('location-form-delete-btn').classList.toggle('hidden', !item);
 
             document.getElementById('location-modal').classList.remove('hidden');
         }
 
         function closeLocationForm() {
             document.getElementById('location-modal').classList.add('hidden');
+            document.getElementById('location-form-delete-btn').classList.add('hidden');
+        }
+
+        function handleModalDelete() {
+            const type = document.getElementById('location-form-type').value;
+            const id = document.getElementById('location-form-id').value;
+            if (!id) return;
+
+            if (type === 'custom') {
+                const day = document.getElementById('location-form-day').value;
+                if (!confirm('確定要刪除這個地點嗎？此動作無法復原。')) return;
+                const store = getCustomLocationsStore();
+                store[day] = (store[day] || []).filter(l => l.id !== id);
+                saveCustomLocationsStore(store);
+                renderCustomLocations(day);
+            } else {
+                if (!confirm('確定要刪除這個行程項目嗎？此動作無法復原。')) return;
+                deleteBuiltinItem(id);
+            }
+            closeLocationForm();
+        }
+
+        function handleModalSave() {
+            const type = document.getElementById('location-form-type').value;
+            if (type === 'custom') {
+                saveLocationForm();
+            } else {
+                saveBuiltinItemForm();
+            }
         }
 
         function saveLocationForm() {
@@ -2654,6 +2943,156 @@
             closeLocationForm();
         }
 
+        // ===== Built-in itinerary items: edit / delete existing content =====
+        const BUILTIN_OVERRIDES_KEY = 'fukuoka_builtin_overrides';
+
+        function getBuiltinOverrides() {
+            try {
+                return JSON.parse(localStorage.getItem(BUILTIN_OVERRIDES_KEY)) || {};
+            } catch (e) {
+                return {};
+            }
+        }
+
+        function saveBuiltinOverrides(overrides) {
+            try {
+                localStorage.setItem(BUILTIN_OVERRIDES_KEY, JSON.stringify(overrides));
+            } catch (e) {
+                alert('儲存失敗，可能是瀏覽器儲存空間已滿。');
+            }
+        }
+
+        function openBuiltinItemForm(itemId, itemType) {
+            document.getElementById('location-form-type').value = itemType;
+            document.getElementById('location-form-day').value = '';
+            document.getElementById('location-form-id').value = itemId;
+            document.getElementById('location-modal-title').textContent = '編輯行程項目';
+            document.getElementById('location-form-name-label').textContent = itemType === 'typeA' ? '標題' : '標題 (含時間)';
+
+            const overrides = getBuiltinOverrides();
+            const ov = overrides[itemId] || {};
+
+            if (itemType === 'typeA') {
+                document.getElementById('location-form-time-field').classList.remove('hidden');
+                const timeEl = document.getElementById(itemId + '-time');
+                document.getElementById('location-form-time').value = ov.time !== undefined ? ov.time : (timeEl ? timeEl.textContent : '');
+            } else {
+                document.getElementById('location-form-time-field').classList.add('hidden');
+                document.getElementById('location-form-time').value = '';
+            }
+
+            const titleEl = document.getElementById(itemId + '-title');
+            document.getElementById('location-form-name').value = ov.title !== undefined ? ov.title : (titleEl ? titleEl.textContent : '');
+
+            const noteEl = document.getElementById(itemId + '-note');
+            document.getElementById('location-form-note').value = ov.note !== undefined ? ov.note : (noteEl ? noteEl.textContent : '');
+
+            const linkEl = document.getElementById(itemId + '-link');
+            document.getElementById('location-form-link').value = ov.link !== undefined ? ov.link : (linkEl ? linkEl.getAttribute('href') : '');
+
+            document.getElementById('location-form-delete-btn').classList.remove('hidden');
+
+            document.getElementById('location-modal').classList.remove('hidden');
+        }
+
+        function saveBuiltinItemForm() {
+            const itemId = document.getElementById('location-form-id').value;
+            const itemType = document.getElementById('location-form-type').value;
+            const title = document.getElementById('location-form-name').value.trim();
+
+            if (!title) {
+                alert('請輸入標題');
+                return;
+            }
+
+            const time = document.getElementById('location-form-time').value.trim();
+            const note = document.getElementById('location-form-note').value.trim();
+            const link = document.getElementById('location-form-link').value.trim();
+
+            const overrides = getBuiltinOverrides();
+            overrides[itemId] = { type: itemType, time, title, note, link, hidden: false };
+            saveBuiltinOverrides(overrides);
+            applyBuiltinOverride(itemId, overrides[itemId]);
+            closeLocationForm();
+        }
+
+        // Called only from handleModalDelete(), which has already confirmed with the user.
+        function deleteBuiltinItem(itemId) {
+            const overrides = getBuiltinOverrides();
+            const existing = overrides[itemId] || {};
+            overrides[itemId] = { ...existing, hidden: true };
+            saveBuiltinOverrides(overrides);
+            const container = document.getElementById(itemId + '-container');
+            if (container) container.style.display = 'none';
+            const timeEl = document.getElementById(itemId + '-time');
+            if (timeEl) timeEl.style.display = 'none';
+        }
+
+        function applyBuiltinOverride(itemId, ov) {
+            const container = document.getElementById(itemId + '-container');
+            if (!container) return;
+
+            if (ov.hidden) {
+                container.style.display = 'none';
+                const timeEl = document.getElementById(itemId + '-time');
+                if (timeEl) timeEl.style.display = 'none';
+                return;
+            } else {
+                container.style.display = '';
+                const timeEl = document.getElementById(itemId + '-time');
+                if (timeEl) timeEl.style.display = '';
+            }
+
+            if (ov.type === 'typeA' && ov.time !== undefined) {
+                const timeEl = document.getElementById(itemId + '-time');
+                if (timeEl) timeEl.textContent = ov.time;
+            }
+
+            const titleEl = document.getElementById(itemId + '-title');
+            if (titleEl && ov.title !== undefined) titleEl.textContent = ov.title;
+
+            let noteEl = document.getElementById(itemId + '-note');
+            if (ov.note) {
+                if (!noteEl) {
+                    noteEl = document.createElement('p');
+                    noteEl.id = itemId + '-note';
+                    noteEl.className = 'text-xs text-gray-600 mt-0.5';
+                    const titleRow = titleEl ? titleEl.closest('.flex.items-start.justify-between') : null;
+                    if (titleRow) {
+                        titleRow.after(noteEl);
+                    } else {
+                        container.appendChild(noteEl);
+                    }
+                }
+                noteEl.textContent = ov.note;
+            } else if (noteEl) {
+                noteEl.remove();
+            }
+
+            let linkEl = document.getElementById(itemId + '-link');
+            if (ov.link) {
+                if (!linkEl) {
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'flex gap-2 mt-2';
+                    linkEl = document.createElement('a');
+                    linkEl.id = itemId + '-link';
+                    linkEl.target = '_blank';
+                    linkEl.className = 'bg-peach-50 text-peach-700 px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-peach-100 transition flex items-center gap-1';
+                    linkEl.innerHTML = '<i class="fa-solid fa-map-location-dot"></i> 導航';
+                    wrapper.appendChild(linkEl);
+                    container.appendChild(wrapper);
+                }
+                linkEl.setAttribute('href', ov.link);
+            } else if (linkEl) {
+                linkEl.closest('.flex.gap-2.mt-2')?.remove();
+            }
+        }
+
+        function applyAllBuiltinOverrides() {
+            const overrides = getBuiltinOverrides();
+            Object.keys(overrides).forEach(itemId => applyBuiltinOverride(itemId, overrides[itemId]));
+        }
+
         function deleteCustomLocation(day, id) {
             if (!confirm('確定要刪除這個地點嗎？')) return;
             const store = getCustomLocationsStore();
@@ -2674,6 +3113,11 @@
             renderCustomLocations(day);
         }
 
+        // Day 3 (熊野一日遊) and Day 5 (由布院一日遊) are pre-packaged one-day tours:
+        // editing and reordering their added locations is disabled, but adding and
+        // deleting a location is still allowed.
+        const ONE_DAY_TRIP_DAYS = [3, 5];
+
         function renderCustomLocations(day) {
             const container = document.getElementById(`custom-locations-day-${day}`);
             if (!container) return;
@@ -2685,6 +3129,8 @@
                 return;
             }
 
+            const isOneDayTrip = ONE_DAY_TRIP_DAYS.includes(Number(day));
+
             container.innerHTML = list.map((loc, idx) => `
                 <div class="bg-peach-50/60 p-3 rounded-xl space-y-1">
                     <div class="flex items-start justify-between gap-2">
@@ -2693,10 +3139,13 @@
                             ${loc.note ? `<p class="text-xs text-gray-600 mt-0.5">${escapeHtml(loc.note)}</p>` : ''}
                         </div>
                         <div class="flex items-center gap-1.5 shrink-0">
+                            ${isOneDayTrip ? `
+                            <button onclick="deleteCustomLocation(${day}, '${loc.id}')" class="text-gray-400 hover:text-red-500"><i class="fa-solid fa-trash-can text-xs"></i></button>
+                            ` : `
                             <button onclick="moveCustomLocation(${day}, '${loc.id}', -1)" ${idx === 0 ? 'disabled' : ''} class="text-gray-400 hover:text-peach-600 disabled:opacity-20 disabled:hover:text-gray-400"><i class="fa-solid fa-chevron-up text-xs"></i></button>
                             <button onclick="moveCustomLocation(${day}, '${loc.id}', 1)" ${idx === list.length - 1 ? 'disabled' : ''} class="text-gray-400 hover:text-peach-600 disabled:opacity-20 disabled:hover:text-gray-400"><i class="fa-solid fa-chevron-down text-xs"></i></button>
                             <button onclick="openLocationForm(${day}, '${loc.id}')" class="text-gray-400 hover:text-peach-600 ml-1"><i class="fa-solid fa-pen text-xs"></i></button>
-                            <button onclick="deleteCustomLocation(${day}, '${loc.id}')" class="text-gray-400 hover:text-red-500"><i class="fa-solid fa-trash-can text-xs"></i></button>
+                            `}
                         </div>
                     </div>
                     ${loc.link ? `<a href="${escapeHtml(loc.link)}" target="_blank" class="inline-flex items-center gap-1 bg-white text-peach-600 px-2.5 py-1 rounded-lg text-[11px] font-medium hover:bg-peach-100 transition border border-peach-100"><i class="fa-solid fa-map-location-dot"></i> 導航</a>` : ''}
@@ -2727,6 +3176,7 @@
             loadGenericFile('boarding-return');
             loadGenericFile('visit-japan-web');
             loadAllCustomLocations();
+            applyAllBuiltinOverrides();
         }
     </script>
 </body>
